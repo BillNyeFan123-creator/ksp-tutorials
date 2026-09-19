@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delta-v Map — KSP Mission Manual</title>
+<meta name="description" content="The full stock Kerbol system delta-v map, leg by leg, with margin guidance for planning real missions.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="delta-v-map">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 19 · Reference</div>
+      <h1>Delta-v Map</h1>
+      <p class="page-sub">The full stock delta-v map, leg by leg, with margin guidance for turning these
+      numbers into a real mission budget.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#how-to-read">How to read a delta-v map</a></li>
+          <li><a href="#kerbin-system">Kerbin system legs</a></li>
+          <li><a href="#interplanetary">Interplanetary transfer legs</a></li>
+          <li><a href="#tylo-callout">Special case: Tylo</a></li>
+          <li><a href="#worked-examples">Worked mission budgets</a></li>
+          <li><a href="#margin">Margin guidance</a></li>
+          <li><a href="#caveats">Caveats and technique</a></li>
+        </ul>
+      </div>
+
+      <h2 id="how-to-read">How to read a delta-v map</h2>
+      <p>A delta-v map breaks a mission into individual "legs" — one maneuver each, like "low Kerbin orbit to
+      Mun encounter" or "Duna orbit to Duna surface." Add the legs of your planned route together to get a
+      rough total Δv budget for the whole mission, then size your rocket's stages to that total plus margin.</p>
+      <p>Most published delta-v maps (including this one) show numbers as a branching tree radiating outward
+      from Kerbin's surface: a short trunk of cheap, shared legs (surface to LKO, LKO to Kerbin escape) that
+      then splits into separate branches per destination. You don't need every branch — just add up the
+      specific chain of legs your mission actually flies, from the trunk out to your destination and, if
+      applicable, back again.</p>
+      <p>A useful habit: write your planned leg sequence down as a plain list before you open the VAB. For a
+      Duna round trip, that list looks like "surface→LKO, LKO→escape, escape→Duna transfer, Duna aerobrake
+      capture, Duna orbit→landing, Duna landing→orbit, Duna→Kerbin transfer, Kerbin reentry." Summing the
+      table values for exactly that list is far less error-prone than trying to estimate a whole mission's
+      cost in your head.</p>
+      <div class="callout info">
+        <div class="callout-title">One-way vs. round trip</div>
+        <p>Numbers below are one-way legs. A round-trip mission needs the outbound legs <em>and</em> the
+        return legs (ascent from a body, transfer home, and reentry/capture at Kerbin) — don't forget to
+        double-count the trip home when budgeting a sample-return or crewed mission.</p>
+      </div>
+      <p>It also helps to separate your budget into stages that will actually be separate <em>hardware</em>
+      stages on your rocket. A "Kerbin surface to LKO" leg is almost always your first-stage/second-stage
+      combo and gets dropped before you ever leave Kerbin's atmosphere; a "Duna landing" leg is a dedicated
+      lander that might get left behind on the surface entirely. Matching Δv legs to physical stages up front
+      avoids the classic mistake of building one enormous single-stage craft sized to a mission total that
+      no single stage actually needs to carry alone.</p>
+
+      <h2 id="kerbin-system">Kerbin system legs</h2>
+      <table class="dv-table">
+        <thead><tr><th>Leg</th><th class="num">Δv (m/s)</th></tr></thead>
+        <tbody>
+          <tr><td>Kerbin surface → Low Kerbin Orbit (LKO)</td><td class="num">~3,400</td></tr>
+          <tr><td>LKO → Mun encounter</td><td class="num">~860</td></tr>
+          <tr><td>Mun encounter → Mun orbit insertion</td><td class="num">~310</td></tr>
+          <tr><td>Low Mun orbit → Mun landing</td><td class="num">~580</td></tr>
+          <tr><td>Mun surface → Kerbin reentry</td><td class="num">~860</td></tr>
+          <tr><td>LKO → Minmus encounter</td><td class="num">~930</td></tr>
+          <tr><td>Low Minmus orbit → Minmus landing</td><td class="num">~180</td></tr>
+          <tr><td>LKO → Kerbin escape</td><td class="num">~950</td></tr>
+        </tbody>
+      </table>
+      <p>Notice how much cheaper Minmus's landing leg is than the Mun's, despite Minmus being farther away —
+      its much lower gravity more than makes up for the longer trip. See the
+      <a href="planet-guides.html">Planet-by-Planet Guide</a> for why. This is also why a Minmus mission is
+      often cheaper end-to-end than a Mun mission even though the Mun encounter leg itself is slightly
+      cheaper — the landing and ascent legs at Minmus are so much lower that they more than make up the
+      difference over a full round trip.</p>
+
+      <h2 id="interplanetary">Interplanetary transfer legs</h2>
+      <p>All legs below start from Kerbin escape (the ~950 m/s leg above already gets you there).</p>
+      <table class="dv-table">
+        <thead><tr><th>Leg</th><th class="num">Δv (m/s)</th></tr></thead>
+        <tbody>
+          <tr><td>Kerbin escape → Moho transfer</td><td class="num">~760</td></tr>
+          <tr><td>Moho plane-change correction</td><td class="num">Large — varies with window quality</td></tr>
+          <tr><td>Kerbin escape → Eve transfer</td><td class="num">~90</td></tr>
+          <tr><td>Eve orbit capture / aerobrake</td><td class="num">Low (aerobrake-assisted)</td></tr>
+          <tr><td>Eve orbit → Eve landing</td><td class="num">High (thick atmosphere assists descent)</td></tr>
+          <tr><td>Eve surface → Eve orbit (ascent)</td><td class="num">8,000+ (profile-dependent)</td></tr>
+          <tr><td>Kerbin escape → Duna transfer</td><td class="num">~130</td></tr>
+          <tr><td>Duna aerobrake → captured orbit</td><td class="num">~50 (mostly free via atmosphere)</td></tr>
+          <tr><td>Low Duna orbit → Duna landing</td><td class="num">~1,350</td></tr>
+          <tr><td>Duna surface → Duna orbit (ascent)</td><td class="num">~1,450</td></tr>
+          <tr><td>Kerbin escape → Dres transfer</td><td class="num">~610</td></tr>
+          <tr><td>Kerbin escape → Jool transfer</td><td class="num">~980</td></tr>
+          <tr><td>Kerbin escape → Eeloo transfer</td><td class="num">~1,140</td></tr>
+        </tbody>
+      </table>
+      <div class="callout danger">
+        <div class="callout-title">Eve ascent is the single most expensive maneuver in stock KSP</div>
+        <p>Launching off Eve's surface back to orbit can cost 8,000 m/s or more depending on your ascent
+        profile and landing altitude. No other maneuver in the stock game comes close — budget for it as its
+        own dedicated mission, not a line item in a bigger one. See the <a href="planet-guides.html#eve">Eve
+        entry</a> in the Planet-by-Planet Guide for ascent design tips.</p>
+      </div>
+      <p>Jool-moon-specific numbers (Laythe, Vall, Tylo, Bop, Pol) vary a lot moon to moon and are covered in
+      detail on the <a href="planet-guides.html">Planet-by-Planet Guide</a> rather than duplicated here.</p>
+
+      <h2 id="tylo-callout">Special case: Tylo</h2>
+      <div class="stat-row">
+        <div class="stat-tile"><span class="stat-label">Tylo landing</span><span class="stat-value">~2,800 m/s</span></div>
+        <div class="stat-tile"><span class="stat-label">Tylo ascent</span><span class="stat-value">~2,800+ m/s</span></div>
+        <div class="stat-tile"><span class="stat-label">Why</span><span class="stat-value">Kerbin-level gravity, zero atmosphere</span></div>
+      </div>
+      <p>Tylo deserves its own callout because it breaks the usual pattern: airless bodies are normally cheap
+      to land on and leave. Tylo has Kerbin-comparable surface gravity with no atmosphere to help either
+      direction, so both landing and ascent cost roughly as much as a full Kerbin launch — each way. Treat a
+      Tylo leg as two separate Kerbin-launch-sized budget items, not a typical moon landing.</p>
+
+      <h2 id="worked-examples">Worked mission budgets</h2>
+      <p>Adding legs together turns the abstract table above into an actual number you can design a rocket
+      around. A few common mission shapes, totaled from the legs above:</p>
+      <table class="dv-table">
+        <thead><tr><th>Mission</th><th>Legs summed</th><th class="num">Approx. total (m/s)</th></tr></thead>
+        <tbody>
+          <tr><td>Kerbin → Mun landing → return</td>
+              <td>Surface-to-LKO + Mun encounter + Mun orbit insertion + Mun landing + Mun surface-to-reentry</td>
+              <td class="num">~6,190</td></tr>
+          <tr><td>Kerbin → Minmus landing → return</td>
+              <td>Surface-to-LKO + Minmus encounter + Minmus landing + return leg (comparable to outbound)</td>
+              <td class="num">~5,900</td></tr>
+          <tr><td>Kerbin → Duna landing (one-way probe)</td>
+              <td>Surface-to-LKO + Kerbin escape + Duna transfer + Duna landing (aerobrake-assisted capture)</td>
+              <td class="num">~5,860</td></tr>
+          <tr><td>Kerbin → Duna landing → return</td>
+              <td>Above, plus Duna surface-to-orbit + Duna-to-Kerbin transfer + Kerbin reentry</td>
+              <td class="num">~9,000+</td></tr>
+          <tr><td>Kerbin → Tylo landing → return</td>
+              <td>Surface-to-LKO + Kerbin escape + Jool transfer + Jool-system transfer to Tylo + Tylo landing + Tylo ascent</td>
+              <td class="num">~12,000+</td></tr>
+        </tbody>
+      </table>
+      <p>These totals are why multi-stage rockets and orbital refueling exist as core strategies rather than
+      niceties — no single stage needs to carry the entire mission total at once. A Duna round trip, for
+      example, naturally splits into a Kerbin ascent stage (discarded at LKO), a transfer stage (discarded
+      after Duna capture), and a lander that does its own landing-and-ascent leg independently.</p>
+
+      <h2 id="margin">Margin guidance</h2>
+      <div class="callout warn">
+        <div class="callout-title">Always add margin</div>
+        <ul>
+          <li>Add <strong>10-20% extra Δv</strong> on top of the raw map numbers for correction burns,
+            docking approaches, and landing/ascent piloting error.</li>
+          <li>Budget <strong>separately</strong> for "there and back" missions vs. one-way probes — a
+            round-trip crewed lander needs the outbound legs, the return legs, and margin on both, not a
+            single combined margin at the end.</li>
+          <li>Add extra margin on any leg you're new to (first Duna landing, first Jool aerobrake) — the
+            numbers assume you execute the maneuver efficiently, and a learning curve costs real fuel.</li>
+        </ul>
+      </div>
+      <p>How much margin you actually need scales with how forgiving the mission is if you come up short.
+      A few rules of thumb:</p>
+      <table>
+        <thead><tr><th>Mission type</th><th>Suggested margin</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Unmanned probe, one-way</td><td>~10%</td><td>Worst case you fall short of a perfect orbit; no crew at risk</td></tr>
+          <tr><td>Crewed landing, round trip</td><td>15-20%</td><td>Landing and ascent errors are expensive and a shortfall strands a Kerbal</td></tr>
+          <tr><td>Docking-heavy station logistics</td><td>+50-100 m/s flat, on top of transfer margin</td><td>RCS-heavy final approach costs are hard to predict precisely in advance</td></tr>
+          <tr><td>First attempt at a new destination</td><td>20%+</td><td>You don't yet know your own execution error at this specific maneuver</td></tr>
+        </tbody>
+      </table>
+      <p>Margin isn't just extra fuel tankage — it's also TWR. A stage with the right total Δv but a
+      too-low thrust-to-weight ratio can still fail a landing by not being able to slow down fast enough
+      before touchdown, even though the fuel gauge says there's plenty left.</p>
+
+      <h2 id="caveats">Caveats and technique</h2>
+      <p>These numbers assume reasonably efficient technique: good transfer window timing, aerobraking where
+      the destination has an atmosphere, and clean burns without excessive steering losses. Your actual
+      numbers will vary with pilot skill, rocket design, and how precisely you time your windows. A few
+      specific sources of "invisible" Δv loss worth knowing about:</p>
+      <ul>
+        <li><strong>Gravity losses</strong> — time spent burning while gravity is also pulling you down (most
+          relevant during a Kerbin or Eve ascent); a lower-TWR early ascent generally loses more to gravity
+          than a snappier one, up to a point.</li>
+        <li><strong>Steering losses</strong> — burning while not pointed exactly prograde/retrograde wastes
+          part of every burn; long burns split into shorter ones bracketing the node waste less.</li>
+        <li><strong>Atmospheric drag</strong> — climbing too fast, too low, in a thick atmosphere (Eve
+          especially) burns Δv fighting air resistance rather than gaining altitude or speed.</li>
+        <li><strong>Imprecise transfer windows</strong> — a "close enough" window found by eye can cost
+          hundreds of extra m/s compared to a well-tuned one; the difference compounds on longer transfers.</li>
+      </ul>
+      <p>For the techniques that get your real-world numbers close to these reference figures, see
+      <a href="interplanetary-travel.html">Interplanetary Travel</a> for the fundamentals and
+      <a href="advanced-maneuvers.html">Advanced Maneuvers</a> for tightening up execution. If you'd rather
+      not carry every stage from Kerbin, <a href="isru-mining.html">ISRU &amp; Mining</a> covers refueling
+      in-system to shrink the launch mass you need for the legs above.</p>
+
+      <div class="pager">
+        <a class="prev" href="planet-guides.html"><span class="dir">← Back</span>Planet-by-Planet Guide</a>
+        <a class="next" href="challenges.html"><span class="dir">Next</span>Challenges &amp; Achievements →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

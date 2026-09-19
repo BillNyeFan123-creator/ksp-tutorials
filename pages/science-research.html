@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Science &amp; Research — KSP Mission Manual</title>
+<meta name="description" content="How the KSP science system works — experiment types, the situation × biome multiplier, transmitting vs returning data, the tech tree, and how to farm science efficiently.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="science-research">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 10 · Uncrewed &amp; Science</div>
+      <h1>Science &amp; Research</h1>
+      <p class="page-sub">Experiments, biomes, the tech tree, and getting the most science out of every mission.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#science-points">What science points are for</a></li>
+          <li><a href="#experiment-types">Experiment types</a></li>
+          <li><a href="#situations-biomes">Situations, biomes, and the multiplier system</a></li>
+          <li><a href="#transmit-vs-return">Transmitting vs. returning science</a></li>
+          <li><a href="#tech-tree">The tech tree</a></li>
+          <li><a href="#farming">An efficient science-farming pattern</a></li>
+          <li><a href="#eva">EVA reports and surface samples</a></li>
+          <li><a href="#strategy">Planning routes, not just rockets</a></li>
+        </ul>
+      </div>
+
+      <h2 id="science-points">What science points are for</h2>
+      <p>In Science and Career modes, most parts start locked. <strong>Science points</strong> are the currency
+      that unlocks nodes in the tech tree, which in turn unlock the parts you need for bigger and more capable
+      missions. Every experiment you run and successfully get home (by transmission or physical return)
+      converts into science points, so early-game missions are less about glory and more about efficient
+      point-farming to unlock the parts that make later missions possible.</p>
+      <div class="callout info">
+        <div class="callout-title">Sandbox mode skips this entirely</div>
+        <p>If you're playing Sandbox, every part is already unlocked and science points don't exist — this
+        whole system only matters in Science mode and Career mode.</p>
+      </div>
+
+      <h2 id="experiment-types">Experiment types</h2>
+      <p>Every science experiment in the game falls into one of a few categories, and which category matters
+      a lot for how you plan a mission around it.</p>
+      <table>
+        <thead><tr><th>Type</th><th>Examples</th><th>Needs a Kerbal?</th><th>Reusable?</th></tr></thead>
+        <tbody>
+          <tr><td>Crew report</td><td>Crew Report</td><td>Yes</td><td>Yes, unlimited</td></tr>
+          <tr><td>EVA-only</td><td>EVA Report, Surface Sample</td><td>Yes (must step outside)</td><td>Yes, unlimited</td></tr>
+          <tr><td>Automated instrument</td><td>Thermometer, Barometer, Seismometer, Gravioli Detector</td><td>No</td><td>Yes, resettable instantly</td></tr>
+          <tr><td>One-use-per-cycle instrument</td><td>Mystery Goo Canister, Materials Bay</td><td>No to run; a Kerbal (EVA) or lab can reset it</td><td>Only after a reset</td></tr>
+        </tbody>
+      </table>
+      <ul>
+        <li><strong>Crew reports and surface samples</strong> require an actual Kerbal — a probe-only mission
+          can never produce these two categories no matter how it's equipped.</li>
+        <li><strong>Automated instruments</strong> like the thermometer, barometer, seismometer, and gravioli
+          detector can be run any number of times immediately, in any situation, with no reset needed — they
+          just won't give you more science for repeating the exact same situation and biome twice.</li>
+        <li><strong>Mystery Goo canisters and Materials Bays</strong> are one-shot per situation/biome until
+          reset. A Kerbal on EVA can manually reset one so it can be run again elsewhere on the same trip;
+          without a Kerbal, you need a fresh, unused canister for each new biome you want data from.</li>
+      </ul>
+      <div class="callout tip">
+        <div class="callout-title">Bring extra Goo canisters on probe-only landers</div>
+        <p>If your lander has no Kerbal to reset instruments, launch with one Mystery Goo canister and one
+        Materials Bay per biome you plan to visit, rather than relying on resets you can't perform.</p>
+      </div>
+
+      <h2 id="situations-biomes">Situations, biomes, and the multiplier system</h2>
+      <p>The same experiment doesn't just give a flat amount of science once — it can give more total science
+      every time you run it in a genuinely new combination of <strong>situation</strong> and <strong>biome</strong>.</p>
+      <ul>
+        <li><strong>Situations</strong> are broad states: landed, splashed down, flying low in atmosphere,
+          flying high in atmosphere, in space low, and in space high. The altitude bands defining "low" vs.
+          "high" vary per body.</li>
+        <li><strong>Biomes</strong> are named surface (and sometimes atmospheric/orbital) regions unique to
+          each body — Mun Highlands and Mun Midlands are different biomes, and "Landed at Mun Highlands" is
+          tracked as a completely separate result from "Landed at Mun Midlands," even for the identical
+          experiment on the identical part.</li>
+        <li><strong>The multiplier is per unique combination.</strong> Running a thermometer reading "Landed
+          at Mun Highlands" pays out once at full value; running the identical experiment again in the same
+          situation and biome pays out little to nothing extra, because the game already has that result on
+          file. Move to a new biome, or change situation (e.g. go from landed to flying low), and it counts as
+          new again.</li>
+      </ul>
+      <div class="callout warn">
+        <div class="callout-title">Diminishing returns are real and immediate</div>
+        <p>Don't expect a second identical experiment in the same spot to be worth running — check the
+        experiment's tooltip in-flight; it tells you directly whether the result is "new" or would only be
+        worth a small fraction (or nothing) because it's already been recorded.</p>
+      </div>
+
+      <h2 id="transmit-vs-return">Transmitting vs. returning science</h2>
+      <p>Once an experiment has produced a result, you have up to three ways to turn it into actual science
+      points:</p>
+      <ol class="steps">
+        <li><strong>Transmit it home</strong> via antenna. This is instant and doesn't require getting the
+          craft back, but most experiments only transmit at partial value — some transmit at a high
+          percentage, some (notably surface samples) cannot be transmitted at all and must be physically
+          returned, and a few specialized experiments exist that are transmission-only.</li>
+        <li><strong>Physically return the data</strong> to Kerbin (splash down or land with the experiment
+          data still stored on board, then recover the vessel). This always banks full value, at the cost of
+          the time and Δv needed to bring the craft home.</li>
+        <li><strong>Process it in a Mobile Processing Lab.</strong> A crewed lab can slowly convert stored
+          experiment data into science points over time on-site, without returning anything, and can also
+          boost the transmission efficiency of data sent through it — a good middle ground for a long-duration
+          base or station that will never come home.</li>
+      </ol>
+      <table class="dv-table">
+        <thead><tr><th>Method</th><th>Value</th><th>Speed</th><th>Requires</th></tr></thead>
+        <tbody>
+          <tr><td>Transmit</td><td class="num">Partial (varies)</td><td class="num">Instant</td><td>Antenna + EC + signal</td></tr>
+          <tr><td>Physical return</td><td class="num">Full</td><td class="num">Slow</td><td>Getting the craft home intact</td></tr>
+          <tr><td>Mobile Processing Lab</td><td class="num">Full over time, boosts transmission</td><td class="num">Gradual</td><td>Crewed lab, EC, time warp</td></tr>
+        </tbody>
+      </table>
+      <div class="callout tip">
+        <div class="callout-title">A cheap early strategy: transmit small, return big</div>
+        <p>Transmit the cheap, high-transmission-value instrument readings home immediately for quick science,
+        and reserve surface samples (which often can't transmit at all) for missions you already intend to
+        recover.</p>
+      </div>
+
+      <h2 id="tech-tree">The tech tree</h2>
+      <p>Spending science points unlocks individual nodes in the tech tree, and each node unlocks a specific
+      set of parts. Nodes generally get more expensive and more specialized the further out you go, and many
+      require an already-unlocked prerequisite node before they become available.</p>
+      <ol class="steps">
+        <li><strong>Start with basic engines, fuel tanks, and stability parts</strong> — you need a rocket
+          that can reliably reach orbit before anything else matters.</li>
+        <li><strong>Unlock a better probe core and antenna early</strong> if you plan to lean on uncrewed
+          missions for cheap science — see <a href="satellites.html">Satellites &amp; Probes</a> for what to
+          look for.</li>
+        <li><strong>Grab basic science instruments</strong> (thermometer, barometer, Goo canister) as soon as
+          you can afford them — they pay for themselves almost immediately once flown to even one new biome.</li>
+        <li><strong>Prioritize parachutes and landing legs</strong> so you can start doing full landed
+          missions on the Mun and Minmus, which unlock a huge number of new situation/biome combinations at
+          once.</li>
+        <li><strong>Save toward a Mobile Processing Lab</strong> once you're running longer or multi-body
+          missions, since it meaningfully improves the return on data you'd otherwise transmit at a loss.</li>
+      </ol>
+
+      <h2 id="farming">An efficient science-farming pattern</h2>
+      <p>The most efficient early-to-mid game science strategy is a single reusable lander that hops between
+      several biomes on the same body, collecting the full instrument suite at each stop before coming home
+      once.</p>
+      <div class="body-card">
+        <strong>Example: a 3-biome Mun hopper</strong>
+        <ol class="steps">
+          <li><strong>Design a lander</strong> with enough Δv for a landing, a hop to a second biome, a hop to
+            a third, and a return to Kerbin (or just enough for the hops if you plan to transmit and abandon
+            it). Carry a thermometer, barometer, gravioli detector, Mystery Goo canister, Materials Bay, and a
+            Kerbal if you want crew reports and surface samples too.</li>
+          <li><strong>Land in the first biome</strong> (e.g. Mun Midlands) and run every experiment: crew
+            report, EVA report, surface sample, and all instruments.</li>
+          <li><strong>Reset the one-use instruments on EVA</strong>, board back up, and do a short suborbital
+            hop to a second biome (e.g. Mun Highlands).</li>
+          <li><strong>Repeat the full experiment suite</strong> in the new biome — every one of these results
+            is "new" and pays out in full.</li>
+          <li><strong>Hop to a third biome if Δv allows</strong>, repeat again, then either return to Kerbin
+            for full-value science or transmit what you can and leave the rest banked for a Processing Lab
+            later.</li>
+        </ol>
+      </div>
+      <div class="callout tip">
+        <div class="callout-title">Minmus is even cheaper than the Mun for this</div>
+        <p>Minmus's lower gravity and flat biome-rich terrain make multi-biome hopping noticeably cheaper in
+        Δv than the Mun, making it a strong first target for exactly this pattern.</p>
+      </div>
+
+      <h2 id="eva">EVA reports and surface samples</h2>
+      <p>Two of the best science-per-part-count experiments in the game require nothing but a Kerbal and no
+      dedicated instrument part at all:</p>
+      <ul>
+        <li><strong>EVA report</strong> — taken the moment a Kerbal steps outside on EVA, in any situation.
+          It's free (no part mass) and pays out for each new situation/biome just like any other experiment,
+          including ones you might not think to check, like flying low or high in an atmosphere during an EVA
+          (rare, but possible on some craft) or simply being in space near a body you haven't visited.</li>
+        <li><strong>Surface sample</strong> — taken while on EVA and landed or splashed down, using the
+          Kerbal's own suit, no part required. Typically one of the higher-value single experiments in the
+          game, but usually can't be transmitted — plan on bringing it home.</li>
+        <li><strong>Don't skip low/high orbit and flying situations</strong> even without landing — a flyby or
+          orbital pass over a body you haven't visited yet can bank an EVA report, crew report, and instrument
+          readings for "in space low" and "in space high" without ever touching the surface, which is often
+          the cheapest science in the game per unit of Δv spent.</li>
+      </ul>
+
+      <h2 id="strategy">Planning routes, not just rockets</h2>
+      <div class="callout warn">
+        <div class="callout-title">Don't over-invest a huge rocket into one low-value stop</div>
+        <p>A giant, expensive lander that visits a single biome and comes straight home wastes most of its
+        potential — the marginal cost of adding one more biome hop to an already-built lander is usually far
+        cheaper than the cost of the mission that got you there in the first place. Before launching, sketch
+        out which 2-4 biomes you can realistically reach with the Δv on hand, and route the mission through all
+        of them.</p>
+      </div>
+      <ul>
+        <li><strong>Prioritize new biomes and new situations</strong> over repeating ones — a repeat is worth
+          little to nothing, while an unvisited biome or situation is worth full value even for an experiment
+          you've run a hundred times elsewhere.</li>
+        <li><strong>Check the in-flight tooltip before running an experiment</strong> — it tells you up front
+          whether the result would be new (full value), diminished (partial, already partly recorded), or
+          exhausted (nothing left to gain), so you're never guessing.</li>
+        <li><strong>Think in terms of "science per launch,"</strong> not "science per experiment" — a mission
+          plan that squeezes five biomes out of one launch will always out-earn five separate single-biome
+          launches for the same total Δv budget.</li>
+      </ul>
+      <p>Once you've maximized what a single body can offer, the next step up is spreading this same
+      biome-hopping discipline across other planets — see
+      <a href="interplanetary-travel.html">Interplanetary Travel</a> for how to actually get a science lander
+      to Duna and beyond.</p>
+
+      <div class="pager">
+        <a class="prev" href="satellites.html"><span class="dir">← Back</span>Satellites &amp; Probes</a>
+        <a class="next" href="interplanetary-travel.html"><span class="dir">Next</span>Interplanetary Travel →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

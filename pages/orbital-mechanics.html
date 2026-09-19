@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orbital Mechanics — KSP Mission Manual</title>
+<meta name="description" content="Apoapsis, periapsis, maneuver nodes, orbital periods, Hohmann transfers, plane changes, and the navball — the core ideas behind every KSP orbit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="orbital-mechanics">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 05 · Foundations</div>
+      <h1>Orbital Mechanics</h1>
+      <p class="page-sub">Apoapsis, periapsis, maneuver nodes, and the handful of ideas that unlock all of spaceflight.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#ap-pe">Apoapsis, periapsis, and why burns work the way they do</a></li>
+          <li><a href="#circularizing">Reaching orbit and circularizing</a></li>
+          <li><a href="#maneuver-nodes">Maneuver nodes in depth</a></li>
+          <li><a href="#periods">Orbital periods and altitude</a></li>
+          <li><a href="#hohmann">Hohmann transfers</a></li>
+          <li><a href="#inclination">Inclination and plane changes</a></li>
+          <li><a href="#navball">Navball reference</a></li>
+          <li><a href="#eccentricity-soi">Eccentricity, inclination, and spheres of influence</a></li>
+        </ul>
+      </div>
+
+      <h2 id="ap-pe">Apoapsis, periapsis, and why burns work the way they do</h2>
+      <p>Every orbit around a body has two extreme points. <strong>Apoapsis (Ap)</strong> is the highest point
+      of the orbit — the farthest you get from the body's center. <strong>Periapsis (Pe)</strong> is the
+      lowest point — the closest you get. Between those two points your orbit is an ellipse (a circle is
+      just an ellipse where Ap and Pe happen to be equal).</p>
+      <p>The single rule that unlocks almost all orbital maneuvering: <strong>a prograde burn (speeding up in
+      your direction of travel) raises the orbit on the opposite side from where you burn. A retrograde burn
+      (slowing down) lowers the orbit on the opposite side.</strong> Burn prograde at periapsis and your
+      apoapsis rises. Burn prograde at apoapsis and your periapsis rises.</p>
+      <div class="callout info">
+        <div class="callout-title">Why the opposite side?</div>
+        <p>Orbits conserve energy. Adding speed at one point adds kinetic energy to the whole orbit, which
+        raises the orbit's highest point — but that extra height only "shows up" on the far side of the
+        ellipse from where you added the energy, because the point where you burned is now moving faster than
+        a circular orbit would need, and it swings back down to that same altitude every lap. Think of it like
+        throwing a ball harder horizontally — it doesn't shoot straight up from your hand, it goes farther
+        before coming back down. The place you're standing (where you burned) stays fixed as your periapsis;
+        the "farther before coming down" becomes your new, higher apoapsis on the other side.</p>
+      </div>
+      <p>This is why you can't raise your whole orbit evenly with a single burn from one point — you always
+      raise or lower the <em>far</em> side first, and need a second burn at that new point to fix the near
+      side (that second burn is exactly what circularizing is, covered next).</p>
+
+      <h2 id="circularizing">Reaching orbit and circularizing</h2>
+      <p>After a gravity turn (covered on the Building Rockets page), you should be on a suborbital
+      trajectory with your apoapsis climbing toward your target altitude — typically 75-100km around Kerbin,
+      high enough to clear atmospheric drag but not so high that circularizing costs excessive Δv.</p>
+      <ol class="steps">
+        <li><strong>Coast to apoapsis with the engine off</strong> once your apoapsis reaches your target
+          altitude. If it's still climbing quickly, throttle down or cut the engine early — apoapsis keeps
+          rising slightly after you cut thrust if you're still pointed prograde with any upward vertical
+          velocity.</li>
+        <li><strong>Time-warp to apoapsis</strong> using physics warp (up to 4x) or regular warp if you're
+          still deep in atmosphere-free space, watching the navball's time-to-apoapsis readout.</li>
+        <li><strong>Point prograde</strong> (use the prograde marker on the navball, or SAS prograde hold) and
+          burn to raise periapsis. Watch the periapsis number in the map view or flight info — stop the burn
+          once periapsis is at or above your target altitude (roughly equal to your apoapsis for a circular
+          orbit).</li>
+        <li><strong>Fine-tune</strong> with short taps of prograde/retrograde once Ap and Pe are close to
+          equal. A "circular enough" orbit for most purposes is within a few hundred meters at LKO
+          altitudes.</li>
+      </ol>
+      <div class="callout warn">
+        <div class="callout-title">Don't let periapsis dip back into atmosphere</div>
+        <p>If you delay the circularization burn too long after apoapsis, your orbit continues around and
+        periapsis (still down in the atmosphere from your ascent) comes back up fast, costing you speed to
+        drag. Circularize right at or just before apoapsis, not after you've coasted past it.</p>
+      </div>
+
+      <h2 id="maneuver-nodes">Maneuver nodes in depth</h2>
+      <p>Maneuver nodes let you plan a burn in advance, see exactly what it will do to your orbit, and get a
+      precise Δv and timing readout — indispensable for anything beyond "just circularize."</p>
+      <ol class="steps">
+        <li><strong>Placing a node</strong> — in map view, click anywhere on your orbit line to drop a node.
+          A small gizmo with colored handles appears at that point.</li>
+        <li><strong>Dragging the handles</strong> — <strong>prograde/retrograde</strong> (blue, along your
+          direction of travel) change your speed at that point, which is what you'll use most; <strong>normal
+          /antinormal</strong> (purple, perpendicular to your orbital plane) tilt the orbit's inclination;
+          <strong>radial in/out</strong> (usually near the node, pointing toward/away from the body) shift the
+          orbit shape without changing speed along the direction of travel — used less often, mostly for fine
+          rendezvous adjustments.</li>
+          <li><strong>Reading the results</strong> — as you drag, the projected new orbit (a lighter-colored
+          path) updates live, along with a Δv total and a predicted new Ap/Pe shown in the node's info panel.</li>
+        <li><strong>Time-to-node countdown</strong> — the node shows a countdown to when you'll reach it. Warp
+          up to that point (KSP automatically slows warp as you approach a node) so you arrive with time to
+          get in position.</li>
+        <li><strong>The "half the burn time before the node" rule</strong> — the node readout shows total burn
+          time for the maneuver. Because the node marks the <em>middle</em> of your intended change (not the
+          start), begin burning half that duration <em>before</em> you reach the node, so the burn is centered
+          on it. For a 20-second burn, start at T-10 seconds.</li>
+        <li><strong>Executing the burn</strong> — point at the maneuver marker (a small blue-and-white circled
+          icon on the navball, distinct from prograde), throttle up at your calculated start time, and watch
+          the remaining Δv counter on screen tick down to zero. Cut throttle immediately at zero — overshooting
+          wastes propellant and requires a correction burn.</li>
+        <li><strong>SAS maneuver node hold</strong> — with SAS on, click the SAS mode selector (or press the
+          relevant hotkey) and choose the maneuver node icon. SAS will then automatically orient the craft to
+          face the maneuver marker, freeing you to focus on throttle and timing.</li>
+      </ol>
+      <div class="callout tip">
+        <div class="callout-title">Nodes are edits, not commitments</div>
+        <p>You can drag a node's handles as many times as you like, add multiple nodes along your orbit to
+        plan out a multi-step trip, or delete a node entirely (right-click it and choose delete, or drag it
+        off the orbit line) if your plan changes. Nothing happens until you actually burn.</p>
+      </div>
+
+      <h2 id="periods">Orbital periods and altitude</h2>
+      <p>An orbit's <strong>period</strong> is how long it takes to complete one full lap. The relationship is
+      simple: <strong>higher orbits have longer periods.</strong> A low Kerbin orbit at 80km takes roughly half
+      an hour; geostationary altitude (~2,863km above Kerbin's surface) takes exactly one Kerbin sidereal day
+      (~6 hours), matching the planet's rotation so the satellite hangs over the same point on the ground.
+      Full geostationary placement mechanics — matching period precisely and zeroing inclination — are covered
+      on the <a href="satellites.html">Satellites &amp; Probes</a> page.</p>
+      <table class="dv-table">
+        <thead><tr><th>Approx. circular altitude above Kerbin</th><th class="num">Approx. orbital period</th></tr></thead>
+        <tbody>
+          <tr><td>80km (typical LKO)</td><td class="num">~32 min</td></tr>
+          <tr><td>250km</td><td class="num">~66 min</td></tr>
+          <tr><td>700km</td><td class="num">~3 hr</td></tr>
+          <tr><td>2,863km (geostationary)</td><td class="num">6 hr (1 Kerbin day)</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="hohmann">Hohmann transfers</h2>
+      <p>A <strong>Hohmann transfer</strong> is the standard fuel-efficient way to move from one circular
+      orbit to another (higher or lower) circular orbit, using exactly two burns. It works whether you're
+      raising your orbit around the same body, or transferring between two different bodies (the
+      interplanetary version, covered in full on the Interplanetary Travel page, is the same idea applied at
+      solar-system scale).</p>
+      <ol class="steps">
+        <li><strong>Burn 1 — prograde at your starting orbit</strong> to raise (or retrograde to lower) your
+          apoapsis (or periapsis) until it touches the target orbit's altitude. This puts you on an elliptical
+          transfer orbit.</li>
+        <li><strong>Coast along the transfer ellipse</strong> until you reach the point where it touches the
+          target orbit.</li>
+        <li><strong>Burn 2 — prograde (raising) or retrograde (lowering)</strong> at that point to circularize
+          into the new orbit, matching your speed to the target altitude's circular velocity.</li>
+      </ol>
+      <p>A concrete in-system example: going from a low 80km Kerbin orbit out to meet the Mun's orbit (roughly
+      12,000km out) uses this exact pattern — a prograde burn at LKO (~860 m/s) raises your apoapsis to
+      intercept the Mun's orbital altitude, timed so the Mun is actually there when you arrive (see the
+      rendezvous timing discussion on the Docking &amp; Rendezvous page). From there, capturing into a Mun
+      orbit is effectively the "second burn," just performed relative to the Mun's gravity well instead of
+      Kerbin's.</p>
+
+      <h2 id="inclination">Inclination and plane changes</h2>
+      <p>Your orbital <strong>inclination</strong> is the tilt of your orbital plane relative to a reference
+      plane (usually the target body's equator, or another craft's orbital plane for rendezvous). Two orbits
+      around the same body cross each other at exactly two points — the <strong>ascending node (AN)</strong>,
+      where you cross from below the reference plane to above it, and the <strong>descending node (DN)</strong>,
+      where you cross back down.</p>
+      <ul>
+        <li>A plane-change burn applies pure normal or antinormal thrust to rotate your orbital plane. It's
+          cheapest when done exactly at an ascending or descending node, because that's the only place your
+          velocity vector is already in the plane you're rotating around — burning normal/antinormal there
+          changes only your inclination, not your speed or altitude.</li>
+        <li>Plane changes are also cheaper the <strong>slower you're moving</strong>, which means doing them
+          far from the body (near apoapsis of a high, eccentric orbit) rather than close in, since the same
+          angular change in velocity costs less Δv at lower orbital speed.</li>
+        <li><strong>Combine plane changes with another burn</strong> whenever possible — for example, blend a
+          normal/antinormal component into your circularization burn or your transfer injection burn, rather
+          than doing a separate dedicated plane-change maneuver. KSP's maneuver node gizmo lets you drag both
+          prograde and normal handles on the same node, and the game computes the combined (shorter, cheaper)
+          Δv vector automatically.</li>
+      </ul>
+      <div class="callout danger">
+        <div class="callout-title">Fixing inclination late is expensive</div>
+        <p>A plane change done deep in a low, fast orbit close to a planet can cost hundreds of m/s for even a
+        small angle. Whenever possible, correct your inclination during launch (time your launch for when the
+        target's orbital plane passes over your launch site) or early in a high, slow part of your trajectory
+        — never as an afterthought once you're already circular and low.</p>
+      </div>
+
+      <h2 id="navball">Navball reference</h2>
+      <p>The navball is your primary flight instrument — a rotating sphere showing your orientation and
+      velocity relative to different reference frames.</p>
+      <table>
+        <thead><tr><th>Marker / mode</th><th>What it shows</th></tr></thead>
+        <tbody>
+          <tr><td>Prograde (circle with lines)</td><td>Direction of current velocity — pointing here and thrusting speeds you up along your current path</td></tr>
+          <tr><td>Retrograde (circle with X)</td><td>Opposite of prograde — thrusting here slows you down</td></tr>
+          <tr><td>Normal / Antinormal</td><td>Perpendicular to your orbital plane (up/down relative to the plane) — used for inclination changes</td></tr>
+          <tr><td>Radial in / Radial out</td><td>Directly toward/away from the body's center — used for fine orbit shaping and some rendezvous work</td></tr>
+          <tr><td>Maneuver marker (small blue-white circle)</td><td>Direction to burn to execute a planned maneuver node</td></tr>
+          <tr><td>Target marker</td><td>Direction toward a selected target — appears once you set a target in map view</td></tr>
+          <tr><td>Orbit mode</td><td>Velocity relative to the body you're orbiting — the default and most useful mode for orbital maneuvers</td></tr>
+          <tr><td>Surface mode</td><td>Velocity relative to the ground beneath you — useful during launch and landing</td></tr>
+          <tr><td>Target mode</td><td>Velocity relative to a targeted craft — essential for rendezvous and docking, covered on that page</td></tr>
+        </tbody>
+      </table>
+      <p>Click the small speed readout above the navball to cycle between Orbit/Surface/Target modes.</p>
+
+      <h2 id="eccentricity-soi">Eccentricity, inclination, and spheres of influence</h2>
+      <div class="stat-row">
+        <div class="stat-tile"><span class="stat-label">Eccentricity = 0</span><span class="stat-value">Perfect circle</span></div>
+        <div class="stat-tile"><span class="stat-label">0 &lt; e &lt; 1</span><span class="stat-value">Ellipse</span></div>
+        <div class="stat-tile"><span class="stat-label">e ≥ 1</span><span class="stat-value">Escape trajectory</span></div>
+      </div>
+      <p><strong>Eccentricity</strong> is a number describing how stretched an orbit's ellipse is: 0 is a
+      perfect circle, values approaching 1 are increasingly stretched ellipses, and 1 or above means you're on
+      a parabolic or hyperbolic path that escapes the body entirely rather than orbiting it.
+      <strong>Inclination</strong> is simply the tilt angle of your orbital plane, in degrees, relative to the
+      reference plane (0° is an equatorial orbit; 90° is a polar orbit).</p>
+      <div class="callout info">
+        <div class="callout-title">Sphere of influence (SOI)</div>
+        <p>KSP uses a simplified "patched conic" model rather than full N-body gravity: at any moment, your
+        craft is influenced by exactly one body's gravity, whichever one's <strong>sphere of influence</strong>
+        you're currently inside. Kerbin's SOI extends far enough to contain the Mun and Minmus's orbits; once
+        you cross into the Mun's much smaller SOI, your trajectory switches to being calculated purely relative
+        to the Mun. This is why interplanetary and Mun/Minmus transfers are planned as a series of clean
+        "hops" between one body's SOI and the next, rather than one continuously curving path — each SOI
+        crossing is a sharp handoff in the game's math, shown in map view as your orbit line changing color and
+        shape the instant you cross the boundary.</p>
+      </div>
+
+      <div class="pager">
+        <a class="prev" href="vab-advanced-techniques.html"><span class="dir">← Back</span>VAB Advanced Techniques</a>
+        <a class="next" href="docking-rendezvous.html"><span class="dir">Next</span>Rendezvous &amp; Docking →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

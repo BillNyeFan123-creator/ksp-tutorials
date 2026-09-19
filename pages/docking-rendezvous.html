@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rendezvous &amp; Docking — KSP Mission Manual</title>
+<meta name="description" content="How to launch into a target's plane, close the distance with maneuver nodes, kill relative velocity, and dock two craft together without a collision.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="docking-rendezvous">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 06 · Crewed Operations</div>
+      <h1>Rendezvous &amp; Docking</h1>
+      <p class="page-sub">Meeting up with another craft in orbit and docking with it without panicking or crashing.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#hardware">Docking hardware</a></li>
+          <li><a href="#launch-timing">Launch timing and plane matching</a></li>
+          <li><a href="#targeting">Setting a target and reading closest approach</a></li>
+          <li><a href="#intercept">Planning the intercept</a></li>
+          <li><a href="#closing">Closing in and killing relative velocity</a></li>
+          <li><a href="#final-approach">Final approach and docking</a></li>
+          <li><a href="#control-from-here">Switching control between ports</a></li>
+          <li><a href="#undocking">Undocking safely</a></li>
+          <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ul>
+      </div>
+
+      <h2 id="hardware">Docking hardware</h2>
+      <p>Docking requires a compatible port on both craft, plus fine attitude and translation control to line
+      them up.</p>
+      <table>
+        <thead><tr><th>Port size</th><th>Typical use</th></tr></thead>
+        <tbody>
+          <tr><td>Junior / Radial</td><td>Small probes, radially-mounted side dockings, lightweight craft</td></tr>
+          <tr><td>Standard / Regular (Clamp-o-tron)</td><td>The general-purpose size — most crew pods and mid-size stations</td></tr>
+          <tr><td>Senior</td><td>Large modules, heavy fuel transfers, station cores</td></tr>
+        </tbody>
+      </table>
+      <div class="callout warn">
+        <div class="callout-title">Sizes must match</div>
+        <p>A Junior port will not dock to a Standard or Senior port. Plan your whole station or ship family
+        around one or two port sizes so anything you launch later can actually connect.</p>
+      </div>
+      <ul>
+        <li><strong>RCS (Reaction Control System)</strong> thrusters burn monopropellant to translate your
+          craft directly sideways, up/down, and fore/aft — essential for fine docking adjustments that your
+          main engine and reaction wheels can't do cleanly. Enable RCS with the dedicated toggle (default key
+          <code>R</code>).</li>
+        <li><strong>SAS Target mode</strong> — with a target set and SAS on, you can point your craft directly
+          at the target, or at the target's own docking port orientation (target prograde/retrograde and the
+          dedicated "point at target" hold), which is much easier than manually aiming during final
+          approach.</li>
+      </ul>
+
+      <h2 id="launch-timing">Launch timing and plane matching</h2>
+      <p>Rendezvousing is much cheaper if you launch directly into your target's orbital plane instead of
+      fixing your inclination afterward.</p>
+      <ol class="steps">
+        <li><strong>Watch the target pass overhead</strong> — in the tracking station or map view, you can see
+          when the target's ground track will pass near your launch site. Launching within a minute or two of
+          that pass puts you close to its plane from the start.</li>
+        <li><strong>Launch straight up briefly, then turn toward the target's inclination</strong> instead of
+          the default due-east ascent, aiming your ascent azimuth to match the target's orbital tilt.</li>
+        <li><strong>If you're off-plane after reaching orbit</strong>, fix it with a plane-change burn at one
+          of your orbit's nodes relative to the target (see Orbital Mechanics for why nodes are the cheap place
+          to do this) — cheaper the earlier and the farther out you do it.</li>
+      </ol>
+
+      <h2 id="targeting">Setting a target and reading closest approach</h2>
+      <p>In map view, click the other craft (or switch to it in the tracking station and target it from
+      there) and choose <strong>Set as Target</strong>. Once targeted, KSP shows:</p>
+      <ul>
+        <li>A <strong>closest approach marker</strong> on both orbit lines, showing where the two paths come
+          nearest each other and the predicted distance at that point.</li>
+        <li>Relative velocity and distance readouts near the navball once you're close enough or switch the
+          navball to Target mode.</li>
+      </ul>
+
+      <h2 id="intercept">Planning the intercept</h2>
+      <ol class="steps">
+        <li><strong>Place a maneuver node</strong> on your orbit, generally a bit ahead of where your orbits
+          currently cross or come close.</li>
+        <li><strong>Drag the prograde/retrograde handle</strong> and watch the closest-approach distance
+          readout — you're trying to shrink it toward zero (or a few hundred meters) rather than trying to
+          match velocity yet.</li>
+        <li><strong>Add small normal/radial adjustments</strong> if needed to shrink the approach distance
+          further once prograde alone gets you close.</li>
+        <li><strong>Execute the burn</strong> normally (see the maneuver node procedure on the Orbital
+          Mechanics page), then <strong>time-warp to the intercept point</strong> — physics warp works fine
+          once you're within a few kilometers, since regular warp can be risky that close to another craft.</li>
+      </ol>
+      <div class="callout tip">
+        <div class="callout-title">Aim for a few hundred meters, not zero</div>
+        <p>You don't need the node to predict an exact collision — a closest approach of a few hundred meters
+        to a couple kilometers is a perfectly good intercept. You'll close the rest of the gap manually during
+        the next phase, which gives you more control than trying to nail an exact numeric zero with the node
+        gizmo.</p>
+      </div>
+
+      <h2 id="closing">Closing in and killing relative velocity</h2>
+      <p>This is the phase where most of the actual "flying" happens, and where switching the navball to
+      <strong>Target mode</strong> matters most — it shows your velocity relative to the target instead of
+      relative to the body you're orbiting, which is what you actually care about now.</p>
+      <ol class="steps">
+        <li><strong>At long range (a few km down to ~500m)</strong>, point at the target marker (or its
+          retrograde, if you're approaching faster than you'd like) and use your main engine or RCS to null
+          out most of the relative velocity, aiming to arrive near the target moving only a few m/s toward it.</li>
+        <li><strong>Switch to RCS translation</strong> once you're within a few hundred meters. Use fore/aft
+          (<code>H</code>/<code>N</code> by default), up/down, and left/right translation keys to drift
+          straight toward the target without needing to rotate the whole craft.</li>
+        <li><strong>Kill relative velocity in stages</strong> — cancel your closing speed periodically so you
+          don't build up too much momentum, rather than coasting the whole distance at a constant speed.</li>
+        <li><strong>Match orientation</strong> — rotate so your docking port faces the target's docking port,
+          using target-relative SAS hold if available, or manual rotation with RCS/reaction wheels.</li>
+      </ol>
+
+      <h2 id="final-approach">Final approach and docking</h2>
+      <table class="dv-table">
+        <thead><tr><th>Range</th><th class="num">Suggested closing speed</th></tr></thead>
+        <tbody>
+          <tr><td>200m+</td><td class="num">under ~2-3 m/s</td></tr>
+          <tr><td>~50-200m</td><td class="num">under ~1-2 m/s</td></tr>
+          <tr><td>Under 50m</td><td class="num">under ~0.5 m/s</td></tr>
+          <tr><td>At contact</td><td class="num">~0.2-0.5 m/s</td></tr>
+        </tbody>
+      </table>
+      <ol class="steps">
+        <li><strong>Line up the ports visually and on the navball</strong> — the target marker should sit
+          directly under your prograde marker as you creep forward, meaning your closing velocity is aimed
+          straight down the docking axis.</li>
+        <li><strong>Use small RCS taps, not sustained thrust</strong>, to correct drift sideways or vertically
+          as you close the last hundred meters — overcorrecting is the most common cause of a missed
+          approach.</li>
+        <li><strong>Let the ports touch at low speed.</strong> A successful capture locks the two craft
+          together automatically (you'll see a capture message and the two vessels merge into one in the
+          tracking station) as long as alignment is close enough and closing speed is low enough — the ports
+          have some built-in tolerance for small misalignment.</li>
+      </ol>
+      <div class="callout danger">
+        <div class="callout-title">Too fast at contact damages parts</div>
+        <p>Docking ports (and anything nearby) can take collision damage or simply bounce off each other
+        without capturing if you hit at more than a couple m/s. If you're coming in too hot, back off with a
+        retrograde RCS tap and try again rather than letting it hit.</p>
+      </div>
+
+      <h2 id="control-from-here">Switching control between ports</h2>
+      <p>Once docked, the combined craft has one active "control point" (usually wherever you last had
+      "Control From Here" set). Right-click any docking port or command part and choose <strong>Control From
+      Here</strong>, or cycle through control points quickly with the <code>[</code> and <code>]</code>
+      keys — useful for reorienting your controls to match whichever end of the combined station or ship you
+      want to fly from next.</p>
+      <p>This matters more than it sounds: "forward" for staging, RCS translation, and the navball's prograde
+      reference are all defined relative to whichever part is currently the control point. If you undock from
+      a station and forget to reset control to your own ship's pod or probe core, your translation controls
+      may feel backward or your SAS may fight you, because you're technically still flying with the station's
+      original orientation as the reference. After any dock or undock, it's good habit to check which part is
+      currently controlling before doing anything else.</p>
+
+      <h2 id="undocking">Undocking safely</h2>
+      <p>Right-click the docking port you're attached through and choose <strong>Undock</strong>. The two
+      craft separate with a small amount of push-apart force built into the port. Immediately after
+      undocking:</p>
+      <ol class="steps">
+        <li><strong>Confirm control</strong> — make sure "Control From Here" is set on the departing craft's
+          own pod or probe core, not left on a part now belonging to the other vessel.</li>
+        <li><strong>Apply a small retrograde or radial nudge</strong> with RCS to open some distance before
+          doing anything else, since the two craft are still very close together right after separation and any
+          engine burn risks a collision if you don't clear the area first.</li>
+        <li><strong>Re-target if needed</strong> — if you plan to redock later or fly formation, re-select the
+          station (or your departing craft, from the station's perspective) as target.</li>
+      </ol>
+
+      <h2 id="troubleshooting">Troubleshooting</h2>
+      <div class="callout warn">
+        <div class="callout-title">Common docking problems</div>
+        <ul>
+          <li><strong>Ports touch but won't connect</strong> — check that both are the same size and neither
+            is already docked to something else; also confirm relative speed was low enough at contact.</li>
+          <li><strong>Uncontrolled drift after undocking or during approach</strong> — make sure RCS is
+            actually enabled (<code>R</code>) and that you have monopropellant remaining in tanks connected to
+            active RCS thrusters.</li>
+          <li><strong>Navball showing the wrong numbers</strong> — confirm you're in Target mode, not Orbit or
+            Surface mode, or the velocity readout won't reflect your motion relative to the target.</li>
+          <li><strong>Approaching too fast and overshooting</strong> — cancel closing velocity earlier and in
+            smaller increments; it's much easier to nudge forward again than to kill excess speed at close
+            range.</li>
+          <li><strong>Out of monopropellant</strong> — check RCS tank levels before you commit to the final
+            approach; running dry mid-approach leaves you drifting with only reaction wheels for rotation and
+            no way to translate.</li>
+          <li><strong>RCS thrusters blocked by other parts</strong> — thrusters mounted too close to fuel
+            tanks, solar panels, or other station modules can have their exhaust obstructed, weakening or
+            disabling that thruster's authority. Check craft symmetry and clearances in the VAB.</li>
+        </ul>
+      </div>
+      <div class="callout tip">
+        <div class="callout-title">Optional aid: Docking Port Alignment Indicator</div>
+        <p>A popular community mod overlays a precise alignment gauge on screen showing exact offset and
+        rotation between your port and the target's. It's entirely optional — stock alignment is doable with
+        the navball and target markers alone — but many players find it speeds up docking considerably. See
+        the Tips &amp; Mods page for the full recommended mod list.</p>
+      </div>
+
+      <div class="pager">
+        <a class="prev" href="orbital-mechanics.html"><span class="dir">← Back</span>Orbital Mechanics</a>
+        <a class="next" href="space-stations.html"><span class="dir">Next</span>Space Stations →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

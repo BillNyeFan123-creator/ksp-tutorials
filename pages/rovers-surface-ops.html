@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rovers &amp; Surface Ops — KSP Mission Manual</title>
+<meta name="description" content="Rover design, low-gravity driving technique, delivering a rover with a lander, and planning an efficient multi-biome surface science route.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="rovers-surface-ops">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 08 · Crewed Operations</div>
+      <h1>Rovers &amp; Surface Ops</h1>
+      <p class="page-sub">Rover design, driving on low-gravity terrain, and running an efficient surface science route.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#why-rovers">Why bring a rover</a></li>
+          <li><a href="#design-basics">Rover design basics</a></li>
+          <li><a href="#delivery">Attaching a rover to a lander</a></li>
+          <li><a href="#driving">Driving technique in low gravity</a></li>
+          <li><a href="#science-routes">Planning a surface science route</a></li>
+          <li><a href="#hopping">Rovers vs. hopping landers</a></li>
+          <li><a href="#power-budget">Power and instrument budgeting</a></li>
+          <li><a href="#extras">Recovery tools and CommNet</a></li>
+        </ul>
+      </div>
+
+      <h2 id="why-rovers">Why bring a rover</h2>
+      <p>A lander gives you exactly one landing site and whatever biome it happens to touch down in. A rover
+      turns that single site into a whole region: you can drive to multiple <strong>science biomes</strong>
+      from one landing, reach specific points of interest like anomalies or interesting terrain features
+      spotted from orbit, and cover long-range surface distances that would otherwise need a separate landing
+      (and a separate ascent stage) for every location.</p>
+
+      <h2 id="design-basics">Rover design basics</h2>
+      <ul>
+        <li><strong>Wheels have a maximum safe speed</strong> — push a wheel faster than its rated speed for
+          too long and it overheats and can explode. Check each wheel part's stats and don't rely on
+          full-throttle driving everywhere, especially downhill where gravity adds to your speed for free.</li>
+        <li><strong>Low, wide wheelbase</strong> — a rover that's wider than it is tall, with wheels set as far
+          out as practical, resists tipping far better than a tall, narrow design.</li>
+        <li><strong>Keep the center of mass low</strong> — mount heavy parts (batteries, fuel, science
+          instruments) as close to the ground/chassis as you can rather than stacking them up high.</li>
+        <li><strong>Reaction wheels and RCS</strong> give you a way to fight a tip-over in progress or roll the
+          rover back upright afterward — very cheap insurance for how often low-gravity rovers get airborne
+          over bumps.</li>
+        <li><strong>Lights</strong> for driving on the night side or into shadowed craters, since low-gravity
+          moons like the Mun and Minmus have long nights (matching Kerbin's ~6 hour day/night split as seen
+          from their orbit) and no atmosphere to scatter any ambient light.</li>
+        <li><strong>Uncrewed rovers</strong> need a probe core, battery, and enough solar panel or RTG capacity
+          to stay powered and in control the whole route, exactly like any other probe.</li>
+      </ul>
+      <div class="stat-row">
+        <div class="stat-tile"><span class="stat-label">Mun gravity</span><span class="stat-value">~1.63 m/s² (0.166g)</span></div>
+        <div class="stat-tile"><span class="stat-label">Minmus gravity</span><span class="stat-value">~0.49 m/s² (0.05g)</span></div>
+        <div class="stat-tile"><span class="stat-label">Kerbin gravity</span><span class="stat-value">9.81 m/s² (1g)</span></div>
+      </div>
+      <div class="callout warn">
+        <div class="callout-title">Low gravity means low traction</div>
+        <p>Wheels grip by pressing down into the ground, and weight (not mass) is what provides that
+        downforce. On Minmus at roughly 1/20th of Kerbin gravity, your rover has far less traction than the
+        same design would on Kerbin, making it much easier to spin wheels, slide, or become briefly airborne
+        over even small bumps.</p>
+      </div>
+
+      <h2 id="delivery">Attaching a rover to a lander</h2>
+      <p>Most rovers travel to their destination attached to a lander, then detach once safely on the
+      surface.</p>
+      <ol class="steps">
+        <li><strong>Cradle or ramp design</strong> — mount the rover on a flat structural platform on the side
+          or top of the lander, with the wheels resting against simple angled ramp pieces or a decoupler-based
+          cradle, so that after decoupling, gravity (or a gentle nudge) lets it roll or drop cleanly onto the
+          ground.</li>
+        <li><strong>Decouple and drive off</strong> — trigger the decoupler holding the rover, then carefully
+          drive forward and off the cradle/ramp, watching for any remaining attachment points or clipping
+          parts that could snag.</li>
+        <li><strong>Dedicated rover-carrying truss</strong> — for larger rovers, a purpose-built truss or bay
+          slung underneath or beside the lander, released by a decoupler once landed, gives more clearance than
+          a simple side-mount and avoids the rover's wheels touching the lander's own landing legs.</li>
+      </ol>
+      <div class="callout tip">
+        <div class="callout-title">Test the release on the launch pad or in a fresh save</div>
+        <p>Rover cradle designs are notorious for parts clipping or the rover flipping the instant it
+        decouples due to leftover velocity or an uneven ramp angle. Test the decouple-and-drive-off sequence
+        before committing to the full mission.</p>
+      </div>
+
+      <h2 id="driving">Driving technique in low gravity</h2>
+      <ol class="steps">
+        <li><strong>Use gentle, partial throttle inputs</strong> rather than full acceleration or full
+          braking — low gravity means wheels have less grip, so sudden inputs are far more likely to cause a
+          spin or a bounce than the same input would on Kerbin.</li>
+        <li><strong>Slow down before cresting a hill</strong> — driving over a rise at speed launches the
+          rover briefly airborne, and in low gravity "briefly airborne" can mean several seconds of freefall
+          before you land hard, often at a bad angle.</li>
+        <li><strong>Brake early and gradually</strong> on descents, since low gravity also means less
+          resistance slowing you down naturally, so speed builds up faster than intuition suggests.</li>
+        <li><strong>Use SAS for stability</strong> — SAS's reaction-wheel-driven leveling can help damp out
+          the small rocks and tips that come from driving over rough terrain, especially at speed.</li>
+        <li><strong>Recovering a tipped-over rover</strong> — try, in order: (a) RCS translation/rotation
+          thrust if the rover has RCS ports, gently rolling it back upright; (b) a Kerbal on EVA physically
+          pushing or pulling the rover chassis (works surprisingly well in low gravity); (c) rocking the
+          rover's own reaction wheels side to side to build up a rolling motion that tips it back over.</li>
+      </ol>
+      <div class="callout danger">
+        <div class="callout-title">A hard flip can end the rover permanently</div>
+        <p>Flipping at high speed can break wheels, solar panels, or antennas off entirely, and a rover with
+        no wheels left is stranded for good. Better to arrive slowly than to arrive fast and risk the whole
+        vehicle.</p>
+      </div>
+
+      <h2 id="science-routes">Planning a surface science route</h2>
+      <ol class="steps">
+        <li><strong>Check the biome map</strong> before landing (available in map view or via a scanning
+          satellite in orbit) so you know roughly how many distinct biomes are within driving range of your
+          planned landing site.</li>
+        <li><strong>Land near a biome border</strong> when possible, so a short drive in either direction
+          crosses into a new science biome rather than needing a long trek for each one.</li>
+        <li><strong>Run each experiment in every biome you visit</strong> — most stock experiments give fresh
+          science per biome per situation (landed vs. splashed, etc.), so revisiting the same experiment across
+          multiple biomes is one of the most efficient ways to rack up science points.</li>
+        <li><strong>Plan your route as a loop</strong> back toward your lander or a dedicated return vehicle,
+          rather than a straight line out, so you're not stranded far from your ride home.</li>
+        <li><strong>Watch daylight and power</strong> — solar-powered rovers lose charging capacity at night;
+          time long drives to finish before dark, or carry enough battery/RTG capacity to keep driving (and
+          keep instruments and lights running) through a full night cycle if your route requires it.</li>
+      </ol>
+
+      <h2 id="hopping">Rovers vs. hopping landers</h2>
+      <p>Wheels aren't always the right tool. An alternative is a small lander that "hops" — short suborbital
+      flights using its own engine to relocate — rather than driving. Hopping works better than a rover for
+      extremely rough or steep terrain where wheels would struggle or flip constantly, and for covering very
+      large distances quickly, since a hop can cross terrain in seconds that would take a rover many minutes
+      of careful driving. The tradeoff is Δv: every hop costs propellant, while a rover's wheels are
+      essentially free to run (aside from any electric charge draw) once you're on the ground.</p>
+      <table>
+        <thead><tr><th>Method</th><th>Best for</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Wheeled rover</td><td>Flat-to-moderate terrain, methodical multi-biome science runs</td><td>Electric charge only, once built</td></tr>
+          <tr><td>Hopping lander</td><td>Extreme terrain, very long distances, sparse points of interest</td><td>Propellant per hop</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="power-budget">Power and instrument budgeting</h2>
+      <p>A surface rover's power budget is easy to overlook until it strands you mid-route. Every science
+      instrument draws a jolt of charge when activated, wheels and reaction wheels draw a steady trickle while
+      driving, and lights draw continuously whenever on. Before committing to a long route:</p>
+      <ul>
+        <li><strong>Add up peak draw</strong> — wheels, lights, an active experiment, and any transmitting
+          antenna running at once — against your battery capacity and solar/RTG regeneration rate.</li>
+        <li><strong>Plan around the local day/night cycle.</strong> The Mun and Minmus share Kerbin's roughly
+          6-hour day length as seen from orbit, but a rover parked in a crater's shadow can lose solar power
+          long before actual local "night" if terrain blocks the sun angle.</li>
+        <li><strong>RTGs remove the guesswork</strong> for uncrewed rovers on long routes, at the cost of extra
+          mass and part cost, since they generate a small constant trickle regardless of sunlight or
+          orientation.</li>
+      </ul>
+
+      <h2 id="extras">Recovery tools and CommNet</h2>
+      <div class="callout info">
+        <div class="callout-title">Remote rovers still need CommNet coverage</div>
+        <p>An uncrewed, probe-core-controlled rover follows the exact same CommNet rules as any other probe —
+        it needs a signal path back to Kerbin, directly or through a relay, to be fully controllable.
+        Losing signal (for example, driving into a crater or behind a ridge that blocks line of sight) can
+        leave it stuck with no steering input until the connection is restored. See the Satellites &amp;
+        Probes page for full CommNet mechanics.</p>
+      </div>
+      <div class="callout tip">
+        <div class="callout-title">Optional recovery mods</div>
+        <p>Several community mods add tools for recovering flipped rovers or stabilizing rough terrain
+        driving. They're entirely optional — everything above works in stock KSP — and the full recommended
+        mod list lives on the Tips &amp; Mods page.</p>
+      </div>
+
+      <div class="pager">
+        <a class="prev" href="space-stations.html"><span class="dir">← Back</span>Space Stations</a>
+        <a class="next" href="satellites.html"><span class="dir">Next</span>Satellites &amp; Probes →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

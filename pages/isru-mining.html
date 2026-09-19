@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISRU &amp; Mining — KSP Mission Manual</title>
+<meta name="description" content="How to scan for ore, build a mining rig, and refuel landers and return trips on-site instead of hauling fuel from Kerbin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="isru-mining">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 14 · Going Further</div>
+      <h1>ISRU &amp; Mining</h1>
+      <p class="page-sub">Drilling, ore processing, and refueling on other worlds instead of hauling fuel from Kerbin</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#why-isru">What ISRU actually solves</a></li>
+          <li><a href="#scanning">Scanning for ore before you land</a></li>
+          <li><a href="#rig-equipment">The mining rig equipment list</a></li>
+          <li><a href="#power">Power requirements</a></li>
+          <li><a href="#build-depot">Building a fuel depot lander, step by step</a></li>
+          <li><a href="#use-cases">Practical use cases</a></li>
+          <li><a href="#tradeoffs">When ISRU is (and isn't) worth it</a></li>
+        </ul>
+      </div>
+
+      <h2 id="why-isru">What ISRU actually solves</h2>
+      <p>In-Situ Resource Utilization (ISRU) means manufacturing propellant on the spot from local resources,
+      rather than launching every drop of fuel you'll ever need from Kerbin. The problem it solves is purely
+      one of Δv economics: fuel you need for a return trip has to be carried <em>all the way there</em>,
+      which means carrying the fuel to carry that fuel, and so on — the classic rocket equation penalty. A
+      lander that needs to both land and later launch back to orbit, then transfer home, is hauling three
+      separate fuel budgets from the moment it leaves the pad.</p>
+      <p>ISRU breaks that chain. If a lander can produce its own ascent and return fuel from ore mined at the
+      landing site, it only needs enough fuel to get there and land — everything needed to get home can be
+      manufactured after arrival. This is especially valuable for:</p>
+      <ul>
+        <li><strong>Reusable landers</strong> that make repeated trips between orbit and the surface of the
+          same body, refueling locally each time instead of being resupplied from Kerbin.</li>
+        <li><strong>Long-distance return trips</strong> (Duna, Ike, and beyond) where the Δv cost of hauling
+          return fuel the entire way out and back is enormous compared to producing it locally.</li>
+        <li><strong>Refueling waypoints</strong> — a depot at the Mun or Minmus that lets outbound
+          interplanetary craft top off cheaply before committing to the expensive part of their journey.</li>
+      </ul>
+      <div class="callout info">
+        <div class="callout-title">ISRU doesn't need an atmosphere</div>
+        <p>Ore can be mined from airless bodies just as well as atmospheric ones — the Mun, Minmus, and Ike
+        are all common, low-gravity ISRU targets specifically because they're cheap to land on and launch
+        from, on top of being convenient waypoints.</p>
+      </div>
+
+      <h2 id="scanning">Scanning for ore before you land</h2>
+      <p>Ore isn't distributed evenly across a planet's surface, so committing a heavy mining lander to a
+      random landing site is a gamble. Scan first, then land.</p>
+      <ol class="steps">
+        <li><strong>Orbital survey first.</strong> Put a probe or craft carrying the M700 Survey Scanner (or
+          a narrow-band scanner) into a polar orbit around your target body. Running the scanner over time
+          builds up a resource abundance map of the surface, showing where ore concentration is highest.</li>
+        <li><strong>Read the resource overlay.</strong> Once scanned, the map view can display an ore
+          abundance overlay — look for the brightest/highest-percentage regions rather than settling for the
+          first patch of ground you see.</li>
+        <li><strong>Confirm on the surface with a prospecting drill.</strong> Orbital scans give a
+          low-resolution estimate. After landing (or as a small scout probe sent ahead of your main mining
+          lander), use a PresQ Core Drill or the surface-mounted prospecting instrument to get an exact,
+          local ore concentration reading before committing your main rig to that spot.</li>
+        <li><strong>Pick your final site based on the confirmed reading.</strong> Ore concentration directly
+          affects how fast your drill produces ore, so a site confirmed at high concentration is worth
+          walking or hopping a rover a short distance to reach, rather than settling for a mediocre spot.</li>
+      </ol>
+      <div class="callout tip">
+        <div class="callout-title">Scout before you commit the whole rig</div>
+        <p>If you're not sure a body's ore deposits are worth it, send a lightweight scout probe with just a
+        scanner and a prospecting drill first. It's much cheaper to lose or reposition a small scout than to
+        discover your fully-loaded mining lander is sitting on a low-yield patch of ground.</p>
+      </div>
+
+      <h2 id="rig-equipment">The mining rig equipment list</h2>
+      <p>A functioning ISRU rig needs four categories of part working together — miss one and the chain
+      stalls.</p>
+      <div class="stat-row">
+        <div class="stat-tile"><span class="stat-label">Drill</span><span class="stat-value">Drill-O-Matic</span></div>
+        <div class="stat-tile"><span class="stat-label">Storage</span><span class="stat-value">Ore tanks</span></div>
+        <div class="stat-tile"><span class="stat-label">Converter</span><span class="stat-value">Convert-O-Tron 250</span></div>
+        <div class="stat-tile"><span class="stat-label">Cooling</span><span class="stat-value">Radiators</span></div>
+      </div>
+      <ul>
+        <li><strong>Drill-O-Matic (or the smaller Junior version):</strong> the mining part itself. It must
+          be deployed/"anchored" to the ground before it will operate — right-click and extend it, the same
+          way you'd extend landing legs, and it needs solid contact with terrain rather than hovering. It
+          produces ore faster over higher-concentration deposits and, to a lesser extent, when the surrounding
+          surface is more solid.</li>
+        <li><strong>Ore storage tanks:</strong> hold the mined ore until the converter processes it. Ore is
+          fairly dense, so tanks fill up faster than you'd expect relative to their size — plan for enough
+          buffer capacity that a brief converter shutdown (e.g. running out of power) doesn't immediately
+          overflow the drill's output.</li>
+        <li><strong>Convert-O-Tron 250:</strong> the ISRU conversion unit. It consumes ore and electric
+          charge to produce Liquid Fuel, Oxidizer, or Monopropellant — you choose which output(s) to run in
+          its right-click menu. Conversion isn't perfectly efficient: some of the ore's mass is lost as waste
+          heat and inefficiency rather than converting 1:1 into propellant mass.</li>
+        <li><strong>Radiators:</strong> the converter generates a large amount of waste heat, and it throttles
+          itself down automatically if it can't shed that heat fast enough. Deployable radiators (or fixed
+          radiator panels for smaller rigs) are effectively mandatory if you want the converter running at
+          full rate rather than a fraction of its rated output.</li>
+      </ul>
+      <div class="callout warn">
+        <div class="callout-title">Don't forget the electric charge cost</div>
+        <p>The Convert-O-Tron 250 draws a substantial amount of electric charge continuously while running.
+        A rig with plenty of ore and a fully deployed drill will still sit idle — or run at a fraction of
+        capacity — if it can't cover the converter's power draw. Size your power system for the converter,
+        not just the drill.</p>
+      </div>
+
+      <h2 id="power">Power requirements</h2>
+      <p>ISRU converters are power-hungry by design, which makes power generation the real bottleneck on most
+      mining rigs — more often than ore concentration or drill count.</p>
+      <ul>
+        <li><strong>Solar arrays</strong> are the cheapest option in terms of launched mass, but they only
+          produce power in daylight, and output drops sharply with distance from the Sun (a panel that's
+          plenty for a Mun rig is nearly useless at Jool or Eeloo without oversizing dramatically).</li>
+        <li><strong>RTGs (Radioisotope Thermoelectric Generators)</strong> produce a small but constant
+          trickle of power regardless of sunlight, distance from the Sun, or time of day — ideal for
+          high-latitude sites, bodies with long nights, or deep-space locations where solar is impractical.
+          They're heavier and more expensive per unit of power than solar, so they're usually used to
+          supplement solar rather than replace it entirely, except on rigs that must run through extended
+          darkness.</li>
+        <li><strong>Batteries</strong> buffer power through eclipses or local night, letting a mostly-solar
+          rig keep the converter running (or at least not fully stall) during the dark half of an orbit or a
+          planet's night cycle.</li>
+      </ul>
+      <p>A rule of thumb for a fixed surface rig: size solar for comfortably more than the converter's peak
+      draw during daylight, add enough battery capacity to ride out the local night without the converter
+      fully shutting down, and add RTGs if the site's latitude or the body's distance from the Sun makes
+      solar unreliable.</p>
+
+      <h2 id="build-depot">Building a fuel depot lander, step by step</h2>
+      <ol class="steps">
+        <li><strong>Confirm your landing site.</strong> Use the orbital scan plus surface prospecting
+          approach above to pick a high-concentration ore site before you commit the lander's descent burn.</li>
+        <li><strong>Land near — not necessarily on — the confirmed spot.</strong> A precise landing helps,
+          but a rover or short hop can close the last stretch if you land nearby instead of exactly on the
+          reading.</li>
+        <li><strong>Deploy the drill and radiators.</strong> Right-click both and extend/deploy them. The
+          drill needs solid ground contact; radiators need to be angled or positioned so they aren't blocked
+          by other parts of the craft.</li>
+        <li><strong>Confirm power is positive.</strong> Check your electric charge trend once the drill and
+          converter are both running — if charge is draining, throttle back the converter's output or wait
+          for more daylight before running it at full rate.</li>
+        <li><strong>Run the converter and let ore tanks fill and drain.</strong> Set the Convert-O-Tron to
+          produce the propellant type(s) you need (typically Liquid Fuel + Oxidizer for a chemical engine
+          return stage). This step just takes real time — leave the rig running and time-warp forward.</li>
+        <li><strong>Transfer produced fuel into the lander's main tanks.</strong> If the ISRU equipment is
+          mounted on a separate tank stack from your ascent stage, use fuel transfer (right-click tanks, or
+          the resource transfer UI) to move Liquid Fuel/Oxidizer into the tanks that actually feed your
+          ascent engine.</li>
+        <li><strong>Either launch on the now-refueled lander, or wait for a visiting craft.</strong> A
+          self-contained depot lander can top off its own tanks and fly itself home; a dedicated <em>depot</em>
+          (not meant to fly again) instead waits for other craft to rendezvous, dock, and pull fuel via a
+          fuel duct or docking port resource transfer.</li>
+      </ol>
+      <div class="callout tip">
+        <div class="callout-title">Time-warp is your friend here</div>
+        <p>ISRU production rates are usually slow relative to a single orbit or day — don't sit and watch it
+        happen in real time. Once the rig is confirmed stable (positive power, drill anchored, converter
+        running), switch to another vessel or warp forward and check back periodically.</p>
+      </div>
+
+      <h2 id="use-cases">Practical use cases</h2>
+      <div class="body-card">
+        <h3>Mun or Minmus depot as a Kerbin-system waypoint</h3>
+        <p>A permanent ISRU rig at the Mun or Minmus (Minmus's low gravity makes it especially cheap to land
+        on and launch from) lets outbound craft top off their tanks after leaving Kerbin but before
+        committing to the expensive part of an interplanetary transfer. This effectively lets you launch
+        heavier or less-than-full interplanetary craft from Kerbin, saving on launch costs, then finish
+        fueling in a much cheaper gravity well.</p>
+      </div>
+      <div class="body-card">
+        <h3>Duna or Ike depot for a self-sufficient return trip</h3>
+        <p>Carrying enough fuel from Kerbin for a full round trip to Duna is expensive. Landing an ISRU rig
+        (often more practical on Ike, thanks to its much lower gravity and lack of atmosphere) lets a mission
+        produce its own return fuel on-site instead, turning what would be a very heavy one-shot mission
+        profile into a lighter outbound trip plus a local refueling stop before heading home.</p>
+      </div>
+
+      <h2 id="tradeoffs">When ISRU is (and isn't) worth it</h2>
+      <div class="callout warn">
+        <div class="callout-title">Mining rigs are heavy and slow to pay off</div>
+        <p>A full ISRU setup — drill, ore tanks, converter, radiators, and enough power generation to run it
+        all — adds significant mass and part count to a mission, and meaningful fuel production takes real
+        game time, not a couple of minutes. For a one-off short hop (a quick Mun landing and return, for
+        example) it's almost always cheaper in total mass and complexity to just bring enough fuel from
+        Kerbin than to bring a mining rig you'll only use once.</p>
+        <p>ISRU pays off best when the investment gets reused: a reusable lander making repeated trips, a
+        long-term base, or a return trip so Δv-expensive that hauling all the fuel from Kerbin isn't
+        realistic in the first place. Treat "will I use this rig more than once, or is this trip's return
+        cost otherwise brutal?" as the deciding question before adding ISRU equipment to a craft.</p>
+      </div>
+      <p>For more on turning an ISRU site into a longer-term installation with habitation and science value,
+      see <a href="bases-colonies.html">Bases &amp; Colonies</a>.</p>
+
+      <div class="pager">
+        <a class="prev" href="landing-return.html"><span class="dir">← Back</span>Landing &amp; Return</a>
+        <a class="next" href="bases-colonies.html"><span class="dir">Next</span>Bases &amp; Colonies →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

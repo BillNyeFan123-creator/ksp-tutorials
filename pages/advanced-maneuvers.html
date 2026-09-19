@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced Maneuvers — KSP Mission Manual</title>
+<meta name="description" content="Gravity assists, combined plane changes, bi-elliptic transfers, and the Oberth effect — how experienced KSP players squeeze more mission out of the same delta-v.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="advanced-maneuvers">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 12 · Going Further</div>
+      <h1>Advanced Maneuvers</h1>
+      <p class="page-sub">Gravity assists, bi-elliptic transfers, and squeezing more mission out of the same delta-v.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#gravity-assists">Gravity assists (slingshots)</a></li>
+          <li><a href="#combined-burns">Combining a plane change with another burn</a></li>
+          <li><a href="#bi-elliptic">Bi-elliptic transfers</a></li>
+          <li><a href="#staging">Staging for long missions: motherships and cruise stages</a></li>
+          <li><a href="#oberth">Low periapsis burns and the Oberth effect</a></li>
+          <li><a href="#powered-slingshot">Powered slingshots</a></li>
+          <li><a href="#when">When you actually need any of this</a></li>
+        </ul>
+      </div>
+
+      <h2 id="gravity-assists">Gravity assists (slingshots)</h2>
+      <p>A gravity assist uses a close flyby of a moving body to change your heliocentric (Sun-relative)
+      velocity for free, without burning any fuel. It works because your speed relative to the body you fly
+      past is unchanged by the encounter, but the body itself is moving relative to the Sun — so the same
+      flyby that looks like a simple deflection in the body's own frame can add or subtract a large chunk of
+      velocity in the Sun's frame.</p>
+      <ul>
+        <li><strong>Trailing-side flyby</strong> — pass behind the body relative to its direction of travel,
+          and you pick up energy, speeding up relative to the Sun. Useful for reaching the outer system more
+          cheaply.</li>
+        <li><strong>Leading-side flyby</strong> — pass in front of the body's direction of travel, and you
+          lose energy, slowing down relative to the Sun. Useful for dropping into the inner system, since
+          slowing down relative to the Sun lets you fall closer in without a large retrograde burn.</li>
+      </ul>
+      <div class="body-card">
+        <strong>Worked example: using Eve to reach Moho</strong>
+        <p>Moho's low orbital radius makes it fast-moving and awkward to match orbits with directly — meeting
+        it from a Kerbin-only transfer usually costs a heavy combined plane-change-and-capture burn. Flying an
+        Eve leading-side flyby on the way in bleeds off heliocentric velocity for free, dropping your
+        effective periapsis and inclination relative to Moho's orbit before you ever burn again — turning an
+        expensive direct transfer into a cheaper multi-leg trip, at the cost of a longer flight time and a
+        much fussier trajectory to plan.</p>
+      </div>
+      <div class="body-card">
+        <strong>Worked example: Jool assists for the outer system</strong>
+        <p>Jool's huge mass makes it an efficient assist body for adjusting inclination or picking up a large
+        speed change cheaply, which is why many missions headed to Eeloo — or back from Jool's own moon
+        system — route a flyby of Jool itself into the plan rather than paying for the full plane change and
+        speed change directly.</p>
+      </div>
+      <div class="callout info">
+        <div class="callout-title">You'll need a fairly precise encounter</div>
+        <p>Gravity assists are sensitive to the exact flyby altitude and angle — small changes in your
+        approach can swing the resulting trajectory a lot. Expect to iterate on the incoming encounter with a
+        maneuver node well before the flyby, not just wing it on arrival.</p>
+      </div>
+
+      <h2 id="combined-burns">Combining a plane change with another burn</h2>
+      <p>A plane change (fixing orbital inclination) is one of the most expensive maneuvers in the game if
+      done in isolation, because it means changing your velocity <em>vector's direction</em> rather than just
+      its magnitude. The standard trick to reduce its cost is to combine it with a burn you were already going
+      to make.</p>
+      <ul>
+        <li><strong>Fold it into your ejection burn.</strong> If you need both to leave a parking orbit and
+          fix an inclination mismatch with your destination, do both at once at the ejection node — the
+          combined vector sum is cheaper than doing a pure ejection burn and a separate pure plane-change burn
+          back to back.</li>
+        <li><strong>Do it at a node crossing.</strong> Any plane change is cheapest exactly where your current
+          orbit crosses the target plane (the ascending or descending node) — combine the plane-change
+          component with whatever prograde/retrograde adjustment you needed at that same point rather than
+          waiting for a separate, dedicated pass.</li>
+      </ul>
+      <div class="callout tip">
+        <div class="callout-title">The maneuver node tool does the vector math for you</div>
+        <p>You don't need trigonometry to combine burns — drag both the prograde and normal/anti-normal
+        handles on the same node until the resulting trajectory satisfies both goals (correct plane and
+        correct encounter) simultaneously; the total Δv shown is usually noticeably less than the sum of doing
+        each separately.</p>
+      </div>
+
+      <h2 id="bi-elliptic">Bi-elliptic transfers</h2>
+      <p>A standard Hohmann transfer (one burn to raise/lower to the new orbit, one burn to circularize) is the
+      most efficient way to change orbits for most ratio changes. But for a very large change in orbital
+      size, a <strong>bi-elliptic transfer</strong> can beat it: first burn out to a deliberately overshot,
+      very high intermediate apoapsis, adjust your orbit's periapsis (or plane) cheaply out there, then fall
+      back and finish shaping the orbit near the original body.</p>
+      <p>The reason this can win despite the seemingly wasteful detour is that burns which change an orbit's
+      shape or plane are cheaper the slower you're moving — and you move slowest at the farthest point from
+      the primary body. Overshooting far out, doing the expensive-feeling shape/plane adjustment there at low
+      speed, then returning, can cost less total Δv than trying to do the same adjustment close in at high
+      speed, provided the ratio between the starting and final orbit is large enough.</p>
+      <div class="callout info">
+        <div class="callout-title">Only worth it for large ratio changes</div>
+        <p>For small or moderate orbit changes, the detour itself costs more than it saves and a plain Hohmann
+        transfer wins outright. Bi-elliptic transfers only pay off when the ratio between your starting and
+        target orbit is large — think "low orbit to a very distant high orbit around the same body," not
+        "raise apoapsis by 50 km."</p>
+      </div>
+
+      <h2 id="staging">Staging for long missions: motherships and cruise stages</h2>
+      <p>For ambitious multi-body missions, it's often more efficient to build a reusable "mothership" — a
+      long-endurance cruise stage that carries a separate, disposable lander — rather than a single
+      all-in-one craft.</p>
+      <ul>
+        <li><strong>LV-N "Nerv" nuclear engine</strong> — roughly 800s of vacuum Isp at only 60 kN of thrust.
+          Excellent for a long interplanetary cruise stage where burn time doesn't matter much, but its poor
+          atmospheric Isp and low thrust make it a bad choice for launching off a planet or landing on one.</li>
+        <li><strong>IX-6315 "Dawn" ion engine</strong> — roughly 4200s of vacuum Isp at only about 2 kN of
+          thrust. Extremely efficient per unit of Xenon, but needs a large electric charge supply (big solar
+          arrays or RTGs) and is only practical for very light, uncrewed, long-duration probes — not for
+          crewed motherships or anything that needs to maneuver quickly.</li>
+        <li><strong>Keep the lander separate and chemical-fueled.</strong> A conventional high-thrust engine
+          on the lander handles the actual descent and ascent, where you need responsive thrust, while the
+          low-thrust, high-Isp cruise stage handles the long, patient burns between bodies.</li>
+      </ul>
+      <div class="callout warn">
+        <div class="callout-title">Low thrust means long burns — plan around it</div>
+        <p>A Nerv or ion cruise stage can take minutes rather than seconds to complete a single maneuver node
+        burn. Split long burns so you start early enough that the node's midpoint lines up with the intended
+        burn time, rather than starting exactly at the node and overshooting.</p>
+      </div>
+
+      <h2 id="oberth">Low periapsis burns and the Oberth effect</h2>
+      <p>The <strong>Oberth effect</strong> is the reason burning prograde deep in a gravity well is more
+      effective than burning the same amount of Δv far away from a body: a rocket engine does more useful work
+      on your orbital energy when it's already moving fast, and you move fastest at your lowest periapsis.
+      Practically, this means:</p>
+      <ul>
+        <li><strong>Ejection burns are cheapest from a low, fast orbit</strong> rather than a high, slow one —
+          which is part of why the standard advice is always to burn for another planet from as low a Kerbin
+          parking orbit as your craft can tolerate.</li>
+        <li><strong>Capturing at a destination benefits the same way</strong> — burning retrograde right at a
+          low periapsis pass captures more efficiently than trying to slow down further out.</li>
+        <li><strong>This shifts "optimal" burn timing and altitude</strong> toward the deepest, fastest point
+          of whatever orbit you're in, rather than the most visually convenient one.</li>
+      </ul>
+
+      <h2 id="powered-slingshot">Powered slingshots</h2>
+      <p>A powered slingshot combines a gravity assist with a burn made right at the flyby's periapsis,
+      stacking the free velocity change from the assist with an Oberth-boosted burn at the moment you're
+      moving fastest relative to the flyby body. This is an advanced, situational technique — mainly useful
+      when a mission needs more of a speed change than either the assist or the burn could deliver alone, and
+      it requires nailing the flyby geometry precisely enough that adding an engine burn during the pass
+      doesn't ruin the encounter you already worked to set up.</p>
+
+      <h2 id="when">When you actually need any of this</h2>
+      <div class="callout tip">
+        <div class="callout-title">You don't need any of this to reach other planets</div>
+        <p>Every technique on this page is optional. A plain Hohmann-style transfer, the kind covered on the
+        <a href="interplanetary-travel.html">Interplanetary Travel</a> page, is entirely sufficient to reach
+        Duna, Eve, Jool, or anywhere else in the stock system with a reasonably sized rocket.</p>
+      </div>
+      <div class="callout info">
+        <div class="callout-title">This is how experienced players go further on less fuel</div>
+        <p>Gravity assists, combined burns, bi-elliptic transfers, and Oberth-aware burn timing are how players
+        pursuing ambitious multi-body missions — grand tours of the Jool system, awkward-orbit targets like
+        Moho, or fully reusable interplanetary motherships — save massive amounts of Δv that a straightforward
+        mission plan would otherwise spend. Treat them as tools to reach for once basic transfers feel
+        routine, not as a prerequisite for leaving Kerbin's system at all.</p>
+      </div>
+
+      <div class="pager">
+        <a class="prev" href="interplanetary-travel.html"><span class="dir">← Back</span>Interplanetary Travel</a>
+        <a class="next" href="landing-return.html"><span class="dir">Next</span>Landing &amp; Return →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

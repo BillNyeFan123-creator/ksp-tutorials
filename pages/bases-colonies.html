@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bases &amp; Colonies — KSP Mission Manual</title>
+<meta name="description" content="Planning, delivering, and powering permanent surface outposts, and the logistics of keeping them useful.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="bases-colonies">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 15 · Going Further</div>
+      <h1>Bases &amp; Colonies</h1>
+      <p class="page-sub">Permanent surface outposts and the logistics of keeping them running</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#what-is-a-base">What counts as a "base" in stock KSP</a></li>
+          <li><a href="#planning">Planning a base</a></li>
+          <li><a href="#delivering-modules">Delivering and connecting modules</a></li>
+          <li><a href="#power-planning">Power planning for a fixed base</a></li>
+          <li><a href="#science-strategy">Base science strategy</a></li>
+          <li><a href="#logistics">Logistics: resupply, crew, and fuel depots</a></li>
+          <li><a href="#roleplay-vs-functional">Roleplay building vs. functional building</a></li>
+        </ul>
+      </div>
+
+      <h2 id="what-is-a-base">What counts as a "base" in stock KSP</h2>
+      <p>A "base" here means a permanent or semi-permanent surface installation — usually combining crew
+      habitation, science equipment, and often an ISRU rig — that stays in place rather than launching back
+      to orbit right away. Stock KSP has no survival-mode life support requirement, so a base isn't something
+      you're forced to build to keep Kerbals alive. Its value instead comes from roleplay, contracts, and
+      science: a well-placed base is a long-term science collection point, a regional fuel depot, or simply a
+      visible monument to a mission that mattered to you.</p>
+      <div class="callout info">
+        <div class="callout-title">Life support mods change this</div>
+        <p>Popular mods like Kerbal Health, USI Life Support, and TAC Life Support add resource-consumption
+        or long-term-health mechanics that make permanent habitation genuinely necessary for crew survival on
+        long missions. That's outside stock behavior — see <a href="tips-mods.html">Tips &amp; Mods</a> for an
+        overview if you want that added challenge.</p>
+      </div>
+
+      <h2 id="planning">Planning a base</h2>
+      <p>Before launching base modules, decide what the base is actually <em>for</em> — that answer drives
+      the site selection.</p>
+      <ul>
+        <li><strong>Biome and science value:</strong> a site near multiple distinct biomes (or a border
+          between two) lets a stationary base or a short rover trip collect a wider range of science reports
+          without long-distance travel.</li>
+        <li><strong>Confirmed ore deposits:</strong> if the base will double as an ISRU fuel depot (see
+          <a href="isru-mining.html">ISRU &amp; Mining</a>), site selection should weight a confirmed
+          high-concentration ore reading at least as heavily as biome variety.</li>
+        <li><strong>Latitude and lighting:</strong> a site near the equator generally gets more consistent
+          sunlight over the course of a local day than a high-latitude site, which matters a lot if the base
+          depends on solar power. A polar or high-latitude site can experience much longer stretches of
+          darkness depending on the body's axial tilt and orbit.</li>
+        <li><strong>Fixed vs. mobile:</strong> decide whether this is a single fixed installation (modules
+          landed once and left in place) or a mobile, rover-based "base" that relocates to chase biomes or
+          ore deposits. Fixed bases are simpler to power and connect; mobile bases trade that simplicity for
+          flexibility.</li>
+      </ul>
+
+      <h2 id="delivering-modules">Delivering and connecting modules</h2>
+      <p>Multi-module bases are usually built by landing separate craft near each other and connecting them
+      afterward, rather than launching one enormous single vessel. That's both more practical to build in the
+      VAB and more forgiving if one landing goes wrong.</p>
+      <ol class="steps">
+        <li><strong>Land the first module and treat it as your reference point.</strong> Everything else
+          will be targeted relative to where this one ends up, so a stable, flat landing spot matters more
+          for the first module than for any single lander on its own.</li>
+        <li><strong>Target subsequent landings visually.</strong> Precision landing next to an existing
+          surface object is done by eye and careful throttle control during the final descent — burn your
+          deorbit and suicide-burn (see <a href="landing-return.html">Landing &amp; Return</a>) so your final
+          approach path passes near the existing base, then use RCS or a light hover-descent for the last
+          stretch to walk sideways toward the target visually.</li>
+        <li><strong>Expect several attempts before you land close enough.</strong> Landing multiple separate
+          craft within a short driving distance of each other is one of the more difficult precision-flying
+          skills in the game — budget extra fuel margin on early attempts for a correction hop if you land
+          farther away than planned.</li>
+        <li><strong>Connect modules with a rover-driven docking port, or leave them structurally separate.</strong>
+          Docking ports work on the ground the same way they do in orbit — drive one module (mounted on
+          wheels, or nudged with RCS/engines at very low thrust) into alignment with another module's port to
+          form a single connected craft with shared resources. Alternatively, many bases simply leave modules
+          as separate, nearby vessels connected only by proximity and rover shuttle runs, which avoids the
+          precision-docking problem entirely at the cost of not sharing resources directly.</li>
+      </ol>
+      <div class="callout warn">
+        <div class="callout-title">Terrain ruins more docking attempts than piloting does</div>
+        <p>Uneven ground near an existing base module is a common reason a docking attempt fails even with
+        good piloting — a port that's tilted relative to its target because one module is sitting on a rock
+        or slope won't align cleanly. Scout the immediate landing area (zoom in during descent, or check with
+        a rover beforehand) rather than assuming the ground next to your base is as flat as where the first
+        module landed.</p>
+      </div>
+
+      <h2 id="power-planning">Power planning for a fixed base</h2>
+      <p>The same power considerations from ISRU rigs apply to bases generally, scaled up to cover
+      habitation and science equipment as well as any converter:</p>
+      <div class="stat-row">
+        <div class="stat-tile"><span class="stat-label">Reliable daylight</span><span class="stat-value">Solar</span></div>
+        <div class="stat-tile"><span class="stat-label">Unreliable sunlight</span><span class="stat-value">RTGs</span></div>
+        <div class="stat-tile"><span class="stat-label">Bridging darkness</span><span class="stat-value">Batteries</span></div>
+      </div>
+      <ul>
+        <li><strong>Solar reliability depends on latitude and day length.</strong> A base near a body's
+          equator generally sees more consistent sun exposure across its day/night cycle than a high-latitude
+          site; long nights (common on slowly-rotating bodies) mean longer stretches with zero solar output.</li>
+        <li><strong>RTGs cover the gaps solar can't.</strong> Anywhere sunlight is unreliable — high
+          latitude, a body far from the Sun, or a location with unusually long nights — RTGs provide constant
+          baseline power regardless of lighting conditions, at the cost of more mass and expense per unit of
+          power than solar panels.</li>
+        <li><strong>Batteries buffer the base through eclipses and night.</strong> Size battery capacity to
+          cover your base's power draw through its longest expected dark period, not just a brief eclipse —
+          a base that browns out every local night will interrupt science processing and ISRU production
+          repeatedly.</li>
+      </ul>
+
+      <h2 id="science-strategy">Base science strategy</h2>
+      <p>A base's most durable value is usually as a long-term science platform rather than a one-time
+      collection point:</p>
+      <ul>
+        <li><strong>Mobile Processing Lab as an anchor module.</strong> A base built around a Mobile
+          Processing Lab can convert accumulated science data (and stored surface samples) into additional
+          Science over time, effectively turning a base into a slow, passive science generator as long as
+          it's staffed and kept supplied with fresh data.</li>
+        <li><strong>Repeat visits and rover trips to uncollected biomes.</strong> Rather than treating a base
+          as a single collection event, use it as a hub for repeated rover trips (see
+          <a href="rovers-surface-ops.html">Rovers &amp; Surface Ops</a>) to nearby biomes you haven't sampled
+          yet, feeding new experiment results back to the lab for processing.</li>
+        <li><strong>Combine with orbital science.</strong> A base doesn't have to do all the work alone —
+          pair it with a science-focused satellite in the same system (see
+          <a href="science-research.html">Science &amp; Research</a>) so surface and orbital science come in
+          on parallel tracks.</li>
+      </ul>
+
+      <h2 id="logistics">Logistics: resupply, crew, and fuel depots</h2>
+      <p>Once a base exists, keeping it useful is an ongoing logistics exercise rather than a one-time build:</p>
+      <ul>
+        <li><strong>Resupply missions.</strong> Depending on your rules (stock or with life-support mods),
+          periodic resupply runs might deliver spare parts, additional science instruments, or (with a
+          life-support mod) consumables — plan a docking port or a predictable delivery zone on the base for
+          this.</li>
+        <li><strong>Crew rotation.</strong> Long-duration crew assignments are a roleplay and Kerbal-morale
+          consideration more than a mechanical one in stock KSP, but rotating crew in and out via a dedicated
+          shuttle craft is a common practice for bases meant to feel "lived in," and is functionally required
+          under most life-support mods.</li>
+        <li><strong>Fuel depot role.</strong> A base with an ISRU rig attached (see
+          <a href="isru-mining.html">ISRU &amp; Mining</a>) can serve double duty as a regional refueling
+          stop, letting other missions in the area top off instead of carrying every drop of fuel from
+          Kerbin — this is especially valuable for a base supporting a wider regional exploration program or
+          acting as a staging point for return trips.</li>
+      </ul>
+
+      <h2 id="roleplay-vs-functional">Roleplay building vs. functional building</h2>
+      <div class="callout tip">
+        <div class="callout-title">This chapter is optional — you don't need it to "beat" the game</div>
+        <p>Base building sits at the advanced, optional end of the game. Nothing about completing a career
+        save or a full tech tree requires a permanent base. It's worth separating two different goals before
+        you start:</p>
+        <ul>
+          <li><strong>Roleplay/aesthetic base building:</strong> arranging modules to look like a coherent
+            outpost, matching a theme, or just building something you think looks cool. This is entirely
+            about presentation and enjoyment — there's no wrong way to do it.</li>
+          <li><strong>Functionally useful base building:</strong> a base built specifically to generate
+            ongoing Science, serve as a fuel depot, or support a regional exploration program. This is judged
+            by whether it actually saves you Δv, time, or Funds compared to not having it.</li>
+        </ul>
+        <p>Both are legitimate ways to play. Just go in knowing which one you're optimizing for — a base
+        built purely for looks doesn't need to justify its ISRU setup cost, and a base built for logistics
+        doesn't need to look pretty.</p>
+      </div>
+
+      <div class="pager">
+        <a class="prev" href="isru-mining.html"><span class="dir">← Back</span>ISRU &amp; Mining</a>
+        <a class="next" href="career-mode.html"><span class="dir">Next</span>Career Mode →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aerodynamics &amp; Flight — KSP Mission Manual</title>
+<meta name="description" content="How stock KSP aerodynamics really works: drag, lift, center of mass vs center of lift, why rockets flip, reentry heating, spaceplane basics, and SAS modes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="aerodynamics-flight">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 03 · Foundations</div>
+      <h1>Aerodynamics &amp; Flight</h1>
+      <p class="page-sub">Drag, lift, control surfaces, and why rockets flip or spaceplanes refuse to
+      take off.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#how-it-works">How stock aerodynamics actually works</a></li>
+          <li><a href="#com-col-cod">Center of mass, center of lift, center of drag</a></li>
+          <li><a href="#flipping">Why rockets flip during ascent</a></li>
+          <li><a href="#reentry">Reentry heating basics</a></li>
+          <li><a href="#spaceplanes">Introduction to spaceplane aerodynamics</a></li>
+          <li><a href="#sas">SAS modes and manual trim</a></li>
+          <li><a href="#failure-indicators">Reading failure and stress indicators</a></li>
+        </ul>
+      </div>
+
+      <h2 id="how-it-works">How stock aerodynamics actually works</h2>
+      <p>Since the "FAR-lite" aero overhaul, stock KSP models two separate forces on every part: drag and
+      lift. You don't need the underlying math, but the shape of the model matters for design decisions.</p>
+      <ul>
+        <li><strong>Drag</strong> depends mainly on a part's cross-sectional shape and orientation relative
+          to the airflow, and on how dense the air is. Blunt, wide, sideways-facing shapes generate far more
+          drag than smooth, tapered, nose-first shapes.</li>
+        <li><strong>Air density falls off with altitude.</strong> Kerbin's atmosphere effectively ends around
+          70km; drag is strongest near sea level and fades to nothing by the time you're above roughly 35-40km,
+          which is why ascent profiles push toward horizontal well before that altitude.</li>
+        <li><strong>Lift</strong> comes from wings and control surfaces (and, to a smaller extent, from
+          body-lift on some capsule shapes) when they meet the airflow at an <strong>angle of attack</strong> —
+          the angle between the wing and the direction of travel. Zero angle of attack on a symmetric wing
+          produces no lift; tilt it slightly and lift increases, up to a point where it stalls.</li>
+        <li><strong>Intakes and engines care about airflow, not just altitude</strong> — air-breathing jet
+          engines need sufficient intake air, which thins with altitude and eventually forces a transition to
+          rocket power on any spaceplane heading to orbit.</li>
+      </ul>
+      <div class="callout info">
+        <div class="callout-title">Why this matters for design</div>
+        <p>Every part contributes both mass and drag. A rocket with excess radial fuel tanks, exposed
+        ladders, or an un-faired payload is paying a drag tax the whole way up. Smooth, symmetric, tapered
+        designs consistently out-perform lumpy ones for the same amount of fuel.</p>
+      </div>
+
+      <h2 id="com-col-cod">Center of mass, center of lift, center of drag</h2>
+      <p>The VAB shows three toggleable indicators near the bottom of the screen: <strong>CoM</strong>
+      (center of mass, a yellow/blue ball), <strong>CoL</strong> (center of lift, a green symbol shown when
+      airflow is enabled), and effectively a center of drag, which isn't shown directly but can be reasoned
+      about from where your draggy parts sit.</p>
+      <div class="body-card">
+        <h3>The arrow-and-feather analogy</h3>
+        <p>Think of your rocket like an arrow. An arrow flies straight because its feathers (fletching) sit
+        behind the arrow's center of mass — if the wind pushes the tail sideways, the extra drag/lift at the
+        back rotates the arrow back into line with its direction of travel. Flip the fletching to the front
+        and the arrow tumbles uncontrollably. A rocket with fins at the tail and a nose cone up front behaves
+        the same way: <strong>drag/lift behind the center of mass is stable</strong>, and drag/lift ahead of
+        the center of mass is unstable and will actively try to flip you.</p>
+      </div>
+      <ul>
+        <li>For a <strong>rocket</strong>, aim to keep the center of drag (roughly: where your fins and any
+          draggy radial parts are) clearly behind the center of mass.</li>
+        <li>For a <strong>spaceplane</strong>, the relevant relationship is between CoM and CoL: keep the CoL
+          slightly behind the CoM for stable, controllable flight. CoL noticeably ahead of CoM makes the
+          plane want to pitch up uncontrollably (and often flip); CoL far behind CoM makes it sluggish and
+          hard to rotate.</li>
+        <li>Both indicators shift as you burn fuel — a design that's stable full may become nose- or
+          tail-heavy once tanks empty. Check CoM position at both full and (roughly) empty fuel states for
+          anything unusual.</li>
+      </ul>
+
+      <h2 id="flipping">Why rockets flip during ascent</h2>
+      <p>A "flip" is when aerodynamic forces overpower your control authority and the rocket snaps sideways
+      or end-over-end. It has a small number of common causes:</p>
+      <table>
+        <thead><tr><th>Cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Going too fast, too low in the atmosphere (high dynamic pressure)</td><td>Throttle back below roughly 10-12km until you're higher and the air is thinner</td></tr>
+          <tr><td>Turning too hard during the gravity turn</td><td>Pitch over gradually — a few degrees at a time, not a sharp 45° snap</td></tr>
+          <tr><td>Insufficient fin authority at the tail</td><td>Add or enlarge fins near the engines; consider canards only if you know what you're doing</td></tr>
+          <tr><td>Center of drag ahead of center of mass</td><td>Move draggy parts (radial boosters, exposed tanks) toward the back, or add a nose cone to clean up the front</td></tr>
+          <tr><td>Asymmetric build (uneven radial parts, offset parts)</td><td>Use symmetry mode consistently; check the VAB's CoM indicator for obvious offset</td></tr>
+        </tbody>
+      </table>
+      <div class="callout danger">
+        <div class="callout-title">The classic beginner flip</div>
+        <p>Full throttle straight off the pad, then a hard turn at 15km while still doing 400+ m/s, is the
+        single most common way new players lose a rocket. Fix it by throttling down through max dynamic
+        pressure (usually noted as "Max Q," roughly 8-12km on a typical ascent) and by turning gradually
+        instead of all at once.</p>
+      </div>
+
+      <h2 id="reentry">Reentry heating basics</h2>
+      <p>Coming back from orbit means shedding a huge amount of velocity, and in stock KSP that energy shows
+      up as heat on any part exposed to the airflow.</p>
+      <ul>
+        <li><strong>Heat shields</strong> (ablative shields, or a capsule's own built-in ablator on some
+          pods) absorb heat by slowly burning away a consumable "ablator" resource. Once ablator runs out, the
+          part behind it starts taking full heat damage.</li>
+        <li><strong>Fly blunt-end-first.</strong> A wide, flat heat shield facing directly into the airflow
+          spreads heat over a larger area and creates a shockwave that stands off from the vessel, which is
+          dramatically safer than a pointy or sideways reentry.</li>
+        <li><strong>Keep your reentry angle moderate.</strong> Too shallow and you can skip off the
+          atmosphere or spend a long time overheating at high speed; too steep and you convert velocity to
+          heat very quickly over a short time, spiking part temperatures. A periapsis of roughly 30-45km on a
+          return from LKO is a reasonable starting target for stock capsules.</li>
+        <li><strong>Check part temperature bars</strong> that appear during a hot reentry — a part flashing
+          or glowing with a temperature gauge climbing toward its max is at risk of exploding if you don't
+          shed speed or protect it.</li>
+        <li>Interplanetary returns (from Duna, Eve, Jool's system, etc.) come in much faster than a simple
+          Mun return and need a more generous heat shield margin and often an aerobraking pass at a higher
+          periapsis first.</li>
+      </ul>
+      <div class="callout warn">
+        <div class="callout-title">Don't reenter sideways</div>
+        <p>A capsule or spaceplane that tumbles during reentry exposes unshielded parts — antennas, solar
+        panels, docking ports — to direct heating, which can destroy them (and eventually the craft) even if
+        your main heat shield is fine. Keep SAS on retrograde hold (see below) through the hottest part of
+        reentry.</p>
+      </div>
+
+      <h2 id="spaceplanes">Introduction to spaceplane aerodynamics</h2>
+      <p>Spaceplanes fly by generating lift from wings instead of relying purely on thrust, which changes
+      the whole flight technique compared to a rocket.</p>
+      <ul>
+        <li><strong>Wings</strong> provide the lift needed to get airborne and to control descent gracefully.
+          More wing area means more lift at a given speed, but also more drag and mass.</li>
+        <li><strong>Control surfaces</strong> — elevons (pitch and/or roll), ailerons (roll), and a rudder
+          (yaw) — are usually small moving sections built into or attached near the wings and tail. Assign
+          them correctly (pitch/roll/yaw enabled per surface) or you'll find the plane hard to control.</li>
+        <li><strong>Takeoff technique differs from a rocket launch.</strong> A spaceplane needs enough runway
+          speed for its wings to generate lift equal to its weight before rotating (pitching up) — this is
+          usually a fast, shallow acceleration down the runway rather than a vertical climb, and pulling up
+          too early at too low a speed just drags the tail and wastes runway.</li>
+        <li><strong>Angle of attack management</strong> is constant work in a spaceplane: too little and
+          you're not generating enough lift or climbing fast enough; too much and you stall (airflow
+          separates from the wing and lift collapses) or generate so much drag you can't accelerate through
+          the transonic/supersonic region.</li>
+        <li><strong>Respect your parts' limits.</strong> Wings and intakes have maximum airspeed/heat
+          tolerances before they rip off or overheat — pushing a subsonic-rated wing design well past its
+          intended speed, or starving jet engines of intake air at altitude, are both common ways a
+          spaceplane mission ends early. Watch part stress indicators during any high-speed, low-altitude
+          flight.</li>
+      </ul>
+      <div class="callout tip">
+        <div class="callout-title">A practical spaceplane climb profile</div>
+        <p>Accelerate level or in a shallow climb until comfortably supersonic, then pitch up gradually
+        toward a steeper climb as air thins and jet thrust weakens, switching to rocket engines once intake
+        air can no longer sustain your jets — typically somewhere around 18-25km depending on your intake
+        count and engine choice.</p>
+      </div>
+
+      <h2 id="sas">SAS modes and manual trim</h2>
+      <p>SAS (Stability Assist System) does more than just "hold still." Once unlocked (via a pilot on board
+      or an advanced probe core), cycling through SAS modes gives you several hold behaviors:</p>
+      <table>
+        <thead><tr><th>SAS mode</th><th>What it holds</th></tr></thead>
+        <tbody>
+          <tr><td>Stability Assist</td><td>Your current orientation, resisting any drift — the default mode</td></tr>
+          <tr><td>Prograde / Retrograde</td><td>Points along, or directly against, your current velocity vector</td></tr>
+          <tr><td>Normal / Anti-normal</td><td>Points perpendicular to your orbital plane — used for plane-change burns</td></tr>
+          <tr><td>Radial in / Radial out</td><td>Points toward or away from the body you're orbiting — used for some orbit-shaping burns</td></tr>
+          <tr><td>Target / Anti-target</td><td>Points toward or directly away from a selected target vessel — useful for docking approaches</td></tr>
+          <tr><td>Maneuver node</td><td>Points along the direction of your next planned maneuver node burn</td></tr>
+        </tbody>
+      </table>
+      <p>SAS is a stabilizer, not an autopilot — it holds a direction but won't fly a full ascent or landing
+      for you. On aircraft, SAS can also fight your manual inputs slightly; many spaceplane pilots use
+      <strong>trim</strong> (typically <kbd>Alt</kbd> + the pitch/yaw/roll keys) to set a small constant
+      control input — e.g. slight up-trim to hold level flight hands-off — without SAS constantly fighting
+      your stick input.</p>
+
+      <h2 id="failure-indicators">Reading failure and stress indicators</h2>
+      <div class="callout warn">
+        <div class="callout-title">What the game is trying to tell you</div>
+        <ul>
+          <li><strong>A part temperature gauge appears and climbs</strong> during high-speed atmospheric
+            flight or reentry — a bar filling toward red means that part is approaching structural or thermal
+            failure.</li>
+          <li><strong>Aerodynamic stress/G-force warnings</strong> can appear on parts under extreme dynamic
+            pressure or acceleration, particularly wings and fins pushed well past a sane airspeed at low
+            altitude.</li>
+          <li><strong>Parts flash or glow before they explode</strong> from overheating — this is your
+            warning window to reduce speed, adjust attitude, or (if reentering) hope your heat shield still
+            has ablator left.</li>
+          <li><strong>A sudden violent rotation with no input from you</strong> almost always means you've
+            crossed into an aerodynamically unstable flight regime — cut throttle and try to point retrograde
+            immediately rather than fighting it with raw control input.</li>
+        </ul>
+      </div>
+
+      <div class="pager">
+        <a class="prev" href="building-rockets.html"><span class="dir">← Back</span>Building Rockets</a>
+        <a class="next" href="vab-advanced-techniques.html"><span class="dir">Next</span>VAB Advanced Techniques →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
