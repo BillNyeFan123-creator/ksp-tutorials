@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tips &amp; Mods — KSP Mission Manual</title>
+<meta name="description" content="Good habits, pitfalls to avoid across the whole game, a curated list of quality-of-life mods, and a full glossary of every term used on this site.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="tips-mods">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 23 · Reference</div>
+      <h1>Tips &amp; Mods</h1>
+      <p class="page-sub">Good habits, pitfalls to avoid, quality-of-life mods, and a glossary of every term used on this site.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#habits">Good habits</a></li>
+          <li><a href="#pitfalls">Pitfalls to avoid</a></li>
+          <li><a href="#mods">Useful mods</a></li>
+          <li><a href="#glossary">Glossary</a></li>
+        </ul>
+      </div>
+
+      <p>Looking for exact delta-v numbers? See the full <a href="delta-v-map.html">Delta-v Map</a>. This page
+      is the rest of the "things that make the difference between a smooth campaign and a frustrating one" —
+      habits worth building, mistakes worth avoiding, mods worth installing, and a glossary tying together
+      every term used across this whole site.</p>
+
+      <h2 id="habits">Good habits</h2>
+      <p>None of these are complicated, but they compound. A player who does all five consistently will lose
+      far fewer ships to their own mistakes than one who doesn't.</p>
+      <ol class="steps">
+        <li><strong>Quicksave constantly.</strong> Hit <kbd>F5</kbd> before every risky maneuver, staging
+          event, docking attempt, or atmospheric entry. <kbd>F9</kbd> reloads it instantly if things go wrong.
+          See the full key reference on <a href="keyboard-shortcuts.html">Keyboard Shortcuts</a>.</li>
+        <li><strong>Build in stages you understand.</strong> Don't copy a huge design from a video or the
+          internet before you understand why each part is there — build up complexity gradually so you can
+          actually debug problems when they show up.</li>
+        <li><strong>Check the VAB Δv and TWR readout before every launch.</strong> Confirming your rocket can
+          physically do the mission before you light the engines is much cheaper than discovering it can't
+          halfway to orbit.</li>
+        <li><strong>Name your vessels and craft files descriptively.</strong> "Mun Lander Mk3" is worth more
+          than "Untitled Space Craft" the moment you have a dozen active missions in the Tracking Station.</li>
+        <li><strong>Use Revert to Launch liberally.</strong> Available from the pause menu shortly after
+          launching, it lets you retry a badly-designed rocket without wasting funds in Career mode — there's
+          no shame in reverting a dozen times while iterating on a new design.</li>
+      </ol>
+
+      <h2 id="pitfalls">Pitfalls to avoid</h2>
+      <div class="callout warn">
+        <div class="callout-title">Mistakes that span the whole game, not just building</div>
+        <ul>
+          <li><strong>High TWR, no Δv.</strong> A rocket can leap off the pad impressively and still not carry
+            enough fuel to actually reach orbit. TWR tells you if you can lift off; Δv tells you if you can
+            finish the job. Check both.</li>
+          <li><strong>Turning too hard on ascent.</strong> An aggressive gravity turn induces aerodynamic
+            instability and can flip the rocket — see <a href="troubleshooting.html#flips-ascent">Troubleshooting</a>
+            for the full fix.</li>
+          <li><strong>Forgetting a probe core.</strong> A crewed pod with no backup probe core means the whole
+            craft goes uncontrolled if the crew is lost or transferred out, and an uncrewed stage with no probe
+            core at all can't be controlled after separation.</li>
+          <li><strong>Wrong-order staging.</strong> Double-check the staging list before launch — a decoupler
+            firing before its engine finishes, or an engine igniting before its fairing separates, are both
+            classic and entirely preventable failures.</li>
+          <li><strong>No CommNet coverage for a distant probe.</strong> A probe sent past the edge of your
+            relay network loses most control the moment it's out of range — plan relay coverage before you
+            commit to the transfer burn.</li>
+          <li><strong>Landing on a slope with a narrow stance.</strong> Landing legs placed close together
+            make a top-heavy lander easy to tip over on anything but flat ground. Widen the stance or lower the
+            center of mass for surface landers.</li>
+          <li><strong>Committing to an aerobrake without checking a survivable periapsis.</strong> Too low and
+            the craft burns up or breaks apart; too high and it doesn't capture at all. Check the numbers
+            before you commit.</li>
+          <li><strong>Running out of return fuel on a landed mission.</strong> Budget Δv for the full round
+            trip — ascent back to orbit and the return transfer — not just the trip out and the landing.</li>
+          <li><strong>Forgetting a heat shield.</strong> Any craft returning from orbit (especially from
+            another body) needs ablator-rated protection sized for the reentry speed involved; see
+            <a href="troubleshooting.html#reentry-failure">Troubleshooting</a>.</li>
+        </ul>
+      </div>
+
+      <h2 id="mods">Useful mods</h2>
+      <p>All optional — stock KSP is fully playable without any of these, but they smooth out rough edges once
+      you're past the very first hours.</p>
+      <ul>
+        <li><strong>Kerbal Engineer Redux (KER)</strong> — detailed Δv, TWR, and burn-time readouts in the VAB
+          and in flight, broken down per stage. Removes the guesswork from "will this actually get me there."</li>
+        <li><strong>MechJeb</strong> — an autopilot and information mod. Most useful once you already
+          understand manual flying: it's excellent for double-checking your own numbers or automating a
+          repetitive maneuver you've already done by hand a dozen times.</li>
+        <li><strong>Docking Port Alignment Indicator</strong> — overlays a precise alignment gauge for docking
+          approaches, showing exact offset and rotation relative to the target port.</li>
+        <li><strong>Transfer Window Planner</strong> — shows upcoming interplanetary transfer windows and their
+          approximate Δv cost, so you're not hunting for a launch window blind.</li>
+        <li><strong>Kerbal Alarm Clock</strong> — sets alarms for maneuver nodes, SOI changes, and transfer
+          windows so long timewarps don't blow past the moment you needed to act.</li>
+      </ul>
+      <div class="callout info">
+        <div class="callout-title">CKAN: the standard mod manager</div>
+        <p>CKAN is the community-standard mod manager for KSP. It handles dependency versions and compatibility
+        checks for you, rather than requiring you to install and update every mod's files by hand.</p>
+      </div>
+      <div class="callout tip">
+        <div class="callout-title">Want more challenge? Life-support mods</div>
+        <p>Mods like <strong>Kerbal Health</strong>, <strong>USI Life Support</strong>, and
+        <strong>TAC Life Support</strong> add an extra survival layer — food, water, oxygen, or long-duration
+        health effects — that stock KSP doesn't track. They're a popular way to add stakes to long-duration
+        bases and interplanetary missions once the core game feels too forgiving. See the Bases &amp; Colonies
+        page for where this matters most.</p>
+      </div>
+
+      <h2 id="glossary">Glossary</h2>
+      <p>Every acronym and piece of jargon used across this site, in one place.</p>
+      <table>
+        <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+        <tbody>
+          <tr><td>Δv (delta-v)</td><td>A budget of achievable velocity change; the "currency" spent on every burn, maneuver, and landing.</td></tr>
+          <tr><td>TWR</td><td>Thrust-to-weight ratio; must exceed 1 (locally) for a craft to lift off under its own power.</td></tr>
+          <tr><td>Ap / Pe</td><td>Apoapsis (the highest point of an orbit) and periapsis (the lowest point).</td></tr>
+          <tr><td>SOI</td><td>Sphere of Influence — the region around a body where its gravity dominates a craft's trajectory.</td></tr>
+          <tr><td>SAS</td><td>Stability Assist System; holds or auto-orients a craft's heading.</td></tr>
+          <tr><td>RCS</td><td>Reaction Control System; small thrusters used for fine translation, especially during docking.</td></tr>
+          <tr><td>CommNet</td><td>The signal-relay network that determines whether a probe has a working control link.</td></tr>
+          <tr><td>ISRU</td><td>In-Situ Resource Utilization; converting mined Ore into usable fuel on-site instead of launching it from Kerbin.</td></tr>
+          <tr><td>Ore</td><td>The raw resource harvested from a body's surface and refined via ISRU into fuel.</td></tr>
+          <tr><td>Ablator</td><td>The consumable heat-shield material that burns away to protect a craft during reentry.</td></tr>
+          <tr><td>Ejection burn / angle</td><td>The burn (and its timing angle relative to a body) that sends a craft out of a body's SOI on an interplanetary trajectory.</td></tr>
+          <tr><td>Transfer window</td><td>The periodic time window when two bodies' relative positions make an efficient transfer between them possible.</td></tr>
+          <tr><td>Hohmann transfer</td><td>The classic two-burn, minimum-energy orbit transfer between two circular orbits.</td></tr>
+          <tr><td>Bi-elliptic transfer</td><td>A three-burn transfer that can beat a Hohmann transfer's Δv cost for very large orbit-size changes.</td></tr>
+          <tr><td>Gravity assist</td><td>Using a body's gravity during a flyby to change a craft's speed or direction for free.</td></tr>
+          <tr><td>Oberth effect</td><td>The principle that a burn produces more effective Δv the faster (and thus deeper in a gravity well) you're already moving when you make it.</td></tr>
+          <tr><td>Biome</td><td>A distinct surface region on a body that counts separately for science experiment results.</td></tr>
+          <tr><td>Kerbin</td><td>The homeworld, roughly Earth-equivalent in role.</td></tr>
+          <tr><td>Mun</td><td>Kerbin's larger, airless moon — the traditional first landing target.</td></tr>
+          <tr><td>Minmus</td><td>Kerbin's smaller, low-gravity moon, known for gentle terrain and easy landings.</td></tr>
+          <tr><td>Duna, Eve, Moho, Jool, Eeloo</td><td>The other planets of the stock Kerbol system, each with distinct atmosphere, gravity, and mission challenges covered on the Interplanetary Travel page.</td></tr>
+          <tr><td>EVA</td><td>Extra-Vehicular Activity — a Kerbal outside their craft, on foot or using a jetpack.</td></tr>
+          <tr><td>IVA</td><td>Intra-Vehicular Activity — the first-person view from inside a crewed part.</td></tr>
+          <tr><td>KSC</td><td>Kerbal Space Center — the home base where the VAB, SPH, and mission control live.</td></tr>
+          <tr><td>VAB</td><td>Vehicle Assembly Building — where rockets are built.</td></tr>
+          <tr><td>SPH</td><td>Spaceplane Hangar — where horizontally-launched craft are built.</td></tr>
+          <tr><td>Kraken</td><td>The community's nickname for physics-engine glitches that cause violent, uncommanded destruction.</td></tr>
+          <tr><td>Autostrut</td><td>A part option that rigidly pins a part's position relative to another part (grandparent, heaviest, or root) without a visible strut.</td></tr>
+          <tr><td>Asparagus staging</td><td>A fuel-efficient staging pattern where outer boosters feed fuel inward to the core before being dropped, keeping the remaining stack closer to full.</td></tr>
+          <tr><td>Suicide burn</td><td>A landing technique that delays the deceleration burn as late as physically possible to save fuel, timed precisely against current speed and altitude.</td></tr>
+          <tr><td>Aerobrake</td><td>Using atmospheric drag instead of fuel to slow down and capture into orbit.</td></tr>
+          <tr><td>Mainsail / Nerv / Dawn</td><td>Example stock engine names representing, respectively, a high-thrust liquid engine, a fuel-efficient nuclear thermal engine, and an extremely efficient low-thrust ion engine.</td></tr>
+          <tr><td>Mobile Processing Lab</td><td>A part that converts stored science data into additional Science points over time, and can clean up experiments for reuse.</td></tr>
+          <tr><td>Contract</td><td>A Career-mode mission objective offered by KSC that pays funds, science, and/or reputation on completion.</td></tr>
+          <tr><td>Reputation</td><td>A Career-mode resource reflecting public confidence in your space program, affecting contract offers and payouts.</td></tr>
+          <tr><td>Strategy</td><td>A Career-mode policy you can adopt that trades one resource for another (for example, funds for science).</td></tr>
+          <tr><td>MET</td><td>Mission Elapsed Time — the clock counting up from a vessel's launch, shown during flight.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="pager">
+        <a class="prev" href="troubleshooting.html"><span class="dir">← Back</span>Troubleshooting</a>
+        <a class="next" href="../index.html"><span class="dir">Back to</span>Home →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

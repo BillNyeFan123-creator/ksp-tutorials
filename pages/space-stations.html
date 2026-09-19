@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Space Stations — KSP Mission Manual</title>
+<meta name="description" content="Designing modular space stations: core modules, power and structural planning, resource transfer, crew logistics, and a full worked first-station build.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="space-stations">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 07 · Crewed Operations</div>
+      <h1>Space Stations</h1>
+      <p class="page-sub">Designing modular stations, launching modules separately, and assembling them in orbit.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#why-modular">Why build modular</a></li>
+          <li><a href="#core-module">Designing the core module</a></li>
+          <li><a href="#adding-modules">Adding modules over time</a></li>
+          <li><a href="#systems">Station systems in depth</a></li>
+          <li><a href="#shapes">Practical station shapes</a></li>
+          <li><a href="#logistics">Crew and resupply logistics</a></li>
+          <li><a href="#worked-example">Worked example: a first station</a></li>
+          <li><a href="#science-labs">Science labs</a></li>
+        </ul>
+      </div>
+
+      <h2 id="why-modular">Why build modular</h2>
+      <p>Launching an entire station in one piece runs into a hard ceiling fast: your biggest rocket can only
+      lift so much mass and so much part-count before it becomes unstable or unbuildable. Building
+      <strong>modular</strong> instead — launching one self-contained piece at a time and docking it to what's
+      already up there — lets a station grow indefinitely, spreads cost and risk across multiple smaller
+      launches instead of one all-or-nothing one, and lets you design, test, and launch each module's specific
+      job (habitat, lab, fuel) separately rather than compromising one giant rocket to do everything.</p>
+      <div class="callout tip">
+        <div class="callout-title">Smaller launches fail smaller</div>
+        <p>If a single-launch station design has a structural or staging failure on the way up, you lose the
+        whole station. If one module in a modular plan fails, you lose that module and try again — the rest of
+        the station, already in orbit, is unaffected.</p>
+      </div>
+
+      <h2 id="core-module">Designing the core module</h2>
+      <p>The first piece you launch becomes the anchor everything else docks to, so it needs to be
+      self-sufficient from day one:</p>
+      <ul>
+        <li><strong>Control</strong> — a probe core (for uncrewed operation before crew arrives) or a crewed
+          pod, ideally both; a probe core on the station means you can still control it for docking maneuvers
+          even between crew rotations.</li>
+        <li><strong>A multi-port docking hub</strong> — a part with several docking ports arranged around it
+          (or several individual ports mounted radially) so multiple future modules can attach without
+          fighting over the same spot.</li>
+        <li><strong>Batteries and solar panels</strong> sized for the core's own systems plus headroom for
+          whatever docks later, since new modules often draw power from the shared station grid rather than
+          carrying enough of their own.</li>
+        <li><strong>RCS and reaction wheels</strong> for fine attitude control — a large, asymmetric station is
+          much harder to rotate than a single ship, so generous RCS thruster placement (and monopropellant
+          supply) pays off.</li>
+      </ul>
+
+      <h2 id="adding-modules">Adding modules over time</h2>
+      <ol class="steps">
+        <li><strong>Design a single-purpose module</strong> — a habitat (crew capacity), a lab (science
+          processing), a fuel depot (large tankage plus a docking port), or a power module (extra solar/RTG
+          capacity) — each with its own docking port sized to match the core.</li>
+        <li><strong>Launch to a matching orbit</strong> — same altitude and inclination as the station, timed
+          so the module passes near the station shortly after reaching orbit (see the launch-timing technique
+          on the Docking &amp; Rendezvous page).</li>
+        <li><strong>Rendezvous and dock</strong> to an open port on the hub.</li>
+        <li><strong>Repeat</strong>, planning ahead for which port each future module will use so the station
+          doesn't end up with modules blocking each other's docking approach paths.</li>
+      </ol>
+
+      <h2 id="systems">Station systems in depth</h2>
+      <h3>Power balance</h3>
+      <p>Add up total power draw across every docked module (probe cores, labs, lights, transmitting
+      antennas) against total generation capacity. The critical case is <strong>eclipse periods</strong> —
+      time spent in the body's shadow with zero solar input — during which the station survives purely on
+      battery charge. Size battery capacity to cover your worst-case eclipse duration at your orbital altitude,
+      not just average power draw.</p>
+      <h3>Structural rigidity</h3>
+      <p>Long docked chains of modules can wobble or even snap apart under thrust or timewarp physics loading,
+      especially with heavy, off-center modules. Keep added mass as close to the station's center as
+      practical, avoid extremely long unsupported docking chains, and use <strong>autostrut</strong> (available
+      on most structural and docking parts in the part right-click menu) to rigidly brace modules against the
+      station's root part or heaviest part, cutting down on visible flex and part-breaking stress.</p>
+      <h3>Fuel storage and transfer</h3>
+      <p>A dedicated fuel depot module with large tanks lets visiting ships refuel without carrying their own
+      return fuel margin the whole way up. Right-click a fuel tank on either docked craft and choose
+      <strong>transfer resource</strong> (or use the in-game resource transfer window) to move fuel, monopropellant,
+      or other resources between any two parts connected through a docking port.</p>
+      <h3>Crew capacity and rotation</h3>
+      <p>Track total crew capacity across all habitat modules versus how many Kerbals are actually stationed
+      there. Plan a rotation schedule (bringing fresh crew up, returning tired crew down) using a reusable
+      crew shuttle rather than a one-way capsule, so the same vehicle can serve the station indefinitely.</p>
+
+      <h2 id="shapes">Practical station shapes</h2>
+      <table>
+        <thead><tr><th>Shape</th><th>Pros</th><th>Cons</th></tr></thead>
+        <tbody>
+          <tr><td>Linear / stack</td><td>Simple to build, easy to keep symmetric, straightforward mass distribution</td><td>Docking new modules to the ends only; can get long and structurally floppy</td></tr>
+          <tr><td>Hub-and-spoke (multi-port hub)</td><td>Many modules can dock without blocking each other; compact, rigid center of mass</td><td>Hub part itself becomes a single point of failure; port arrangement must be planned ahead</td></tr>
+        </tbody>
+      </table>
+      <p>Most real stations end up as a hybrid: a hub-and-spoke core for the first several modules, with one
+      or two of those spokes extended into short linear stacks (for example, a fuel depot with two or three
+      tank segments in a row) once the main hub ports are full. Whichever shape you pick, try to keep the
+      overall mass roughly centered on the core — a station that's heavy on one side takes more RCS and
+      reaction wheel authority to rotate cleanly, and puts more stress on the docking ports nearest the
+      imbalance during timewarp.</p>
+      <div class="callout warn">
+        <div class="callout-title">Leave room to maneuver</div>
+        <p>Long spokes or modules mounted too close together can block a future ship's final docking approach.
+        When planning hub port assignments, leave at least one clear, unobstructed approach lane, and consider
+        reserving one hub port specifically for visiting ships rather than filling every port with a permanent
+        module.</p>
+      </div>
+
+      <h2 id="logistics">Crew and resupply logistics</h2>
+      <ul>
+        <li><strong>Reusable crew shuttle</strong> — a small crewed craft with just enough Δv to reach the
+          station and return to Kerbin, refueled and reflown for each rotation rather than left docked
+          permanently and wasted.</li>
+        <li><strong>EVA transfers</strong> — a Kerbal on EVA can move directly between two docked craft's
+          hatches without a dedicated transfer vehicle, useful for quick crew swaps between adjacent modules
+          without undocking anything.</li>
+        <li><strong>Resupply ships</strong> — an uncrewed craft carrying fuel, monopropellant, or spare parts,
+          docked to the depot module, resources transferred over, then either left as extra storage or
+          undocked and deorbited to clear the port for the next resupply run.</li>
+      </ul>
+
+      <h2 id="worked-example">Worked example: a first station</h2>
+      <div class="body-card">
+        <h3>Core module</h3>
+        <p>Probe core, 4-6 way docking hub, 4x deployable solar panels, 2 battery packs, RCS thruster
+        quad, monopropellant tank.</p>
+      </div>
+      <div class="body-card">
+        <h3>Habitat module</h3>
+        <p>2-4 person crew cabin, docking port matching the hub, small battery buffer, a handful of
+        lights and a ladder/hatch for EVA access.</p>
+      </div>
+      <div class="body-card">
+        <h3>Lab module</h3>
+        <p>Mobile Processing Lab part, docking port, extra solar panel pair (labs draw noticeably more
+        power than most parts), battery buffer.</p>
+      </div>
+      <div class="body-card">
+        <h3>Fuel module</h3>
+        <p>Large liquid fuel/oxidizer tanks, docking port, no engine needed (the depot doesn't fly
+        anywhere), small RCS quad for its own docking approach when delivered.</p>
+      </div>
+      <p>Launch order: core first (it needs to survive alone), then habitat (so crew rotation can start),
+      then lab and fuel module in either order depending on which contracts or science goals you're chasing
+      first.</p>
+      <div class="callout tip">
+        <div class="callout-title">Send the core up slightly over-built</div>
+        <p>Because the core has to function alone for at least one full orbit (and often much longer, if the
+        habitat launch slips), give it a little more battery, monopropellant, and solar capacity than the bare
+        minimum. It's cheap insurance against having to babysit a barely-surviving station core while you wait
+        for the next launch window.</p>
+      </div>
+
+      <h3>Estimated Δv and hardware notes per module</h3>
+      <table class="dv-table">
+        <thead><tr><th>Module</th><th class="num">Approx. launch Δv needed (Kerbin LKO)</th><th>Docking port size</th></tr></thead>
+        <tbody>
+          <tr><td>Core</td><td class="num">~3,400 m/s</td><td>Standard, multi-port hub</td></tr>
+          <tr><td>Habitat</td><td class="num">~3,400 m/s</td><td>Standard</td></tr>
+          <tr><td>Lab</td><td class="num">~3,400 m/s</td><td>Standard</td></tr>
+          <tr><td>Fuel depot</td><td class="num">~3,400 m/s + margin for heavier payload</td><td>Standard or Senior for bulk transfer</td></tr>
+        </tbody>
+      </table>
+      <p>All four modules need roughly the same launch Δv to reach LKO since that number is dominated by
+      Kerbin's gravity and atmosphere, not by the payload itself — the difference between modules shows up in
+      how much extra rocket you need under each one to lift its particular mass.</p>
+
+      <h2 id="science-labs">Science labs</h2>
+      <div class="callout info">
+        <div class="callout-title">Labs turn stored data into bonus science over time</div>
+        <p>The Mobile Processing Lab can "process" science data stored aboard it, slowly converting it into
+        extra science points over real time (accelerated by warp) as long as it's crewed by a scientist and
+        has power. Bring collected science data to the lab via crew EVA transfer or by docking the craft that
+        collected it, then leave the lab running — checking back periodically to collect the bonus output and
+        reset it with a fresh crew report or experiment cycle so it keeps generating value instead of sitting
+        idle.</p>
+      </div>
+
+      <div class="pager">
+        <a class="prev" href="docking-rendezvous.html"><span class="dir">← Back</span>Rendezvous &amp; Docking</a>
+        <a class="next" href="rovers-surface-ops.html"><span class="dir">Next</span>Rovers &amp; Surface Ops →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

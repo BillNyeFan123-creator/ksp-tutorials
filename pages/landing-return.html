@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing &amp; Getting Home — KSP Mission Manual</title>
+<meta name="description" content="How to land on airless moons and atmospheric planets, budget your return delta-v, and re-enter safely at Kerbin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="landing-return">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 13 · Going Further</div>
+      <h1>Landing &amp; Getting Home</h1>
+      <p class="page-sub">Touching down on airless moons and atmospheric planets, and budgeting the delta-v to get back</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#airless-landing">Landing on an airless body</a></li>
+          <li><a href="#atmospheric-landing">Landing with an atmosphere</a></li>
+          <li><a href="#legs-balance">Landing legs and craft balance</a></li>
+          <li><a href="#surface-ops">Activities on the surface</a></li>
+          <li><a href="#ascent-return">Ascent and the return transfer</a></li>
+          <li><a href="#budget-fuel">Budgeting your return fuel</a></li>
+          <li><a href="#kerbin-reentry">Kerbin re-entry, step by step</a></li>
+        </ul>
+      </div>
+
+      <h2 id="airless-landing">Landing on an airless body</h2>
+      <p>On a body with no atmosphere — the Mun, Minmus, Ike, Gilly, Tylo, Vall — your engine is the
+      <em>only</em> thing that slows you down. There is no drag to help, so every m/s of descent speed you
+      carry near the surface has to be cancelled with thrust. That makes airless landings a pure fuel and
+      timing problem, and it's where the "suicide burn" technique pays off most.</p>
+
+      <h3>The suicide burn</h3>
+      <p>A suicide burn (also called a "deorbit burn to landing" burn) means waiting as long as possible
+      before firing your engine retrograde, so that your velocity reaches zero at almost the exact instant
+      you touch the surface. It's called "suicide" because if you're even a few seconds late, you hit the
+      ground while still falling fast — there's no margin for error once you commit.</p>
+      <ol class="steps">
+        <li><strong>Lower your periapsis into the terrain.</strong> From a low, roughly circular orbit,
+          burn retrograde until your periapsis is at or just below the surface near your intended landing
+          site — this aims your trajectory at the ground instead of just skimming past it.</li>
+        <li><strong>Watch your radar altitude and surface speed.</strong> Radar altitude (surface altitude)
+          is what matters here, not the sea-level altimeter reading — mountainous terrain can be hundreds of
+          meters "taller" than the reference sea level, and burning based on the wrong number is a common
+          way to slam into a hillside.</li>
+        <li><strong>Calculate (or eyeball) your burn start point.</strong> A rough rule of thumb: the
+          altitude at which you should start burning full throttle is approximately where your remaining
+          fall time, multiplied by your deceleration rate, would bring your velocity to zero right at the
+          surface. Many players just watch their surface speed vs. altitude ratio and start burning when
+          those two numbers are getting close (e.g. 150 m/s at 1500m altitude with a craft that decelerates
+          around 15-20 m/s² is roughly the right ballpark to start).</li>
+        <li><strong>Burn hard, then throttle down as you slow.</strong> Start at or near full throttle, then
+          ease off as your vertical speed approaches zero, aiming to hit roughly 0 m/s at just a few meters
+          above the ground.</li>
+        <li><strong>Kill any remaining horizontal velocity</strong> before you touch down — a lander with
+          sideways motion at touchdown is far more likely to tip over, even at low speeds.</li>
+      </ol>
+      <div class="callout tip">
+        <div class="callout-title">Tip: use the retrograde marker</div>
+        <p>Keep the retrograde marker centered on your navball throughout the burn. That guarantees your
+        thrust is working directly against your current motion, which is the most fuel-efficient way to
+        cancel velocity — any burn that isn't purely retrograde wastes propellant fighting a component of
+        motion you didn't need to cancel.</p>
+      </div>
+
+      <h3>The safer alternative: hover descent</h3>
+      <p>If you're not confident in your timing yet, a hover descent trades fuel for safety. Instead of one
+      committed burn, you kill your horizontal velocity early and then descend slowly under continuous
+      partial thrust, adjusting throttle to control your rate of fall the whole way down.</p>
+      <div class="callout info">
+        <div class="callout-title">Suicide burn vs. hover descent</div>
+        <ul>
+          <li><strong>Suicide burn:</strong> most fuel-efficient, but unforgiving — a late start means a
+          crash, an early start just costs a bit of extra fuel hovering while you correct.</li>
+          <li><strong>Hover descent:</strong> costs noticeably more Δv (you're fighting gravity for a longer
+          time instead of free-falling most of the way down), but gives you constant control and time to
+          react to terrain, so it's much harder to crash while learning.</li>
+        </ul>
+        <p>A good middle ground once you're comfortable: start with a rough suicide burn to kill most of
+        your speed, then finish the last 100-200m as a slow, controlled hover descent.</p>
+      </div>
+
+      <h2 id="atmospheric-landing">Landing with an atmosphere</h2>
+      <p>An atmosphere does a lot of the braking work for you for free, which saves a large amount of Δv
+      compared to an airless landing — but it adds several new steps, and getting them in the wrong order is
+      one of the most common ways new players lose a Duna or Eve lander.</p>
+      <ol class="steps">
+        <li><strong>Target your periapsis into the atmosphere.</strong> Rather than fully capturing into a
+          stable orbit first, you can often save fuel by aiming your incoming periapsis directly into the
+          upper atmosphere on your very first pass — this uses drag instead of a capture burn to start
+          shedding your interplanetary approach velocity. If you want more control over your landing site
+          and timing, capture into a low orbit first instead, then plan your deorbit from there.</li>
+        <li><strong>Fly heat-shield-first.</strong> Orient your craft so a heat shield (or the most
+          heat-resistant part of your ship, like a capsule's ablative shield) faces directly into the
+          direction of travel. Coming in sideways or engine-first exposes parts that aren't rated for
+          re-entry heat and can explode long before you reach the ground.</li>
+        <li><strong>Let the atmosphere do the work, then deploy parachutes.</strong> Once you've slowed
+          enough and dropped low enough, deploy parachutes. Parachutes need sufficient air density to
+          generate drag, so the altitude at which they become effective depends entirely on the
+          destination.</li>
+        <li><strong>Finish with a powered landing burn if needed.</strong> If your descent speed under
+          parachutes alone is still too fast for the terrain (very common on Duna, where chutes alone rarely
+          get you below ~7-10 m/s), fire your engine for the last few hundred meters to bring your final
+          touchdown speed down further.</li>
+      </ol>
+      <div class="callout warn">
+        <div class="callout-title">Thin atmospheres need lower parachute deployment</div>
+        <p>Duna's atmosphere is only about 6-7% as dense as Kerbin's at sea level, so parachutes there are
+        far less effective at any given altitude. Where a Kerbin re-entry can fully deploy chutes comfortably
+        above 1000m, a Duna landing usually needs chutes set to deploy much lower (often under 500m, and
+        even then only partially slowing you) — plan on combining chutes with a powered landing burn on
+        Duna almost every time, rather than treating chutes as sufficient on their own.</p>
+      </div>
+      <div class="callout danger">
+        <div class="callout-title">Eve: bring way more engine than you think</div>
+        <p>Eve's atmosphere is thick and its surface gravity is high, so while parachutes work well there for
+        slowing down, getting back off the surface afterward needs an enormous amount of Δv relative to any
+        other body in the game. If you're not specifically planning an Eve return, treat an Eve landing as
+        one-way.</p>
+      </div>
+
+      <h2 id="legs-balance">Landing legs and craft balance</h2>
+      <p>A lander that runs out of fuel gracefully but tips over on touchdown still counts as a failed
+      mission for anything you needed to launch again from the surface. Balance and leg placement deserve as
+      much attention as the descent itself.</p>
+      <ul>
+        <li><strong>Place legs wider than your center-of-mass profile.</strong> A tall, narrow stance —
+          common on landers built by stacking parts straight up — tips over easily on even a gentle slope or
+          slight sideways touchdown speed. Angle legs outward from the body, or mount them on extended
+          structural elements, so your footprint is noticeably wider than your craft is tall.</li>
+        <li><strong>Deploy legs before you touch down, not after.</strong> Legs are usually toggled from the
+          right-click part menu or a bound action group — extend them well before final approach; a craft
+          that lands on its engine bell or a tank instead of its legs will almost always tip or explode.</li>
+        <li><strong>Keep your center of mass low.</strong> Heavy tanks or engines mounted high up raise your
+          center of mass and make tipping more likely even with wide legs. Where possible, put heavier
+          components toward the bottom of the stack.</li>
+        <li><strong>On sloped terrain, prioritize a level touchdown over a precise landing spot.</strong> A
+          perfectly targeted landing site on a 20° slope is far riskier than a slightly-off landing on flat
+          ground. If you can see the terrain isn't level as you descend, it's usually worth translating
+          sideways during the final approach to find flatter ground, even at the cost of a bit of extra Δv.</li>
+        <li><strong>Touch down with minimal horizontal velocity.</strong> Vertical speed alone is fairly
+          forgiving (a few m/s is typically fine for stock legs), but horizontal "skidding" speed at contact
+          is what most often causes a tip-over, since it applies sideways torque against the legs.</li>
+      </ul>
+
+      <h2 id="surface-ops">Activities on the surface</h2>
+      <p>Once you're down safely, a landed craft opens up several options: run science experiments
+      (right-click instrument parts, or send a Kerbal out on EVA for a surface sample and crew report),
+      plant a flag, and — if you brought one — drive a rover out to reach additional science biomes without
+      needing to relaunch and re-land. These activities are covered in much more depth on their own pages:
+      see <a href="science-research.html">Science &amp; Research</a> for experiment strategy and the Mobile
+      Processing Lab, and <a href="rovers-surface-ops.html">Rovers &amp; Surface Ops</a> for driving technique
+      and multi-biome routes.</p>
+
+      <h2 id="ascent-return">Ascent and the return transfer</h2>
+      <p>Getting back off a body works the same way launching from Kerbin does, scaled to local conditions:
+      point mostly upward initially, perform a gravity turn toward orbital velocity if the body has
+      meaningful gravity, and burn to a stable low orbit. On an airless body with low gravity (Minmus, Gilly)
+      this is a short, cheap burn; on a body with an atmosphere (Duna) you'll want a shallower ascent profile
+      similar to a Kerbin launch to avoid excess drag losses.</p>
+      <p>Once in a stable orbit, plan your return transfer the same way you planned the trip out: for the Mun
+      or Minmus, a straightforward prograde burn timed to intersect Kerbin's sphere of influence is usually
+      enough; for another planet, you're planning a full interplanetary transfer window back toward Kerbin —
+      see <a href="interplanetary-travel.html">Interplanetary Travel</a> and
+      <a href="advanced-maneuvers.html">Advanced Maneuvers</a> for the ejection-angle and transfer-window
+      techniques that apply equally well in reverse.</p>
+
+      <h2 id="budget-fuel">Budgeting your return fuel</h2>
+      <div class="callout warn">
+        <div class="callout-title">Budget your return fuel before you land — not after</div>
+        <p>The single most common way to strand a crew is spending too much Δv on the descent and on surface
+        exploration, then discovering there isn't enough fuel left for ascent plus the transfer home. Always
+        check your remaining Δv against that cost <em>before</em> committing to extra surface activities —
+        once you've landed, it's often too late to change your mind.</p>
+      </div>
+      <p><strong>Worked example — a Mun lander:</strong> suppose your lander has 1200 m/s of Δv remaining
+      after a suicide-burn landing. Ascent to a stable low Mun orbit costs roughly 580 m/s, and the return
+      transfer plus a Kerbin re-entry-capture margin costs another roughly 300 m/s (the atmosphere handles
+      the rest of the deceleration at Kerbin, so you don't need a full capture burn). That's about 880 m/s
+      committed to just getting home, leaving roughly 320 m/s of margin. If you're tempted to hop to a second
+      biome for more science, check the hop's estimated cost against that 320 m/s margin first — don't
+      discover the shortfall after you've already burned the fuel.</p>
+      <table class="dv-table">
+        <thead><tr><th>Line item</th><th class="num">Approx. Δv</th></tr></thead>
+        <tbody>
+          <tr><td>Ascent to low Mun orbit</td><td class="num">~580 m/s</td></tr>
+          <tr><td>Return transfer + Kerbin arrival margin</td><td class="num">~300 m/s</td></tr>
+          <tr><td><strong>Total committed to "getting home"</strong></td><td class="num"><strong>~880 m/s</strong></td></tr>
+          <tr><td>Remaining Δv after landing (example)</td><td class="num">1200 m/s</td></tr>
+          <tr><td><strong>Safe margin for extra surface hops</strong></td><td class="num"><strong>~320 m/s</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="callout tip">
+        <div class="callout-title">Leave a personal safety margin</div>
+        <p>Don't plan down to the last few m/s. Engine efficiency, imprecise burns, and an extra correction
+        burn or two all eat into your margin — treat your calculated "safe" leftover Δv as a ceiling, not a
+        target, and leave at least 10-15% of it unspent as a buffer.</p>
+      </div>
+
+      <h2 id="kerbin-reentry">Kerbin re-entry, step by step</h2>
+      <ol class="steps">
+        <li><strong>Lower your periapsis to roughly 30-45km.</strong> Deep enough to reliably catch
+          atmosphere and bleed off your velocity, but not so deep that you generate excessive, unnecessary
+          heat. Shallower periapsis values (closer to 45km) give a longer, gentler reentry; deeper values
+          (closer to 30km) are more aggressive and heat your craft faster.</li>
+        <li><strong>Orient heat-shield-first.</strong> Point retrograde with your ablative heat shield (or
+          your capsule's heat-shield-rated base) facing directly into the direction of travel, and hold that
+          attitude through peak heating. Tumbling or facing the wrong way during reentry is one of the most
+          reliable ways to lose a capsule that would otherwise have survived easily.</li>
+        <li><strong>Ride it out.</strong> Peak heating happens early in the descent as you're still moving
+          fast through progressively thicker air — resist the urge to do anything except hold your attitude
+          until your velocity has dropped substantially and the heat effects fade.</li>
+        <li><strong>Deploy parachutes once below roughly 1-2km altitude</strong> and slow enough for safe
+          deployment — stock chutes will typically show "semi-deployed" (a small drag-inducing pre-deploy
+          state) until conditions are safe, then fully deploy automatically.</li>
+        <li><strong>Touch down or splash down.</strong> Both are perfectly fine outcomes for a parachuted
+          capsule — Kerbin is mostly ocean, so plan on the possibility of a splashdown and make sure your
+          capsule floats or that recovery doesn't depend on a land touchdown specifically.</li>
+      </ol>
+      <div class="callout info">
+        <div class="callout-title">Recovering the vessel</div>
+        <p>Once safely down (or splashed down) and no longer moving, use the Recover Vessel option from the
+        tracking station or flight UI to bank any Funds and Science the mission earned — see
+        <a href="career-mode.html">Career Mode</a> for how recovery ties into your overall Funds economy.</p>
+      </div>
+
+      <div class="pager">
+        <a class="prev" href="advanced-maneuvers.html"><span class="dir">← Back</span>Advanced Maneuvers</a>
+        <a class="next" href="isru-mining.html"><span class="dir">Next</span>ISRU &amp; Mining →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

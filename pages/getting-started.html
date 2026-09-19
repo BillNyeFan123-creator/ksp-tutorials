@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Getting Started — KSP Mission Manual</title>
+<meta name="description" content="The KSP interface, game modes, Space Center buildings, VAB basics, flight controls, and a full first-flight walkthrough for total beginners.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="getting-started">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 01 · Foundations</div>
+      <h1>Getting Started</h1>
+      <p class="page-sub">The interface, the game modes, and your very first flight — before you build anything fancy.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#modes">Game modes: which one to pick</a></li>
+          <li><a href="#space-center">Touring the Space Center</a></li>
+          <li><a href="#vab">Inside the Vehicle Assembly Building</a></li>
+          <li><a href="#controls">Controls you need on day one</a></li>
+          <li><a href="#first-flight">Your first flight: a suborbital hopper</a></li>
+          <li><a href="#kerbals">Kerbals, EVA, and staying alive</a></li>
+          <li><a href="#quicksave">Save early, save often</a></li>
+        </ul>
+      </div>
+
+      <h2 id="modes">Game modes: which one to pick</h2>
+      <p>Before you touch a single part, KSP asks you to pick a game mode. This choice changes how much
+      content you have access to and how much bookkeeping you have to do, but not the underlying physics —
+      a rocket flies the same way in every mode.</p>
+      <table>
+        <thead><tr><th>Mode</th><th>Parts</th><th>Funds</th><th>Contracts</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Sandbox</strong></td><td>All unlocked</td><td>Unlimited</td><td>None</td><td>Players who already know the basics and just want to build</td></tr>
+          <tr><td><strong>Science</strong></td><td>Unlocked via science tree</td><td>Not tracked</td><td>None</td><td>Learning — new players, first campaign</td></tr>
+          <tr><td><strong>Career</strong></td><td>Unlocked via science tree</td><td>Tracked, spent on parts/buildings</td><td>Yes, plus reputation</td><td>A full "space agency management" layer once basics feel natural</td></tr>
+        </tbody>
+      </table>
+      <div class="callout tip">
+        <div class="callout-title">Recommendation: start in Science mode</div>
+        <p>Science mode unlocks parts gradually as you collect science data, which naturally teaches you what
+        each part is for instead of dumping the entire parts list on you at once. You never have to worry
+        about running out of funds while you're still learning not to explode on the launchpad. Move to
+        Career mode later, once staging and orbits feel routine — see <a href="career-mode.html">Career Mode</a>
+        for what changes.</p>
+      </div>
+
+      <h2 id="space-center">Touring the Space Center</h2>
+      <p>The Space Center is the hub screen with clickable buildings. Each one matters at a different stage
+      of your career — as an absolute beginner you'll mostly live in three of them, but it's worth knowing
+      what the rest do so nothing on screen is a mystery.</p>
+      <ul>
+        <li><strong>Vehicle Assembly Building (VAB)</strong> — builds rockets for vertical launch. This is
+          where you'll spend the vast majority of your early hours.</li>
+        <li><strong>Runway / Spaceplane Hangar (SPH)</strong> — builds horizontal-takeoff spaceplanes. Ignore
+          this until you're comfortable with basic rockets; see <a href="aerodynamics-flight.html">Aerodynamics &amp; Flight</a>
+          when you're ready.</li>
+        <li><strong>Tracking Station</strong> — lists every active vessel, satellite, and piece of debris
+          you have, lets you switch control between them, and is where you plan maneuver nodes for
+          uncrewed craft without loading into the flight scene.</li>
+        <li><strong>Astronaut Complex</strong> — hire and manage Kerbals, view their experience level and
+          traits, and (in Career) recover lost Kerbals for a fee.</li>
+        <li><strong>R&amp;D (Research &amp; Development)</strong> — spend accumulated science points to
+          unlock new parts on the tech tree. Only relevant in Science and Career modes.</li>
+        <li><strong>Mission Control</strong> — accept and manage contracts, and unlock "strategy" style
+          program-wide bonuses. Career mode only.</li>
+        <li><strong>Administration Building</strong> — trade reputation and funds for long-term strategic
+          bonuses (e.g. more science per experiment). Career mode only, and mostly a late-game tool.</li>
+      </ul>
+      <div class="callout info">
+        <div class="callout-title">You don't need all seven buildings on day one</div>
+        <p>If you're in Science or Sandbox mode, Mission Control, Administration, and most of the Astronaut
+        Complex's options simply won't matter yet. Focus on VAB, Tracking Station, and R&amp;D (if in Science
+        mode) until you've flown a few missions.</p>
+      </div>
+
+      <h2 id="vab">Inside the Vehicle Assembly Building</h2>
+      <p>The VAB is a 3D editor for stacking parts into a craft. A few concepts here will save you a lot of
+      early confusion:</p>
+      <ul>
+        <li><strong>Parts sidebar</strong> — parts are organized into categories (Pods, Fuel Tanks, Engines,
+          Control, Aerodynamics, Utility, etc.) down the left or right side. Search by name if you know what
+          you're after.</li>
+        <li><strong>Attachment nodes</strong> — parts snap together at glowing attachment points when you
+          drag one near another. Stack attachment (top-to-bottom, on the vessel's centerline) and radial
+          attachment (stuck to the side of another part) behave differently — full depth on this is in
+          <a href="vab-advanced-techniques.html">VAB Advanced Techniques</a>.</li>
+        <li><strong>Root part</strong> — the very first part you place becomes the root, and every other part
+          attaches relative to it in the vessel's internal tree. For a simple rocket, start with the command
+          pod as your root. You can reassign the root later with <kbd>Alt</kbd>+<kbd>Left Click</kbd> on
+          another part if needed.</li>
+        <li><strong>Staging list</strong> — the column of icons down the right edge of the screen. It
+          controls the order things happen in-flight when you press <kbd>Space</kbd> — engine ignition,
+          decouplers separating, parachutes deploying. Covered in full depth in
+          <a href="building-rockets.html">Building Rockets</a>.</li>
+        <li><strong>Stats readout</strong> — click the small arrow/tab near the staging list (or the
+          "Delta-V" tab if using a version with it built in) to expand a panel showing total <strong>mass</strong>,
+          <strong>part count</strong>, and — critically — <strong>Δv (delta-v)</strong> and
+          <strong>TWR (thrust-to-weight ratio)</strong> broken down per stage. Get in the habit of checking
+          this before every launch.</li>
+      </ul>
+      <div class="callout info">
+        <div class="callout-title">What is delta-v, in one paragraph?</div>
+        <p>Delta-v (Δv) is a budget for "how much your velocity can change" using the propellant you're
+        carrying, measured in meters per second (m/s). Every maneuver — climbing to orbit, transferring to
+        the Mun, landing, coming home — costs a specific, fairly predictable amount of Δv. Instead of
+        thinking "how much fuel do I need," KSP players think "how much Δv does this trip cost, and does my
+        rocket have that much." This becomes the central planning tool starting in
+        <a href="orbital-mechanics.html">Orbital Mechanics</a> and is covered from the ground up in
+        <a href="building-rockets.html">Building Rockets</a>.</p>
+      </div>
+
+      <h2 id="controls">Controls you need on day one</h2>
+      <p>This is a deliberately short list — just what you need to fly a first rocket. The
+      <a href="keyboard-shortcuts.html">Keyboard Shortcuts</a> reference page covers every binding in the game,
+      including camera modes, action groups, and map view controls.</p>
+      <table>
+        <thead><tr><th>Key / input</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><kbd>Space</kbd></td><td>Activate the next stage (ignite an engine, fire a decoupler, deploy a parachute)</td></tr>
+          <tr><td><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></td><td>Pitch and yaw — point the nose up / down / left / right</td></tr>
+          <tr><td><kbd>Q</kbd> <kbd>E</kbd></td><td>Roll left / right</td></tr>
+          <tr><td><kbd>Shift</kbd></td><td>Throttle up (hold, or tap repeatedly)</td></tr>
+          <tr><td><kbd>Ctrl</kbd></td><td>Throttle down</td></tr>
+          <tr><td><kbd>Z</kbd></td><td>Full throttle instantly</td></tr>
+          <tr><td><kbd>X</kbd></td><td>Cut throttle to zero instantly</td></tr>
+          <tr><td><kbd>T</kbd></td><td>Toggle SAS (Stability Assist System) — holds your current orientation</td></tr>
+          <tr><td><kbd>R</kbd></td><td>Toggle RCS (fine translation thrusters — mainly needed for docking)</td></tr>
+          <tr><td><kbd>M</kbd></td><td>Open/close map view</td></tr>
+          <tr><td><kbd>.</kbd> / <kbd>,</kbd></td><td>Increase / decrease time warp</td></tr>
+          <tr><td>Mouse drag (right-click, or left-click empty space)</td><td>Rotate the camera around your vessel</td></tr>
+          <tr><td><kbd>F5</kbd> / <kbd>F9</kbd></td><td>Quicksave / quickload</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="first-flight">Your first flight: a suborbital hopper</h2>
+      <p>Don't try to reach orbit yet. Your first goal should be a controlled up-and-down "hop" that proves
+      you understand staging, throttle, and landing. Here's a simple craft and flight plan:</p>
+      <ol class="steps">
+        <li><strong>Build a tiny hopper in the VAB.</strong>
+          <p>Place a command pod (root part), a parachute on top of it, a small liquid fuel tank below the
+          pod, and a basic engine (an LV-T30 "Reliant" is perfect — no gimbal needed for a straight-up hop)
+          below the tank. Four parts, one stack.</p>
+        </li>
+        <li><strong>Check the staging list.</strong>
+          <p>You should see the engine igniting in the bottom stage and the parachute in a stage above it.
+          If the game auto-staged something oddly, drag icons in the staging list to reorder them.</p>
+        </li>
+        <li><strong>Launch, then immediately press <kbd>T</kbd> to enable SAS.</strong>
+          <p>This keeps the rocket pointed the way it's already facing instead of tipping over from small
+          aerodynamic wobbles.</p>
+        </li>
+        <li><strong>Hold <kbd>Shift</kbd> for full throttle and press <kbd>Space</kbd> to launch.</strong>
+          <p>Watch your altitude and speed on the navball readouts. Just go straight up — don't try to turn.</p>
+        </li>
+        <li><strong>Cut the throttle (<kbd>X</kbd>) once you're out of fuel or high enough for a good fall.</strong>
+          <p>The engine will flame out on its own when the tank runs dry; cutting throttle just stops the
+          "phantom" full-throttle sound and control input.</p>
+        </li>
+        <li><strong>Deploy the parachute during the fall.</strong>
+          <p>Press <kbd>Space</kbd> again to advance to the parachute stage. Do this with plenty of altitude
+          to spare on your first try — a few kilometers up is safer than waiting until the last second.</p>
+        </li>
+        <li><strong>Touch down and confirm your Kerbal survived.</strong>
+          <p>If the capsule lands or splashes down intact with the chute open, that's a complete, successful
+          mission. Recover the vessel from the flight results screen (or right-click it in the Tracking
+          Station) to bank any science and get your Kerbal home safely.</p>
+        </li>
+      </ol>
+
+      <h2 id="kerbals">Kerbals, EVA, and staying alive</h2>
+      <p>A Kerbal riding inside a pod is safe as long as the pod isn't destroyed and doesn't hit the ground
+      (or the atmosphere, on reentry) too hard or too fast. A few essentials for your first missions:</p>
+      <ul>
+        <li>Press <kbd>0</kbd> or use the on-screen EVA button to send a Kerbal <strong>on EVA</strong>
+          (outside the pod) once you're safely in space or standing on a surface.</li>
+        <li>A Kerbal on EVA has a small monopropellant-fueled jetpack for maneuvering in vacuum — use it in
+          short bursts, since it carries a limited supply.</li>
+        <li>Kerbals cannot survive unprotected reentry heat or hard surface impacts. Keep them sealed in a
+          pod during any risky moment, and don't EVA in the middle of an atmosphere at high speed.</li>
+        <li>Every Kerbal has three traits: <strong>Courage</strong> and <strong>Stupidity</strong> (fixed,
+          flavor stats that affect small things like panic behavior) and <strong>Experience</strong>, which
+          rises as they fly missions and unlocks perks for their class (Pilots grant SAS bonuses, Engineers
+          repair parts and boost ISRU, Scientists reset experiments and boost science return).</li>
+        <li>Stock KSP has <strong>no life support system</strong> — no food, water, or oxygen to manage.
+          Kerbals can stay in space indefinitely. Life support only becomes a concern if you install a mod
+          for it; see <a href="tips-mods.html">Tips &amp; Mods</a>.</li>
+      </ul>
+
+      <h2 id="quicksave">Save early, save often</h2>
+      <div class="callout warn">
+        <div class="callout-title">Don't worry about failing</div>
+        <p>Explosions are the normal way you learn this game. Every experienced player has a graveyard of
+        Kerbals lost to bad staging, missing parachutes, or a forgotten heat shield. Get in the habit of
+        quicksaving constantly — <kbd>F5</kbd> to save, <kbd>F9</kbd> to load the most recent quicksave — so
+        that a mistake costs you thirty seconds, not an entire hour of progress. Save right before every
+        risky moment: staging events, reentry, landing, and docking attempts.</p>
+      </div>
+
+      <div class="pager">
+        <a class="prev" href="../index.html"><span class="dir">← Back</span>Home</a>
+        <a class="next" href="building-rockets.html"><span class="dir">Next</span>Building Rockets →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

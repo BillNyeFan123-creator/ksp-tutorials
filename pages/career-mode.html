@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Mode — KSP Mission Manual</title>
+<meta name="description" content="Funds, Science, Reputation, contracts, strategies, and how to upgrade your space center efficiently in KSP Career mode.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="career-mode">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 16 · Career &amp; Progression</div>
+      <h1>Career Mode</h1>
+      <p class="page-sub">Funds, reputation, contracts, strategies, and upgrading your space center</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#three-currencies">The three currencies</a></li>
+          <li><a href="#contracts">Contracts in depth</a></li>
+          <li><a href="#facility-upgrades">KSC facility upgrades</a></li>
+          <li><a href="#strategies">Strategies via the Administration building</a></li>
+          <li><a href="#recovery">Recovering vessels and stages</a></li>
+          <li><a href="#early-loop">A suggested early-career mission loop</a></li>
+          <li><a href="#difficulty">Difficulty settings for beginners</a></li>
+        </ul>
+      </div>
+
+      <h2 id="three-currencies">The three currencies</h2>
+      <p>Career mode runs on three separate resources, each earned and spent differently. Understanding what
+      drives each one is the key to not stalling out partway through a save.</p>
+      <table>
+        <thead><tr><th>Currency</th><th>What it does</th><th>How you gain it</th><th>How you lose it</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Funds</strong></td>
+            <td>Spent on launches, vehicle parts, and facility upgrades</td>
+            <td>Contract rewards, recovering vessels/stages</td>
+            <td>Launch costs, buying parts, some contract penalties</td>
+          </tr>
+          <tr>
+            <td><strong>Science</strong></td>
+            <td>Unlocks new parts in the tech tree</td>
+            <td>Running experiments, transmitting/recovering data, contracts</td>
+            <td>Not directly lost, but can be traded away via strategies</td>
+          </tr>
+          <tr>
+            <td><strong>Reputation</strong></td>
+            <td>Affects which contracts are offered and their reward size</td>
+            <td>Completing contracts, mission milestones</td>
+            <td>Failed contracts, Kerbal deaths, mission failures</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout info">
+        <div class="callout-title">Reputation is easy to overlook, and it compounds</div>
+        <p>Low Reputation doesn't just look bad — it directly shrinks both the number and quality of
+        contracts Mission Control offers you, which slows your Funds and Science income at the same time.
+        Avoiding needless Kerbal deaths and mission failures pays off well beyond the immediate contract.</p>
+      </div>
+
+      <h2 id="contracts">Contracts in depth</h2>
+      <p>Contracts are the main structured source of Funds, Science, and Reputation in a career save. A few
+      mechanics are worth understanding before you start accepting them freely:</p>
+      <ul>
+        <li><strong>Accepting a contract</strong> commits you to its terms but doesn't cost anything upfront
+          in stock rules (some contracts do include an advance-payment or deadline structure — read the
+          terms before accepting).</li>
+        <li><strong>Milestones</strong> are the individual sub-goals within a single contract (e.g. "launch a
+          vessel," then "reach orbit," then "return safely") — many contracts pay out partial rewards as you
+          complete milestones, not only at final completion, which is useful if you're not sure you'll finish
+          the whole thing.</li>
+        <li><strong>Rewards</strong> typically include some mix of Funds, Science, and Reputation, weighted
+          toward whichever purpose the contract serves — a "first orbit" style contract usually rewards
+          Science more heavily, while multi-satellite or logistics contracts skew toward Funds.</li>
+        <li><strong>Penalties</strong> apply mainly to failure or expiration on time-limited contracts, and
+          usually cost a mix of Funds and Reputation — factor a contract's deadline into your acceptance
+          decision if it requires a mission profile you're not ready to fly yet.</li>
+        <li><strong>Prioritize contracts that match a mission you were already planning.</strong> The
+          efficient way to play career mode isn't to chase every contract available — it's to accept the ones
+          that align with a mission profile you'd have flown anyway (a Mun landing, a satellite network, a
+          rescue), turning a mission you wanted to do into one that also pays.</li>
+      </ul>
+
+      <h2 id="facility-upgrades">KSC facility upgrades</h2>
+      <p>Space Center facilities each have their own upgrade levels, and upgrading them raises specific caps
+      rather than granting a general bonus. Knowing what each one actually raises helps you prioritize Funds
+      toward the upgrade that's currently blocking you, instead of upgrading whatever's cheapest.</p>
+      <table>
+        <thead><tr><th>Facility</th><th>What upgrading it raises</th></tr></thead>
+        <tbody>
+          <tr><td>VAB / SPH</td><td>Maximum part count and craft size/mass you can build</td></tr>
+          <tr><td>Launch Pad / Runway</td><td>Maximum craft size and mass you can launch</td></tr>
+          <tr><td>Tracking Station</td><td>Tracking range and the number of trackable objects/maneuver nodes</td></tr>
+          <tr><td>Astronaut Complex</td><td>Kerbal recruitment and training slots</td></tr>
+          <tr><td>Mission Control</td><td>Number of active contracts and available strategy slots</td></tr>
+          <tr><td>R&amp;D</td><td>Science curve efficiency and access to further tech tree tiers</td></tr>
+          <tr><td>Administration</td><td>Number of active strategies and their effectiveness</td></tr>
+        </tbody>
+      </table>
+      <h3>A sensible early-game upgrade priority</h3>
+      <ol class="steps">
+        <li><strong>Mission Control first (or early).</strong> More active contract slots means more
+          simultaneous income sources — this compounds fast, since every accepted contract is a parallel
+          stream of Funds/Science/Reputation.</li>
+        <li><strong>VAB/SPH next, once part-count limits start pinching.</strong> Early craft are usually
+          small enough that the base limit is fine — upgrade when you actually find yourself unable to fit
+          the parts a design needs.</li>
+        <li><strong>Tracking Station when you start flying multi-vessel or long-range missions.</strong>
+          Extra tracking range and maneuver node counts matter much more once you're juggling satellites,
+          relays, or interplanetary transfers than during early suborbital contracts.</li>
+        <li><strong>R&amp;D and Astronaut Complex as science and crew needs grow.</strong> Push these when
+          you're regularly capped on Science throughput or need more active Kerbals than your roster
+          supports.</li>
+        <li><strong>Launch Pad/Runway only when a specific design needs it.</strong> These are often the last
+          priority, since many effective early designs stay under the base mass/size limits by choice.</li>
+      </ol>
+
+      <h2 id="strategies">Strategies via the Administration building</h2>
+      <p>Strategies let you trade one currency for another at a configurable rate, active continuously once
+      selected (rather than a one-time transaction). Typical examples include converting a portion of
+      incoming Science into Funds, or boosting the Funds reward from contracts at the cost of some
+      Reputation.</p>
+      <div class="callout tip">
+        <div class="callout-title">When a trade-off strategy makes sense</div>
+        <p>Strategies are worth activating when you have a surplus of one resource and a shortage of another
+        — for example, converting some Science into Funds early on if you're doing lots of low-risk orbital
+        science but are cash-strapped for upgrades, then swapping back once Funds catch up and Science tech
+        tree progress becomes the bottleneck instead. Because most strategies apply an ongoing rate rather
+        than a one-time effect, revisit your active strategies periodically as your bottleneck shifts.</p>
+      </div>
+
+      <h2 id="recovery">Recovering vessels and stages</h2>
+      <p>Recovering a vessel — landing or splashing down within recovery range, or specifically recovering
+      spent stages — returns a portion of that hardware's value as Funds. This makes reusability a real
+      economic strategy in Career mode, not just an efficiency flex:</p>
+      <ul>
+        <li><strong>Recovering boosters</strong> (parachuted or powered-landing first stages) after they
+          separate returns meaningful Funds compared to letting them fall into the ocean or crash uncontrolled.</li>
+        <li><strong>Powered landings</strong> for an entire first stage (propulsive descent and landing, mirroring
+          more advanced real-world reusable rocket designs) recover even more of the stage's value, at the
+          cost of the fuel spent landing it.</li>
+        <li><strong>Spaceplanes</strong> that land back on the runway under their own aerodynamic control
+          recover close to the vehicle's full value with no extra fuel spent on a landing burn, which is part
+          of why spaceplane-based launch systems are popular in Funds-constrained careers.</li>
+      </ul>
+      <p>Over a full career save, consistent recovery practices meaningfully reduce your net cost per
+      launch, freeing up Funds for facility upgrades and more ambitious contracts sooner.</p>
+
+      <h2 id="early-loop">A suggested early-career mission loop</h2>
+      <p>New players often try to rush toward an ambitious first contract (an early Mun landing, say) before
+      the Funds and Science base is in place to support it. A steadier loop looks like this:</p>
+      <ol class="steps">
+        <li><strong>Fly cheap suborbital and orbital contracts first.</strong> These typically have low risk
+          and low cost, and pay reasonably well in early-game terms relative to what they cost to fly.</li>
+        <li><strong>Farm easy Kerbin-system science alongside those contracts.</strong> Running the full set
+          of stock experiments across Kerbin's biomes (and a first Mun/Minmus flyby or landing) generates a
+          large amount of early Science cheaply, since these experiments haven't been "used up" yet.</li>
+        <li><strong>Reinvest Science into unlocking cheaper, more efficient parts</strong> — better engines
+          and lighter structural parts reduce the cost of every future launch, which compounds.</li>
+        <li><strong>Use the resulting Funds surplus to upgrade Mission Control and the VAB/SPH</strong> so
+          you can run more contracts in parallel and build larger craft.</li>
+        <li><strong>Only then move toward interplanetary contracts</strong> (Duna flybys/landings and
+          beyond), once your Funds, Science, and facility levels can comfortably support the much higher cost
+          and risk of those missions.</li>
+      </ol>
+      <div class="callout warn">
+        <div class="callout-title">Don't front-load risk before you can absorb a failure</div>
+        <p>An expensive interplanetary mission failure early in a career — before your Funds and Reputation
+        cushion is built up — can set a save back substantially further than the same failure would later.
+        Build the base of Funds, Science, and Reputation first; treat riskier, higher-payoff missions as
+        something you graduate into.</p>
+      </div>
+
+      <h2 id="difficulty">Difficulty settings for beginners</h2>
+      <div class="callout tip">
+        <div class="callout-title">It's fine to soften some settings while learning</div>
+        <p>Career mode's difficulty options let you adjust several mechanics independently — you don't have
+        to accept a preset difficulty wholesale. A few worth knowing about specifically as a new player:</p>
+        <ul>
+          <li><strong>Kerbal respawn:</strong> with respawn on, a Kerbal who dies becomes "missing" and
+            eventually becomes available to recruit again instead of being gone permanently. Many beginners
+            keep this on while learning landing and re-entry technique, since early mistakes are common and
+            permanent Kerbal loss can feel unnecessarily punishing before you've built up piloting skill.</li>
+          <li><strong>Re-entry heating:</strong> can be reduced or disabled entirely, which removes the risk
+            of burning up during atmospheric entry while you're still learning periapsis targeting and craft
+            orientation.</li>
+          <li><strong>Resource transfer:</strong> some difficulty presets restrict free-form fuel transfer
+            between tanks/vessels — an easier setting simplifies early ISRU and docking-refuel workflows
+            while you're still learning them.</li>
+        </ul>
+        <p>None of these settings need to stay soft forever — many players tighten them back up once they're
+        comfortable with the underlying skills. There's no penalty for starting gentler.</p>
+      </div>
+
+      <div class="pager">
+        <a class="prev" href="bases-colonies.html"><span class="dir">← Back</span>Bases &amp; Colonies</a>
+        <a class="next" href="dlc-overview.html"><span class="dir">Next</span>DLC Overview →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

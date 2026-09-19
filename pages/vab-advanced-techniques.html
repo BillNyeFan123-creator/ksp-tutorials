@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VAB Advanced Techniques — KSP Mission Manual</title>
+<meta name="description" content="Symmetry, asparagus staging with fuel ducts, subassemblies, fairings, struts and autostrut, action groups, and the offset/rotate tools for building bigger, cleaner rockets.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="vab-advanced-techniques">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 04 · Foundations</div>
+      <h1>VAB Advanced Techniques</h1>
+      <p class="page-sub">Symmetry, subassemblies, fuel ducts, fairings, action groups — building bigger
+      craft without turning them into an unmanageable mess.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#symmetry">The symmetry tool</a></li>
+          <li><a href="#asparagus">Fuel ducts and asparagus staging</a></li>
+          <li><a href="#subassemblies">Subassemblies and merging craft</a></li>
+          <li><a href="#fairings">Fairings</a></li>
+          <li><a href="#struts">Struts and autostrut</a></li>
+          <li><a href="#action-groups">Action groups</a></li>
+          <li><a href="#offset-rotate">Offset, rotate, and attachment modes</a></li>
+          <li><a href="#robotics-eva">Robotic parts and EVA construction</a></li>
+        </ul>
+      </div>
+
+      <h2 id="symmetry">The symmetry tool</h2>
+      <p>Symmetry mirrors or radially repeats a part as you place it, keeping multi-engine and multi-booster
+      designs both faster to build and actually balanced.</p>
+      <ul>
+        <li><strong>Radial symmetry (2x, 3x, 4x, 6x, ...)</strong> arranges copies evenly around the vessel's
+          center — the standard mode for boosters, radial engines, landing legs, and radial fuel tanks.
+          Match the symmetry count to your design: 4 SRBs around a core stage uses 4x; a tripod lander uses 3x.</li>
+        <li><strong>Mirror symmetry</strong> reflects a part across a single plane instead of arranging it
+          radially — this is what you want for spaceplane wings, so the left and right wings are true mirror
+          images rather than rotated copies (which would put control surfaces on the wrong edges).</li>
+        <li>Cycle the symmetry count with the keyboard shortcut shown in the VAB toolbar, and check the small
+          on-screen indicator so you don't accidentally place 6 boosters when you meant 4.</li>
+        <li>Symmetry applies at the moment you place or move a part — if you need to change an existing
+          radial part, you often need to delete and replace the whole symmetrical set, or use the part's
+          right-click menu on versions that support live symmetry edits.</li>
+      </ul>
+      <div class="callout tip">
+        <div class="callout-title">Radial vs mirror at a glance</div>
+        <p>If the part should point the same direction all the way around a central axis (boosters, legs,
+        RCS thrusters), use radial. If the part is a left/right pair that should be true reflections of each
+        other (wings, canards, some landing gear), use mirror.</p>
+      </div>
+
+      <h2 id="asparagus">Fuel ducts and asparagus staging</h2>
+      <p>Asparagus staging is the classic technique for squeezing much more delta-v out of a wide rocket by
+      changing the <em>order</em> fuel is consumed in, not the total amount of fuel carried.</p>
+      <div class="callout info">
+        <div class="callout-title">The core idea</div>
+        <p>Normally, every engine burns fuel from its own tank, so all your tanks drain at roughly the same
+        rate and go empty around the same time — meaning you're dragging several nearly-empty (but not
+        massless) tanks right up until they're jettisoned together. Asparagus staging uses
+        <strong>fuel ducts</strong> to pull fuel from outer tanks into inner tanks first. The outer
+        tank/engine pairs run dry and get dropped early — shedding their dead weight — while every remaining
+        engine keeps burning from tanks that are still nearly full, right up until the next pair drains.</p>
+      </div>
+      <ol class="steps">
+        <li><strong>Build symmetrical radial stacks around a central core.</strong>
+          <p>Each radial stack has its own tank and engine, attached with radial decouplers so it can be
+          jettisoned once empty.</p>
+        </li>
+        <li><strong>Run a fuel duct from each outer tank to the next tank inward.</strong>
+          <p>The fuel duct is a small part placed between two tanks that forces fuel to flow from the
+          source tank into the target tank instead of feeding its own engine locally.</p>
+        </li>
+        <li><strong>All engines ignite together at launch,</strong> but because of the ducts, the outermost
+          tanks empty first even though every engine is burning the whole time.</li>
+        <li><strong>Stage off each empty outer pair</strong> (engine + tank + decoupler) as it runs dry —
+          you'll typically see this happen automatically in sequence if the staging list is set up correctly,
+          each jettison lightening the rocket for the remaining engines.</li>
+        <li><strong>The core stack burns last,</strong> now benefiting from having spent the entire ascent
+          feeding off tanks it was about to discard anyway, arriving at orbit dramatically lighter than a
+          simple non-cross-fed design of the same total fuel.</li>
+      </ol>
+      <div class="body-card">
+        <h3>Simple worked example</h3>
+        <p>Picture a core stage with four identical radial boosters around it, each boosters' tank ducted
+        into the core tank. All five engines burn from launch. As each radial tank empties, that
+        engine+tank+decoupler set drops off — four separate small jettisons — while the core engine keeps
+        burning continuously, fed in part by fuel that started in the boosters. By the time only the core
+        remains, it's carrying a nearly full tank of its own plus whatever it pulled in, with none of the
+        boosters' dead tank mass left to haul around. The net effect is more usable delta-v from the same
+        total propellant than staging the boosters off with their own fuel unused.</p>
+      </div>
+
+      <h2 id="subassemblies">Subassemblies and merging craft</h2>
+      <p>Once you've built something reusable — a lander can with legs and a probe core, a standard docking
+      adapter stack, a reliable upper stage — save it as a <strong>subassembly</strong> instead of rebuilding
+      it from scratch every time.</p>
+      <ul>
+        <li>Select the root part of the cluster you want to save, then use the subassembly save option (in
+          the VAB's part-clump menu) to store it as a named, reusable block.</li>
+        <li>Subassemblies appear in their own tab in the parts sidebar and can be dragged into any future
+          craft, keeping proven designs consistent across missions.</li>
+        <li><strong>Merging craft files</strong> lets you load an entirely separate saved vessel into your
+          current project — useful for combining a previously-designed lander with a new transfer stage, or
+          building a space station module that needs to dock with an existing one for reference.</li>
+        <li>After merging, you'll often need to reattach the merged assembly to your main craft, and you may
+          need to fix its root part or renumber symmetry before it behaves correctly.</li>
+      </ul>
+
+      <h2 id="fairings">Fairings</h2>
+      <p>A fairing is a protective shell that encloses a payload during ascent and jettisons once you're
+      clear of the atmosphere.</p>
+      <ul>
+        <li><strong>Protecting payloads from drag</strong> — an exposed satellite, antenna array, or lander
+          creates a lot of drag and asymmetric aerodynamic force. A fairing turns that whole cluster into one
+          smooth, low-drag shape.</li>
+        <li><strong>Protecting payloads from heat</strong> — ascent heating can damage delicate parts;
+          a fairing shields them until it's jettisoned in the near-vacuum of the upper atmosphere.</li>
+        <li><strong>Hiding ugly hardware</strong> — many players fair over docking ports, radial parts, or
+          asymmetric antenna clusters purely to avoid the drag and instability they'd otherwise cause, even
+          when heat isn't a major concern.</li>
+        <li><strong>Interstage fairings</strong> are a specific use case: a short fairing section that
+          encloses an upper-stage engine bell against the base of the payload/next stage, smoothing what
+          would otherwise be an exposed engine sticking out mid-rocket, then jettisoning with (or just after)
+          that stage separates.</li>
+        <li>Fairing size and shape are set interactively in the VAB — click the fairing base and drag the
+          included handles to size it around your payload, adding extra panel sections if needed for taller
+          payloads.</li>
+      </ul>
+
+      <h2 id="struts">Struts and autostrut</h2>
+      <p>Large or oddly-shaped rockets often wobble under thrust — a visible, whip-like flex in the vessel
+      that wastes control authority and can shake parts apart or snap the craft in half.</p>
+      <ul>
+        <li><strong>Physics wobble</strong> happens because parts are connected by joints that have some
+          flex, and long, heavy, or asymmetric stacks (wide side-boosters, tall thin rockets, heavy payloads
+          on a single connection point) amplify that flex into visible shaking.</li>
+        <li><strong>Struts</strong> are physical parts you place between two points on your rocket to add a
+          rigid connection, resisting bending between sections that would otherwise flex independently.
+          Common placement: between radial boosters and the core, and along tall stacks with a heavy payload
+          on top.</li>
+        <li><strong>Autostrut</strong> (right-click a part → Autostrut) rigidly links a part to another part
+          in the vessel without needing a visible strut part, at zero mass or drag cost. Options usually
+          include:</li>
+        <ul>
+          <li><strong>Grandparent part</strong> — links to the part two attachment steps up the tree; good
+            general-purpose default for reducing wobble on stacks.</li>
+          <li><strong>Heaviest part</strong> — links to whatever the single heaviest part in the vessel is,
+            useful for anchoring lightweight extremities (antennas, small radial parts) to the core mass.</li>
+          <li><strong>Root part</strong> — links directly to the vessel's root part, giving a very stable but
+            sometimes overly rigid connection.</li>
+        </ul>
+        <li>Autostrut connections break automatically when the linked part is staged away, so they won't
+          keep a jettisoned booster phantom-attached to your ship.</li>
+      </ul>
+      <div class="callout tip">
+        <div class="callout-title">When to reach for which</div>
+        <p>Use autostrut liberally on wobble-prone stacks since it's free — set to "Heaviest Part" as a good
+        default for most builds. Reach for physical struts specifically for radial boosters and cross-bracing
+        wide payloads, since visually you often want the strut placement to be deliberate and symmetrical.</p>
+      </div>
+
+      <h2 id="action-groups">Action groups</h2>
+      <p>Action groups let you bind a single keypress (<kbd>1</kbd> through <kbd>0</kbd>, plus a general
+      "custom" set on more complex craft) to toggle any number of parts at once.</p>
+      <ul>
+        <li>Common bindings: solar panel deploy/retract, lights on/off, landing gear up/down, parachute arm,
+          engine toggle, cargo bay open/close, science experiment run.</li>
+        <li>Assign action groups in the VAB via the Action Groups tab — select a part, then click the action
+          you want (e.g. "Toggle Panels") and assign it to a numbered group.</li>
+        <li>Group multiple different part types under one key when they logically happen together — for
+          example, binding "gear down" and "lights on" to the same key for a night landing sequence.</li>
+        <li>On complex craft with many deployables, action groups are the difference between a calm,
+          practiced landing sequence and frantically right-clicking a dozen parts in the VAB's part menu
+          during a critical descent.</li>
+      </ul>
+
+      <h2 id="offset-rotate">Offset, rotate, and attachment modes</h2>
+      <ul>
+        <li><strong>Offset tool</strong> moves a part freely along an axis, letting you fine-tune spacing —
+          for example, recessing a part slightly into another for a cleaner look, or adjusting radial part
+          spacing so decouplers clear surrounding hardware.</li>
+        <li><strong>Rotate tool</strong> spins a part around an axis — useful for angling radial parts,
+          fixing an upside-down part after mirror symmetry, or aiming RCS thrusters correctly.</li>
+        <li><strong>Radial attachment</strong> sticks a part to the side of another part at whatever point
+          you click; <strong>stack attachment</strong> connects parts end-to-end along the vessel's
+          centerline through defined nodes. Some parts (fuel tanks, engines) support both; others are
+          restricted to one or the other.</li>
+        <li><strong>Part clipping</strong> — using the offset tool to intentionally overlap two parts' models
+          — is common for saving space (recessing landing legs into a fuselage, nesting batteries inside a
+          service bay) but has limits: clipping fuel tanks into each other to "cheat" more fuel into a small
+          space is generally considered poor etiquette for shared craft files and can behave oddly with
+          collision detection. Use it for cosmetic tidiness, not to bypass part volume constraints.</li>
+      </ul>
+
+      <h2 id="robotics-eva">Robotic parts and EVA construction</h2>
+      <p>Two more advanced building tools exist beyond the base VAB toolset:</p>
+      <ul>
+        <li><strong>Robotic parts (Breaking Ground DLC)</strong> — hinges, pistons, and rotors let you build
+          moving mechanisms directly into a craft: deployable arms, rotating solar arrays, extending landing
+          gear on custom rovers, or robotic sample-return arms. These parts move in real time during flight
+          and can be bound to action groups or the dedicated robotics control panel.</li>
+        <li><strong>EVA construction</strong> — a Kerbal on EVA (with the right skill or era-specific tools)
+          can pick up, carry, and attach individual parts directly in orbit or on a surface, effectively
+          letting you "weld" pieces onto an existing craft or build small structures without returning to the
+          VAB. This is commonly used for assembling large space stations from separately-launched parts, or
+          field-repairing a station missing a part.</li>
+      </ul>
+      <div class="callout info">
+        <div class="callout-title">Full depth is in the DLC Overview</div>
+        <p>Both robotic parts and EVA construction come from the Breaking Ground expansion and have enough
+        depth (joint limits, torque, part-attachment rules, construction mode controls) to warrant their own
+        coverage — see <a href="dlc-overview.html">DLC Overview</a> for the complete rundown.</p>
+      </div>
+
+      <div class="pager">
+        <a class="prev" href="aerodynamics-flight.html"><span class="dir">← Back</span>Aerodynamics &amp; Flight</a>
+        <a class="next" href="orbital-mechanics.html"><span class="dir">Next</span>Orbital Mechanics →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

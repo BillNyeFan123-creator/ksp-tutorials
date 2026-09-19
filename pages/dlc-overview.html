@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DLC Overview — KSP Mission Manual</title>
+<meta name="description" content="What Making History and Breaking Ground actually add to Kerbal Space Program, and whether you need either DLC to play well.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="dlc-overview">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 17 · Career &amp; Progression</div>
+      <h1>DLC Overview</h1>
+      <p class="page-sub">What Making History and Breaking Ground actually add, and whether either one is
+      worth buying before you dig into the rest of this guide.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#do-you-need-dlc">Do you need any DLC?</a></li>
+          <li><a href="#making-history">Making History in depth</a></li>
+          <li><a href="#breaking-ground">Breaking Ground in depth</a></li>
+          <li><a href="#comparison">Side-by-side comparison</a></li>
+          <li><a href="#recommendation">Which one should you buy?</a></li>
+          <li><a href="#combining">Using both together</a></li>
+          <li><a href="#faq">Common questions</a></li>
+          <li><a href="#site-usage">How this guide treats DLC content</a></li>
+        </ul>
+      </div>
+
+      <h2 id="do-you-need-dlc">Do you need any DLC?</h2>
+      <p>No. Stock KSP — no expansions at all — is a complete, fully playable game. Every launch, every orbit,
+      every interplanetary transfer, and every landing covered elsewhere on this site (from
+      <a href="getting-started.html">Getting Started</a> through <a href="landing-return.html">Landing &amp; Return</a>)
+      works with zero DLC installed. If you're on a budget or just not sure whether you'll stick with KSP,
+      skip both expansions for now — you won't hit a wall.</p>
+      <div class="callout info">
+        <div class="callout-title">What DLC changes vs. what it doesn't</div>
+        <p>Both expansions are additive. They add new parts, new tools, and new things to do — they don't
+        change orbital mechanics, don't gate career progression behind a paywall, and don't touch the tech
+        tree balance in ways that make stock parts obsolete. Think of them as extra toy-box contents, not a
+        different game.</p>
+      </div>
+
+      <h2 id="making-history">Making History in depth</h2>
+      <p>Making History is built around two things: the Mission Builder, and a set of extra parts.</p>
+      <h3>The Mission Builder</h3>
+      <p>This is a node-based scripting tool for authoring custom missions with defined objectives, rewards,
+      and briefings — separate from the normal Career/Science/Sandbox game modes. You place nodes for events
+      (reach an altitude, dock two craft, recover a vessel, keep a Kerbal alive for X days, and dozens more)
+      and wire them into success/failure conditions and funds/reputation/science rewards. Finished missions
+      can be played in any save and shared as files with other players.</p>
+      <ul>
+        <li>Good for building your own structured challenges (e.g., "launch this exact rocket and land within
+          500m of a marker") rather than relying on the open-ended stock contract system.</li>
+        <li>Good for replaying historically-styled missions — early suborbital hops, first-orbit attempts,
+          first docking — with explicit pass/fail criteria instead of just eyeballing it yourself.</li>
+        <li>Entirely optional to ever touch — you can own Making History and never open the Mission Builder,
+          and nothing about normal play changes.</li>
+      </ul>
+      <h3>Extra parts</h3>
+      <p>Making History also adds a batch of parts styled after real early-spaceflight hardware (capsules and
+      engines with a distinct historical look) plus additional stock-alike parts that slot into the existing
+      tech tree. These are functionally comparable to stock parts of similar tier — they widen your aesthetic
+      and part-count options more than they unlock new capability.</p>
+      <div class="callout tip">
+        <div class="callout-title">Who benefits most</div>
+        <p>Players who enjoy scripting scenarios, running mission packs shared by the community, or building
+        their own "campaign" of objectives get the most value here. If you mostly play open sandbox or
+        standard career/science, the Mission Builder will likely sit unused.</p>
+      </div>
+
+      <h2 id="breaking-ground">Breaking Ground in depth</h2>
+      <p>Breaking Ground is the more broadly useful expansion for most players, because it adds capability
+      that stock parts simply don't have: things that move, and ways to survey and construct in the field.</p>
+      <h3>Robotic parts</h3>
+      <p>Hinges, pistons, rotors, and rotation servos let you build mechanisms with actual controlled motion,
+      driven by action groups or the part's own tweakable settings (speed, range, torque):</p>
+      <ul>
+        <li><strong>Rover suspension and steering</strong> — proper springy suspension arms instead of stock
+          wheels' fixed geometry, useful for rough-terrain rovers on the Mun or Duna.</li>
+        <li><strong>Deployable solar panels and antenna arrays</strong> — fold flat for launch, then unfold
+          via hinge/rotor once in orbit, useful for large stations where static parts would clip.</li>
+        <li><strong>Robotic arms</strong> — multi-segment hinge/piston assemblies for grabbing, positioning,
+          or docking-assist tasks.</li>
+        <li><strong>Custom-motion cargo bays and fairings</strong> — open on a hinge instead of a canned
+          animation, so you control the exact angle and timing.</li>
+      </ul>
+      <h3>Deployable science instruments</h3>
+      <p>A set of science parts (seismometer, atmospheric sensor, weather station, and others) can be planted
+      on a surface and left there indefinitely, rather than being a one-shot experiment you run once and
+      discard. You can revisit the same instrument, or just leave it broadcasting, and collect additional
+      science from it over time — useful for long-term surface outposts that keep paying off after the crew
+      that placed them has moved on.</p>
+      <h3>What you can actually build with the robotic parts</h3>
+      <table>
+        <thead><tr><th>Part type</th><th>What it does</th><th>Typical use</th></tr></thead>
+        <tbody>
+          <tr><td>Hinge</td><td>Rotates around one axis through a set angle range</td><td>Folding wings, opening doors/bay lids, tilting solar arrays</td></tr>
+          <tr><td>Piston</td><td>Extends/retracts linearly along its axis</td><td>Adjustable-height landing legs, extending booms and arms</td></tr>
+          <tr><td>Rotor</td><td>Spins continuously, torque and speed adjustable</td><td>Helicopter-style rotors, spinning habitats, drills</td></tr>
+          <tr><td>Rotation servo</td><td>Rotates to a commanded angle and holds it</td><td>Precise antenna/panel aiming, robotic arm joints</td></tr>
+        </tbody>
+      </table>
+      <p>These combine — a robotic arm is typically several hinges and a piston chained together, and a
+      folding solar array might use a hinge for the deployment angle and a rotation servo to keep tracking
+      the sun afterward. All of them are controllable through the part action window, action groups, or
+      the dedicated robotic controller part for more complex sequenced motion.</p>
+      <h3>Surface features and anomalies</h3>
+      <p>Breaking Ground adds a survey scanner part you can fly or drive around to detect surface features
+      and anomalies on a body — points of interest worth a dedicated visit, similar in spirit to stock's
+      existing hidden Easter-egg anomalies but expanded and discoverable through normal gameplay instead of
+      by looking up coordinates online.</p>
+      <h3>EVA construction mode</h3>
+      <p>This is arguably the single biggest practical addition in either DLC: a Kerbal on EVA can enter a
+      construction mode and attach, detach, or reposition most parts directly on a craft, whether it's in
+      orbit or sitting on a surface.</p>
+      <div class="callout tip">
+        <div class="callout-title">Why this matters for station and ship building</div>
+        <p>Without EVA construction, on-orbit assembly means every module needs its own docking port, and
+        ports you no longer need stay attached forever as dead weight. With EVA construction, a Kerbal can
+        bolt a part straight onto a hull, swap a broken antenna, or rearrange a cluster of science parts
+        without a docking port anywhere in sight — a huge simplification for modular stations built across
+        multiple launches. See <a href="space-stations.html">Space Stations</a> for the base-game modular
+        approach this technique complements.</p>
+      </div>
+
+      <h2 id="comparison">Side-by-side comparison</h2>
+      <table>
+        <thead><tr><th>Feature</th><th>Making History</th><th>Breaking Ground</th></tr></thead>
+        <tbody>
+          <tr><td>Core addition</td><td>Mission Builder (custom scripted missions)</td><td>Robotics, deployable science, EVA construction, survey scanning</td></tr>
+          <tr><td>New parts</td><td>Historical-styled capsules/engines + stock-alike parts</td><td>Hinges, pistons, rotors, servos, science instruments, scanners</td></tr>
+          <tr><td>Changes normal play if unused</td><td>No</td><td>No</td></tr>
+          <tr><td>Best for</td><td>Players who want to script/share custom scenarios</td><td>Players who want new build styles and field capability</td></tr>
+          <tr><td>Learning curve to get value</td><td>Moderate (node editor to learn)</td><td>Low (parts work like other stock parts)</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="recommendation">Which one should you buy?</h2>
+      <p>If you can only pick one, most players get more day-to-day mileage out of <strong>Breaking Ground</strong>.
+      It expands what you can physically build — rovers with real suspension, deployable arrays, robotic arms,
+      long-term surface science, and EVA construction — and every one of those tools is useful in a completely
+      normal career or sandbox save without any extra setup. It's the bigger addition to your "sandbox toy box."</p>
+      <p><strong>Making History</strong> is worth it specifically if you want to build and share scripted
+      mission scenarios, run community mission packs, or enjoy designing objective-driven challenges rather
+      than open-ended play. If that doesn't sound like you, its extra parts alone are a much smaller draw.</p>
+      <div class="callout info">
+        <div class="callout-title">Both are compatible with everything else on this site</div>
+        <p>None of the other tutorials assume you own either DLC. Where a DLC tool makes a task meaningfully
+        easier, the relevant page mentions it briefly and links back here for depth.</p>
+      </div>
+
+      <h2 id="combining">Using both together</h2>
+      <p>The two DLCs don't overlap or conflict — Making History's Mission Builder and parts, and Breaking
+      Ground's robotics and EVA tools, live in completely separate systems and can both be installed at once
+      without any interaction to worry about. If budget allows and you're already sure KSP has hooked you,
+      owning both gives you the widest possible toolkit: script a custom mission in the Mission Builder that
+      specifically calls for deploying a Breaking Ground robotic arm or planting a long-term science station,
+      for example. That said, neither expansion requires the other, and plenty of players happily own just
+      one or neither.</p>
+      <p>A reasonable buying order for most people: start with no DLC, play through Getting Started, your
+      first Mun landing, and your first docking. If by that point you find yourself wanting more physical
+      build variety (rover suspension, deployable arrays, on-orbit repair), add Breaking Ground. If instead
+      you find yourself wanting to design specific scripted scenarios to share with friends or a community,
+      add Making History. There's no wrong order, and no rush — both expansions work identically whether you
+      buy them on day one or after a hundred hours of stock play.</p>
+
+      <h2 id="faq">Common questions</h2>
+      <table>
+        <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+        <tbody>
+          <tr><td>Do I need either DLC to reach any planet in the game?</td>
+              <td>No. Every body in the Kerbol system, including the outer planets and moons, is reachable
+              in pure stock. DLC parts don't unlock new destinations.</td></tr>
+          <tr><td>Does Breaking Ground add new celestial bodies?</td>
+              <td>No — it adds surface features and anomalies to existing bodies (found via its survey
+              scanner), not new planets or moons.</td></tr>
+          <tr><td>Can I use EVA construction without owning any robotic parts?</td>
+              <td>Yes. EVA construction mode works on ordinary stock parts too — attaching, detaching, and
+              repositioning isn't limited to Breaking Ground's own part set.</td></tr>
+          <tr><td>Will installing a DLC break my existing saves?</td>
+              <td>No — both DLCs are additive and safe to install into an existing save; your craft and
+              progress carry over unchanged.</td></tr>
+          <tr><td>Do the Mission Builder's custom missions require other players to own Making History?</td>
+              <td>Generally yes, since the mission file relies on the Mission Builder's systems and parts to
+              play back correctly.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="site-usage">How this guide treats DLC content</h2>
+      <p>This is the only page dedicated to the DLCs. Elsewhere, DLC-specific techniques are called out only
+      where relevant and kept brief — for example, the VAB build techniques discussion mentions robotics and
+      EVA construction as an option for advanced assemblies and points back to this page rather than
+      re-explaining Breaking Ground in full. If a page doesn't mention DLC at all, assume the technique it
+      covers is pure stock.</p>
+
+      <div class="pager">
+        <a class="prev" href="career-mode.html"><span class="dir">← Back</span>Career Mode</a>
+        <a class="next" href="planet-guides.html"><span class="dir">Next</span>Planet-by-Planet Guide →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

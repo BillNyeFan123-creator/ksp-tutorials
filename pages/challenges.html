@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Challenges &amp; Achievements — KSP Mission Manual</title>
+<meta name="description" content="Community-classic KSP challenges worth attempting once you've got the basics down, plus a milestone ladder for newer players.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="challenges">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 20 · Reference</div>
+      <h1>Challenges &amp; Achievements</h1>
+      <p class="page-sub">Community classics worth attempting once you've got the basics down, plus a
+      gentler milestone ladder if you're not there yet.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#jool-5">Jool-5</a></li>
+          <li><a href="#grand-tour">Grand Tour</a></li>
+          <li><a href="#eve-return">Eve Return</a></li>
+          <li><a href="#ssto">SSTO spaceplane challenges</a></li>
+          <li><a href="#no-kerbal-left-behind">No Kerbal Left Behind</a></li>
+          <li><a href="#other-classics">A few more community classics</a></li>
+          <li><a href="#personal-milestones">Personal milestones for newer players</a></li>
+        </ul>
+      </div>
+
+      <div class="body-card">
+        <h2 id="jool-5">Jool-5</h2>
+        <p><strong>Difficulty: Extreme.</strong> Land on and return from all five moons of Jool — Laythe,
+        Vall, Tylo, Bop, and Pol — in a single mission.</p>
+        <p>What makes it hard isn't any one landing, it's the combination: Tylo alone demands a Kerbin-launch-
+        grade Δv budget for landing <em>and</em> ascent because it's airless with Kerbin-level gravity, Laythe
+        needs aero-capable gear (wings, chutes, or both) that the other four moons don't, and you're managing
+        one mothership plus potentially several single-use or reusable landers across a mission that can run
+        into the hundreds of in-game days.</p>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Toughest leg</span><span class="stat-value">Tylo (land + ascend)</span></div>
+          <div class="stat-tile"><span class="stat-label">Easiest legs</span><span class="stat-value">Pol, Bop</span></div>
+          <div class="stat-tile"><span class="stat-label">Special gear needed</span><span class="stat-value">Laythe aero kit</span></div>
+        </div>
+        <p>Sequencing matters as much as hardware. Many attempts land on Pol and Bop first, since both are
+        cheap and low-risk, banking easy wins and confirming the mothership's systems all work before
+        committing to the two expensive, high-stakes legs at Tylo and Laythe. Tylo is usually saved for when
+        the mothership still has plenty of contingency fuel left, since it has the least margin for error of
+        any leg in the mission.</p>
+        <div class="callout tip">
+          <div class="callout-title">A workable approach</div>
+          <p>Most successful Jool-5 runs use a large mothership carrying one Tylo-capable lander (built to a
+          near-Kerbin-launch spec) and a separate, lighter reusable lander for the other four moons, refueled
+          between hops if you're bringing ISRU equipment. See <a href="advanced-maneuvers.html">Advanced
+          Maneuvers</a> for efficient multi-moon rendezvous planning and <a href="isru-mining.html">ISRU &amp;
+          Mining</a> if you want to refuel in-system instead of carrying everything from Kerbin.</p>
+        </div>
+        <div class="callout warn">
+          <div class="callout-title">Don't underestimate the mission clock</div>
+          <p>Between transfer windows, orbital adjustments inside the Jool system, and five separate
+          landings, a Jool-5 attempt commonly runs 300+ in-game days from launch to splashdown back at Kerbin.
+          Bring enough electric charge generation and life support margin (if you're running a life-support
+          mod) for a mission that long, not just enough Δv.</p>
+        </div>
+      </div>
+
+      <div class="body-card">
+        <h2 id="grand-tour">Grand Tour</h2>
+        <p><strong>Difficulty: High (orbit-only) to Extreme (full landings).</strong> Visit every body in the
+        Kerbol system in one continuous mission. "Visit" is commonly interpreted as achieving orbit at every
+        body as the minimum bar; landing on every landable body is the recognized "hard mode" version of the
+        same challenge.</p>
+        <p>The main difficulty is mission length and Δv stacking — you're planning a route through bodies
+        with wildly different orbital geometry (Moho and Eeloo especially) in a single craft or mothership
+        that has to carry enough margin for the whole trip. See the
+        <a href="planet-guides.html">Planet-by-Planet Guide</a> for a suggested visiting order that tackles
+        the easy bodies first and saves Moho and Eeloo for last.</p>
+        <p>Most Grand Tour attempts are built around a single large mothership with a nuclear-engine transfer
+        stage, carrying one or more general-purpose landers that get refueled or swapped out as the mission
+        goes on. Because the mission spans essentially the entire game's content, it's common to treat a
+        Grand Tour as a capstone project attempted only after you've already done Jool-5 and an Eve return
+        individually — trying all of it for the first time in one uninterrupted mission is a lot to debug at
+        once.</p>
+        <div class="callout tip">
+          <div class="callout-title">Orbit-only counts as a legitimate first attempt</div>
+          <p>If landing on all fifteen non-Kerbin bodies feels overwhelming, an orbit-only Grand Tour is
+          still a serious, respected achievement on its own, and a natural stepping stone toward the full
+          landing version later.</p>
+        </div>
+      </div>
+
+      <div class="body-card">
+        <h2 id="eve-return">Eve Return</h2>
+        <p><strong>Difficulty: Extreme — widely considered the single hardest stock challenge.</strong> Land
+        on Eve's surface, then launch back off to orbit and return the craft (ideally with its Kerbal alive)
+        to Kerbin.</p>
+        <p>The difficulty is almost entirely in the ascent: Eve's thick atmosphere plus high gravity means the
+        rocket that already had to land gently now needs a Δv budget that can exceed a full Kerbin launch, and
+        it has to carry that entire ascent stage down to the surface first without it being destroyed on
+        landing.</p>
+        <div class="callout warn">
+          <div class="callout-title">Two common design approaches</div>
+          <ul>
+            <li><strong>Very high part-count asparagus staging</strong> — a tall, heavily-staged ascent
+              vehicle that drops empty tanks continuously on the way up, maximizing effective ISP throughout
+              the climb.</li>
+              <li><strong>A low, wide lander that carries its own compact ascent rocket</strong> — prioritizes
+              landing stability and a shorter, more survivable touchdown, accepting a slightly less
+              optimal ascent shape in exchange for not tipping over on arrival.</li>
+          </ul>
+        </div>
+        <p>See the <a href="planet-guides.html#eve">Eve entry</a> in the Planet-by-Planet Guide and the
+        <a href="delta-v-map.html">Delta-v Map</a> for the specific numbers you're budgeting against.</p>
+      </div>
+
+      <div class="body-card">
+        <h2 id="ssto">SSTO spaceplane challenges</h2>
+        <p><strong>Difficulty: Moderate to High.</strong> Build a single-stage-to-orbit spaceplane — reusable,
+        no dropped stages — that takes off from a runway, reaches a stable orbit, and returns to land in one
+        piece. Variants include payload-fraction competitions (how much cargo can you deliver to orbit and
+        back) and round-trip challenges to Laythe, the only other stock body suited to the same flight profile.</p>
+        <p>Getting the intake-to-engine ratio and ascent profile right for hybrid air-breathing/rocket
+        propulsion is the core skill here. See <a href="aerodynamics-flight.html">Aerodynamics &amp; Flight</a>
+        for the fundamentals of building a craft that flies efficiently both in atmosphere and out of it.</p>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Common variant</span><span class="stat-value">Max payload fraction</span></div>
+          <div class="stat-tile"><span class="stat-label">Harder variant</span><span class="stat-value">Round trip to Laythe</span></div>
+          <div class="stat-tile"><span class="stat-label">Key skill</span><span class="stat-value">Intake/engine tuning</span></div>
+        </div>
+        <p>A common failure mode is an SSTO that flies beautifully in atmosphere but can't finish
+        circularizing once air-breathing intakes stop producing thrust near the edge of the atmosphere —
+        make sure your closed-cycle rocket mode alone has enough Δv to complete the orbit, not just get you
+        up to the edge of space. The reverse failure — plenty of rocket Δv but not enough wing area or intake
+        air to get through the thick lower atmosphere efficiently — is just as common on early attempts.</p>
+      </div>
+
+      <div class="body-card">
+        <h2 id="no-kerbal-left-behind">No Kerbal Left Behind</h2>
+        <p><strong>Difficulty: Self-imposed, scales with your risk tolerance.</strong> Play with Kerbal
+        respawn turned off and treat every mission as though deaths are permanent — no reverting to launch
+        after a bad decision costs a crew, no shrugging off a botched landing.</p>
+        <p>This isn't a single mission to complete so much as a standing ruleset for players who want higher
+        stakes on every launch. It pairs well with any of the challenges above — attempting Jool-5 or an Eve
+        return under a no-respawn rule raises the tension considerably, since a single mistake becomes
+        permanent instead of just expensive.</p>
+        <p>A lighter version some players prefer: keep respawn on, but adopt a personal rule that a Kerbal
+        death still "counts" against the mission (write it in the mission report, retire the vessel design,
+        whatever gives it weight) without the harsher permanence of losing them from the roster forever. The
+        goal either way is the same — making risk feel real again once quicksaving and reverts have made
+        early failures essentially free.</p>
+      </div>
+
+      <div class="body-card">
+        <h2 id="other-classics">A few more community classics</h2>
+        <p>Beyond the headline challenges above, a few other long-running community favorites are worth
+        knowing about once you're looking for more structured goals:</p>
+        <ul>
+          <li><strong>Kerbin flag-planting tour</strong> — plant a flag in every biome of a single body (often
+            Kerbin itself, or the Mun) using a rover or a series of short hops, a good low-stakes way to
+            practice precision landings without leaving the home system.</li>
+          <li><strong>Payload fraction competitions</strong> — maximize the ratio of payload mass to total
+            launch mass for a delivery to a fixed target orbit, a good complement to the SSTO challenge below
+            if you'd rather optimize a conventional staged rocket instead.</li>
+          <li><strong>Space station part-count or mass milestones</strong> — build and maintain a station past
+            a self-set threshold (say, 100 parts, or a full crew complement of 12), which tests your docking
+            and logistics skills as much as any single flight does.</li>
+          <li><strong>Asteroid redirect and capture</strong> — track down, rendezvous with, and tow a
+            wandering asteroid into a stable Kerbin orbit using a claw part, a puzzle in orbital mechanics and
+            docking precision rather than raw Δv.</li>
+        </ul>
+        <p>None of these carry quite the same reputation as Jool-5, the Grand Tour, or an Eve return, but
+        they're excellent for keeping a save interesting between attempts at the bigger goals.</p>
+      </div>
+
+      <h2 id="personal-milestones">Personal milestones for newer players</h2>
+      <p>Not ready for the community classics above? That's normal — they assume you've already got the
+      fundamentals down cold. Here's a natural progression through this site's own chapters that builds
+      toward them:</p>
+      <ol class="steps">
+        <li><strong>First orbit.</strong> Get any craft into a stable orbit around Kerbin and back down in one
+          piece. Covered in <a href="getting-started.html">Getting Started</a> and
+          <a href="building-rockets.html">Building Rockets</a>.</li>
+        <li><strong>First Mun landing.</strong> Land on and return from the Mun (or Minmus, which is
+          genuinely easier — see the <a href="planet-guides.html">Planet-by-Planet Guide</a>).</li>
+        <li><strong>First successful docking.</strong> Rendezvous and dock two craft in orbit without a
+          collision. See <a href="docking-rendezvous.html">Rendezvous &amp; Docking</a>.</li>
+        <li><strong>First working space station.</strong> Assemble a multi-module station from separate
+          launches. See <a href="space-stations.html">Space Stations</a>.</li>
+        <li><strong>First interplanetary landing.</strong> Duna is the standard first target — thin
+          atmosphere, aerobraking assist, and a moderate Δv budget. See
+          <a href="interplanetary-travel.html">Interplanetary Travel</a> and
+          <a href="landing-return.html">Landing &amp; Return</a>.</li>
+      </ol>
+      <div class="callout info">
+        <div class="callout-title">Once you've cleared all five</div>
+        <p>You've got the core skill set for every challenge on this page — orbital rendezvous, multi-launch
+        assembly, interplanetary transfers, and atmospheric landings. Jool-5, the Grand Tour, an Eve return,
+        or your first SSTO are all reasonable next targets from here.</p>
+      </div>
+      <p>A few intermediate milestones worth adding to the list once the five above feel routine, as a bridge
+      toward the community classics: a landing on Duna's moon Ike in the same mission as the main Duna
+      landing, a successful aerobrake capture (at Duna or Jool) instead of a fully propulsive one, a crewed
+      round trip that brings a Kerbal home alive from an interplanetary landing rather than just a probe, and
+      a station or base that's been kept crewed and running across more than one game year. None of these
+      need new hardware concepts beyond what the five core milestones already taught you — they're really
+      about combining and refining skills you already have.</p>
+      <table>
+        <thead><tr><th>Milestone</th><th>Chapter</th><th>Roughly as hard as</th></tr></thead>
+        <tbody>
+          <tr><td>First orbit</td><td>Getting Started / Building Rockets</td><td>An afternoon</td></tr>
+          <tr><td>First Mun or Minmus landing</td><td>Landing &amp; Return</td><td>A weekend</td></tr>
+          <tr><td>First docking</td><td>Rendezvous &amp; Docking</td><td>A few focused sessions</td></tr>
+          <tr><td>First space station</td><td>Space Stations</td><td>A multi-launch project</td></tr>
+          <tr><td>First interplanetary landing</td><td>Interplanetary Travel / Landing &amp; Return</td><td>A dedicated save's worth of practice</td></tr>
+        </tbody>
+      </table>
+
+      <div class="pager">
+        <a class="prev" href="delta-v-map.html"><span class="dir">← Back</span>Delta-v Map</a>
+        <a class="next" href="keyboard-shortcuts.html"><span class="dir">Next</span>Keyboard Shortcuts →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

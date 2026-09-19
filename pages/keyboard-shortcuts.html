@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keyboard Shortcuts — KSP Mission Manual</title>
+<meta name="description" content="The full stock control reference for flight, docking, the VAB/SPH, map view, and EVA — every default keybind in one place.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="keyboard-shortcuts">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 21 · Reference</div>
+      <h1>Keyboard Shortcuts</h1>
+      <p class="page-sub">The full control reference for flight, the VAB, and map view.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#flight-controls">Flight controls</a></li>
+          <li><a href="#translation-docking">Translation &amp; docking (RCS)</a></li>
+          <li><a href="#action-groups">Action groups</a></li>
+          <li><a href="#vab-sph">VAB / SPH building controls</a></li>
+          <li><a href="#map-view">Map view &amp; maneuver nodes</a></li>
+          <li><a href="#eva">Kerbal EVA controls</a></li>
+        </ul>
+      </div>
+
+      <p>Every table below lists the stock default keybind for a fresh KSP install. If a key on your machine
+      doesn't do what's listed here, check <strong>Settings → Input</strong> in-game — every one of these is
+      fully rebindable, and a handful of defaults have shifted slightly between KSP versions and localizations.
+      Treat this page as "where to start looking," not gospel carved in stone.</p>
+
+      <div class="callout info">
+        <div class="callout-title">Rebindable, and slightly version-dependent</div>
+        <p>All keybinds on this page live under <strong>Settings → Input</strong> (accessible from the main
+        menu or the in-flight pause menu) and can be freely reassigned per action, including separate bindings
+        for flight, EVA, and map view. A small number of defaults — mainly light toggles and some camera
+        controls — have moved around across major KSP updates, so if a control listed here doesn't respond,
+        open the Input settings and search for the action by name rather than assuming your keyboard is broken.</p>
+      </div>
+
+      <h2 id="flight-controls">Flight controls</h2>
+      <p>The core set you'll use on every single launch, from staging off the pad to timewarping through a
+      long coast.</p>
+      <table>
+        <thead><tr><th>Key</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><kbd>Space</kbd></td><td>Activate the next stage</td></tr>
+          <tr><td><kbd>W</kbd> / <kbd>S</kbd></td><td>Pitch down / up</td></tr>
+          <tr><td><kbd>A</kbd> / <kbd>D</kbd></td><td>Yaw left / right</td></tr>
+          <tr><td><kbd>Q</kbd> / <kbd>E</kbd></td><td>Roll left / right</td></tr>
+          <tr><td><kbd>Shift</kbd> (hold)</td><td>Throttle up</td></tr>
+          <tr><td><kbd>Ctrl</kbd> (hold)</td><td>Throttle down</td></tr>
+          <tr><td><kbd>Z</kbd></td><td>Set full throttle</td></tr>
+          <tr><td><kbd>X</kbd></td><td>Cut throttle to zero</td></tr>
+          <tr><td><kbd>T</kbd></td><td>Toggle SAS (Stability Assist)</td></tr>
+          <tr><td><kbd>R</kbd></td><td>Toggle RCS</td></tr>
+          <tr><td><kbd>B</kbd></td><td>Toggle brakes</td></tr>
+          <tr><td><kbd>G</kbd></td><td>Toggle landing gear / legs (deploy or retract)</td></tr>
+          <tr><td><kbd>Caps Lock</kbd></td><td>Toggle fine control (precision mode) — softens rotation and translation input for delicate work</td></tr>
+          <tr><td><kbd>M</kbd></td><td>Open/close map view</td></tr>
+          <tr><td><kbd>C</kbd></td><td>Toggle IVA / cockpit view</td></tr>
+          <tr><td><kbd>V</kbd></td><td>Cycle external camera modes</td></tr>
+          <tr><td>, (comma) / . (period)</td><td>Decrease / increase time warp level</td></tr>
+          <tr><td><kbd>F5</kbd></td><td>Quicksave</td></tr>
+          <tr><td><kbd>F9</kbd></td><td>Quickload</td></tr>
+          <tr><td><kbd>F3</kbd></td><td>Open flight results / mission log</td></tr>
+          <tr><td><kbd>F2</kbd></td><td>Hide all UI (useful for clean screenshots)</td></tr>
+          <tr><td><kbd>F1</kbd></td><td>Take a screenshot</td></tr>
+          <tr><td><kbd>Backspace</kbd></td><td>Trigger the Abort action group</td></tr>
+          <tr><td><kbd>Escape</kbd></td><td>Open the pause menu</td></tr>
+          <tr><td><kbd>[</kbd> / <kbd>]</kbd></td><td>Cycle "Control From Here" reference between docking ports / command parts</td></tr>
+        </tbody>
+      </table>
+      <div class="callout tip">
+        <div class="callout-title">Physics warp vs. on-rails warp</div>
+        <p>The comma/period time warp keys behave differently depending on whether you're under thrust. Coasting
+        with the engine off gives you fast, perfectly stable "on-rails" warp. Warping while a throttle is applied
+        engages physics warp instead, which keeps the physics simulation running (and can worsen wobble on large
+        or fragile craft) — see the <a href="troubleshooting.html">Troubleshooting</a> page for what goes wrong
+        when this is pushed too far.</p>
+      </div>
+
+      <h2 id="translation-docking">Translation &amp; docking (RCS)</h2>
+      <p>These only do anything once RCS is enabled (<kbd>R</kbd>) and the active craft has monopropellant and
+      RCS thrusters. They're most relevant during rendezvous and docking — see the
+      <a href="docking-rendezvous.html">Rendezvous &amp; Docking</a> page for the full procedure.</p>
+      <table>
+        <thead><tr><th>Key</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><kbd>H</kbd> / <kbd>N</kbd></td><td>Translate forward / backward</td></tr>
+          <tr><td><kbd>I</kbd> / <kbd>K</kbd></td><td>Translate up / down</td></tr>
+          <tr><td><kbd>J</kbd> / <kbd>L</kbd></td><td>Translate left / right</td></tr>
+          <tr><td><kbd>Caps Lock</kbd></td><td>Toggle precision mode — makes RCS taps and rotation input much gentler, essential for the last few meters of a docking approach</td></tr>
+        </tbody>
+      </table>
+      <div class="callout warn">
+        <div class="callout-title">Precision mode is easy to forget</div>
+        <p>Caps Lock is a toggle, not a hold — it's common to leave it on (or off) from a previous flight and
+        wonder why your RCS taps feel wrong. Check the small indicator near the navball before your final
+        approach.</p>
+      </div>
+
+      <h2 id="action-groups">Action groups</h2>
+      <p>Action groups let you bind arbitrary part actions (deploy solar panels, toggle a light, decouple a
+      specific stage, trigger science instruments) to a single keypress instead of hunting through right-click
+      menus mid-flight.</p>
+      <table>
+        <thead><tr><th>Key</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><kbd>1</kbd> – <kbd>9</kbd></td><td>Trigger custom action groups 1 through 9</td></tr>
+          <tr><td><kbd>0</kbd></td><td>Trigger the 10th custom action group</td></tr>
+          <tr><td><kbd>Backspace</kbd></td><td>Trigger the dedicated Abort group — conventionally wired to jettison/eject systems on crewed craft</td></tr>
+        </tbody>
+      </table>
+      <ol class="steps">
+        <li><strong>Select a part in the VAB/SPH</strong> and open its right-click context menu.</li>
+        <li><strong>Click the action group icon</strong> (or use the dedicated Action Groups tab in the
+          editor's left toolbar) to see which actions that part offers — deploy, toggle, activate, and so on.</li>
+        <li><strong>Assign the action to a numbered group</strong> by clicking the group number, then repeat for
+          any other parts that should fire together (for example, deploying every solar panel on the craft with
+          one keypress).</li>
+        <li><strong>Test it on the pad</strong> before you rely on it in flight — a mis-assigned action group is
+          much cheaper to catch on the launchpad than 20 minutes into a mission.</li>
+      </ol>
+
+      <h2 id="vab-sph">VAB / SPH building controls</h2>
+      <p>Controls for the Vehicle Assembly Building and Spaceplane Hangar, where you design craft.</p>
+      <table>
+        <thead><tr><th>Key / action</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td>Left-click + drag a part</td><td>Pick up and attach a part to the craft</td></tr>
+          <tr><td>Right-click a part</td><td>Open its context menu (info, fuel priority, actions)</td></tr>
+          <tr><td><kbd>R</kbd></td><td>Cycle radial symmetry (2x, 3x, 4x...)</td></tr>
+          <tr><td>Mouse scroll wheel</td><td>Zoom the camera in/out</td></tr>
+          <tr><td>Middle-mouse drag / arrow keys</td><td>Rotate the camera around the craft</td></tr>
+          <tr><td><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> <kbd>Q</kbd> <kbd>E</kbd> (while holding a part)</td><td>Rotate the held part along its axes before placing it</td></tr>
+        </tbody>
+      </table>
+      <p>The left-hand editor toolbar also has dedicated tool modes worth knowing by sight rather than by
+      keybind: the <strong>Offset</strong> tool nudges a placed part's position freely, the
+      <strong>Rotate</strong> tool spins a placed part without moving it, and the <strong>Root</strong> tool
+      lets you re-designate which part the whole craft tree is built from. There's also an
+      <strong>angle-snap</strong> toggle that locks rotation to fixed increments (handy for symmetric fins and
+      RCS ports) versus fully freehand rotation.</p>
+
+      <h2 id="map-view">Map view &amp; maneuver nodes</h2>
+      <p>Map view is where you plan orbits, set targets, and build maneuver nodes. See the
+      <a href="orbital-mechanics.html">Orbital Mechanics</a> page for the full maneuver-node workflow.</p>
+      <table>
+        <thead><tr><th>Key / action</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td><kbd>M</kbd></td><td>Toggle map view open/closed</td></tr>
+          <tr><td>Mouse scroll wheel</td><td>Zoom in/out</td></tr>
+          <tr><td>Click a body or vessel</td><td>Select it (shows its info card)</td></tr>
+          <tr><td>Right-click a vessel or body</td><td>Open options — Set as Target, Focus View, and similar</td></tr>
+          <tr><td>Click a point on an orbit line</td><td>Create a maneuver node at that point</td></tr>
+          <tr><td>Drag a node's colored handles</td><td>Adjust that node's prograde/retrograde, normal/antinormal, or radial components</td></tr>
+          <tr><td>Right-click a node</td><td>Open the numeric node editor, or delete the node</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="eva">Kerbal EVA controls</h2>
+      <p>Once a Kerbal is outside the craft (EVA), a separate control scheme takes over for walking, running,
+      and jetpacking around.</p>
+      <table>
+        <thead><tr><th>Key / action</th><th>Effect</th></tr></thead>
+        <tbody>
+          <tr><td>Right-click a pod, then choose EVA (or use the crew portrait's EVA button)</td><td>Send a Kerbal outside the craft</td></tr>
+          <tr><td><kbd>W</kbd> <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd></td><td>Walk / run forward, left, back, right</td></tr>
+          <tr><td>Hold <kbd>Shift</kbd> while moving</td><td>Sprint</td></tr>
+          <tr><td><kbd>Space</kbd></td><td>Jump, or fire the jetpack thruster in zero-g/low-g EVA</td></tr>
+          <tr><td><kbd>R</kbd></td><td>Toggle jetpack RCS-style translation mode when in open space</td></tr>
+          <tr><td><kbd>H</kbd> / <kbd>N</kbd> / <kbd>I</kbd> / <kbd>K</kbd> / <kbd>J</kbd> / <kbd>L</kbd></td><td>Jetpack translation (same layout as craft RCS) once the jetpack is active</td></tr>
+          <tr><td>Walk into a ladder or handrail</td><td>Grab on automatically for climbing back aboard</td></tr>
+          <tr><td>Right-click while near the ground</td><td>Plant a flag, or take a surface sample / EVA report, if the Kerbal is carrying the right equipment</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout tip">
+        <div class="callout-title">The ones worth memorizing first</div>
+        <ul>
+          <li><strong><kbd>F5</kbd> / <kbd>F9</kbd> — quicksave, quickload.</strong> Make this a reflex before
+            every risky maneuver. It's the single biggest quality-of-life habit in the whole game; see
+            <a href="troubleshooting.html">Troubleshooting</a> for why.</li>
+          <li><strong><kbd>Caps Lock</kbd> — precision/fine-control mode.</strong> Toggle it on for docking,
+            precise landings, and any time your inputs feel too twitchy.</li>
+          <li><strong><kbd>[</kbd> / <kbd>]</kbd> — cycle control point.</strong> Essential the moment you're
+            flying anything with more than one docking port or probe core.</li>
+          <li><strong>Alt+click behaviors in the editor.</strong> In many editor contexts, holding
+            <kbd>Alt</kbd> while clicking a part copies its current settings (like fuel priority or symmetry)
+            onto the next part you place — a fast way to keep a craft's tanks configured consistently without
+            re-editing each one by hand.</li>
+        </ul>
+      </div>
+
+      <div class="pager">
+        <a class="prev" href="challenges.html"><span class="dir">← Back</span>Challenges &amp; Achievements</a>
+        <a class="next" href="troubleshooting.html"><span class="dir">Next</span>Troubleshooting →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interplanetary Travel — KSP Mission Manual</title>
+<meta name="description" content="Transfer windows, ejection angles, and how to get from Kerbin to the Mun, Duna, Jool, and beyond — from your first Mun round trip to arrival and capture at another planet.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="interplanetary-travel">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 11 · Going Further</div>
+      <h1>Interplanetary Travel</h1>
+      <p class="page-sub">Transfer windows, ejection angles, and how to get from Kerbin to the Mun, Duna, Jool, and beyond.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#start-small">Start with the Mun and Minmus</a></li>
+          <li><a href="#windows">What is a transfer window?</a></li>
+          <li><a href="#finding-windows">Finding a window in-game</a></li>
+          <li><a href="#ejection">Executing the ejection burn</a></li>
+          <li><a href="#midcourse">Mid-course correction burns</a></li>
+          <li><a href="#arrival">Arrival: capture or aerobrake</a></li>
+          <li><a href="#bodies">Planets and moons at a glance</a></li>
+        </ul>
+      </div>
+
+      <h2 id="start-small">Start with the Mun and Minmus</h2>
+      <p>Before attempting another planet, get comfortable running a full round trip to Kerbin's own moons.
+      Every skill an interplanetary mission needs — plotting a transfer, capturing, landing, and coming home —
+      is exactly the same skill at a much smaller time and fuel cost, and a mistake here is far cheaper to
+      recover from than one four months into an interplanetary coast.</p>
+      <ol class="steps">
+        <li><strong>Get into a stable low Kerbin orbit.</strong></li>
+        <li><strong>Set the Mun (or Minmus) as your target</strong> and place a maneuver node on your orbit.</li>
+        <li><strong>Pull the node's prograde handle</strong> until the predicted path shows an encounter with
+          the target — a small closest-approach marker appears, or the trajectory visibly bends into the
+          target's sphere of influence.</li>
+        <li><strong>Execute the burn</strong> at the node, then coast (time warp is fine) until you approach
+          the target's sphere of influence.</li>
+        <li><strong>Burn retrograde near periapsis</strong> once inside the target's sphere of influence to
+          capture into orbit, then proceed to landing as covered in
+          <a href="landing-return.html">Landing &amp; Return</a>.</li>
+      </ol>
+      <div class="callout tip">
+        <div class="callout-title">Minmus is cheaper than it looks</div>
+        <p>Minmus needs a plane change most players skip on their first Mun trip (it orbits slightly inclined
+        relative to Kerbin's equator), but its very low gravity makes landing and re-launching dramatically
+        cheaper in Δv once you're there — a good second stop after the Mun.</p>
+      </div>
+
+      <h2 id="windows">What is a transfer window?</h2>
+      <p>Every planet and moon is constantly moving around whatever it orbits, and all at different speeds. A
+      <strong>transfer window</strong> is the specific stretch of time where the relative positions of your
+      starting body and your destination line up so that a single, reasonably efficient burn now will put you
+      on a path that meets the destination <em>where it will be</em> when you actually arrive — not where it is
+      today.</p>
+      <div class="callout warn">
+        <div class="callout-title">Launching outside the window is expensive, not impossible</div>
+        <p>You can technically burn toward a planet at any time, but missing the window means your transfer
+        orbit crosses the destination's orbit when the destination itself is nowhere near that point. Closing
+        that gap costs dramatically more Δv — often far more than a normal rocket carries — so window timing
+        isn't a nice-to-have, it's what makes the trip affordable at all.</p>
+      </div>
+
+      <h2 id="finding-windows">Finding a window in-game</h2>
+      <p>KSP doesn't show you a calendar of upcoming windows by default — you find one directly with the
+      maneuver node tool, zoomed out to solar-system scale.</p>
+      <ol class="steps">
+        <li><strong>Get into a stable low Kerbin orbit first</strong> — interplanetary transfers are planned
+          from orbit, not from the launchpad.</li>
+        <li><strong>Set your destination planet as target</strong> in map view.</li>
+        <li><strong>Place a maneuver node</strong> and pull the prograde handle out significantly. Zoom the
+          map view all the way out to solar-system scale so you can see your resulting solar orbit stretch
+          toward the target's orbit.</li>
+        <li><strong>Drag the node itself forward or backward in time</strong> along your current orbit while
+          re-adjusting the burn size, searching for the moment where your stretched trajectory's far end
+          lines up with where the target planet will actually be — shown by an encounter marker appearing on
+          the target's orbit line.</li>
+        <li><strong>Fine-tune the node</strong> once you have a rough encounter, nudging the prograde and any
+          small normal component until the closest-approach distance drops inside the target's sphere of
+          influence.</li>
+      </ol>
+      <div class="callout tip">
+        <div class="callout-title">This is fiddly by hand — that's normal</div>
+        <p>Finding a clean interplanetary encounter manually takes real practice, and even experienced players
+        spend a few minutes nudging a node. Many players also use an external transfer window planner tool
+        to get a rough launch date before ever opening the maneuver node, then fine-tune in-game from there.</p>
+      </div>
+
+      <h2 id="ejection">Executing the ejection burn</h2>
+      <p>The burn that sends you out of Kerbin's sphere of influence and onto an interplanetary trajectory is
+      called the <strong>ejection burn</strong>. It's most Δv-efficient when performed from a low parking
+      orbit, burning prograde at the specific point in your orbit that aims the resulting escape trajectory
+      correctly — that direction is the "ejection angle."</p>
+      <p>You don't need to calculate the ejection angle by hand. The maneuver node tool handles it
+      automatically: once you've dragged the node to a point in your orbit and shaped it into a good encounter
+      with the target planet, the game has effectively already found the correct ejection angle for you —
+      just execute the burn the node describes.</p>
+      <p>Kerbin's own escape Δv from a typical low parking orbit is roughly 950 m/s on top of what you already
+      spent reaching that orbit; the additional Δv needed to actually reach a given planet on top of that
+      escape burn varies a lot by destination and is covered in detail on the
+      <a href="delta-v-map.html">Delta-v Map</a> page.</p>
+
+      <h2 id="midcourse">Mid-course correction burns</h2>
+      <p>Interplanetary coasts can take many months of game time — use high time warp once you're safely on
+      your way. Partway through the trip, re-check your projected encounter in map view; it typically drifts
+      slightly from where it was right after the ejection burn, since the maneuver node math is only an
+      approximation at the moment you set it.</p>
+      <ol class="steps">
+        <li><strong>Wait until you're a good fraction of the way through the coast</strong> — corrections made
+          early are cheap but imprecise; too late and you may not have enough remaining time to react.</li>
+        <li><strong>Place a small new maneuver node</strong> partway along your current trajectory.</li>
+        <li><strong>Nudge it slightly</strong> to tighten your periapsis at the target down to exactly where
+          you want it — low enough for capture, or aimed at a specific atmospheric entry angle if you're
+          planning to aerobrake.</li>
+        <li><strong>Expect this to cost very little Δv</strong> compared to the ejection burn — that's the
+          whole point of catching drift early rather than trying to fix a bad approach at the last minute.</li>
+      </ol>
+
+      <h2 id="arrival">Arrival: capture or aerobrake</h2>
+      <ul>
+        <li><strong>Propulsive capture</strong> — burn retrograde near periapsis at the target to drop into a
+          stable orbit, exactly the same technique as circularizing after launch from Kerbin, just scaled to
+          the target body's own gravity.</li>
+        <li><strong>Aerobraking</strong> — for planets and moons with an atmosphere (Duna, Eve, Jool's moon
+          Laythe, and Kerbin itself for a return trip), you can fly your periapsis <em>through</em> the upper
+          atmosphere to bleed off velocity via drag over one or more passes, instead of burning fuel to
+          capture. This saves significant Δv but demands a heat-tolerant craft and a carefully chosen
+          periapsis.</li>
+      </ul>
+      <div class="callout danger">
+        <div class="callout-title">Aerobraking caution</div>
+        <p>Always check your craft's estimated survivable periapsis before committing to an aerobrake pass —
+        too low and you risk overheating or structural failure; too high and the pass does essentially
+        nothing. When in doubt, fly a shallow first pass to measure how much velocity you actually shed, then
+        adjust deeper on a second pass rather than diving straight in blind.</p>
+      </div>
+
+      <h2 id="bodies">Planets and moons at a glance</h2>
+      <p>This is a quick-reference summary only — deeper per-body tactics (best landing sites, ascent/descent
+      notes, common mistakes) live on the <a href="planet-guides.html">Planet-by-Planet Guide</a>, and the
+      full transfer Δv numbers for every destination live on the <a href="delta-v-map.html">Delta-v Map</a>.</p>
+      <table>
+        <thead><tr><th>Body</th><th>Personality / difficulty</th></tr></thead>
+        <tbody>
+          <tr><td>Moho</td><td>Closest to the Sun; small and airless, but a steep orbital inclination and eccentricity make an efficient transfer genuinely tricky — a deceptively hard "early" destination.</td></tr>
+          <tr><td>Eve &amp; Gilly</td><td>Thick atmosphere and high surface gravity make Eve infamous for being far easier to land on than to leave; tiny moon Gilly is one of the cheapest landings in the game.</td></tr>
+          <tr><td>Duna &amp; Ike</td><td>Thin atmosphere, Mars-like — the standard first interplanetary target. Supports aerobraking and parachutes; airless neighbor Ike is a cheap bonus landing from the same trip.</td></tr>
+          <tr><td>Dres</td><td>Small, airless, and often skipped — sits in an isolated, moderately inclined orbit that makes it a good "second planet" once you're comfortable with basic transfers.</td></tr>
+          <tr><td>Jool &amp; moons</td><td>A gas giant you can't land on, but its five moons (Laythe, Vall, Tylo, Bop, Pol) form an entire sub-system worth of destinations — Laythe in particular has an ocean and a landable atmosphere. A long, expensive, and rewarding trip.</td></tr>
+          <tr><td>Eeloo</td><td>A distant icy dwarf planet with a long transfer time and real fuel demands — a strong "final milestone" destination once earlier planets feel routine.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="pager">
+        <a class="prev" href="science-research.html"><span class="dir">← Back</span>Science &amp; Research</a>
+        <a class="next" href="advanced-maneuvers.html"><span class="dir">Next</span>Advanced Maneuvers →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

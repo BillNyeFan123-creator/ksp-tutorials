@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Troubleshooting — KSP Mission Manual</title>
+<meta name="description" content="Symptom-by-symptom fixes for wobbly rockets, Kraken attacks, dead probes, reentry failures, flameouts, bad docking approaches, and other common KSP disasters.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="troubleshooting">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 22 · Reference</div>
+      <h1>Troubleshooting</h1>
+      <p class="page-sub">Wobbly rockets, Kraken attacks, and other common disasters, diagnosed and fixed.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#flips-ascent">My rocket flips during ascent</a></li>
+          <li><a href="#wobble">My rocket wobbles violently under thrust</a></li>
+          <li><a href="#kraken">Everything exploded for no reason (the Kraken)</a></li>
+          <li><a href="#lost-probe">I lost control of my probe</a></li>
+          <li><a href="#reentry-failure">My spacecraft overheated or a part exploded on reentry</a></li>
+          <li><a href="#flameout">Engines flamed out unexpectedly</a></li>
+          <li><a href="#docking-wont-behave">My docking approach won't behave</a></li>
+          <li><a href="#scene-glitch">The game glitched on scene load / craft is stuck in the ground</a></li>
+        </ul>
+      </div>
+
+      <p>KSP fails loudly and specifically. Almost every "disaster" has a small number of common causes, and
+      once you can recognize the symptom you can usually fix it in under a minute. This page works as a
+      lookup: find the thing that just happened to you, read the likely causes, apply the fix.</p>
+
+      <h2 id="flips-ascent">My rocket flips during ascent</h2>
+      <div class="callout danger">
+        <div class="callout-title">Symptom</div>
+        <p>The rocket is climbing fine, then suddenly tumbles end-over-end, usually somewhere in the
+        30-60km range or right after a hard turn, and no amount of SAS or manual input brings it back under
+        control.</p>
+      </div>
+      <p>This is aerodynamic, not structural — your rocket's center of pressure has ended up ahead of its
+      center of mass while moving fast enough for air to matter, so any small deviation from prograde gets
+      amplified instead of damped.</p>
+      <table>
+        <thead><tr><th>Likely cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Going too fast, too low, still deep in thick atmosphere</td><td>Throttle back slightly through max-Q (roughly 10-13km) instead of holding full throttle the whole way up.</td></tr>
+          <tr><td>Turning too sharply during the gravity turn</td><td>Start the turn earlier and make it gradual — a few degrees at a time rather than one aggressive pitch-over.</td></tr>
+          <tr><td>Insufficient fin authority at the tail</td><td>Add or upsize control surfaces/fins at the back of the rocket to pull the center of pressure aft of the center of mass.</td></tr>
+          <tr><td>Asymmetric design (uneven radial parts, off-center payload)</td><td>Check symmetry in the VAB; an unevenly loaded rocket wants to rotate even with perfect flying.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout tip">
+        <div class="callout-title">SAS is a bandage, not a cure</div>
+        <p>If SAS is fighting hard to hold prograde, that's a sign the underlying aerodynamic design is
+        unstable, not that you need a stronger reaction wheel. Fix the fins/CoM balance first — SAS should only
+        be nudging, not wrestling.</p>
+      </div>
+
+      <h2 id="wobble">My rocket wobbles violently under thrust</h2>
+      <div class="callout warn">
+        <div class="callout-title">Symptom</div>
+        <p>The rocket visibly flexes or oscillates along its length under thrust, sometimes feeding back into
+        a worsening wobble until something snaps off.</p>
+      </div>
+      <p>This is a joint-rigidity problem: KSP's part connections have some give, and long stacks or
+      heavy off-axis parts can turn that give into a visible, growing oscillation.</p>
+      <table>
+        <thead><tr><th>Likely cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Long, unsupported stack of tanks</td><td>Break the stack up with struts, or use fewer/larger tanks instead of many small stacked ones.</td></tr>
+          <tr><td>Heavy parts attached radially (boosters, landers, rovers)</td><td>Strut them directly to the core stack rather than relying on the single attachment node.</td></tr>
+          <tr><td>Too few struts overall on a tall rocket</td><td>Add physical struts between stages, especially across decouplers, which are naturally floppy joints.</td></tr>
+        </tbody>
+      </table>
+      <h3>Autostrut settings, explained</h3>
+      <p>Right-clicking most parts in the editor exposes an <strong>Autostrut</strong> option, which rigidly
+      pins that part's position relative to another part without needing a visible strut model. There are three
+      modes worth knowing:</p>
+      <ul>
+        <li><strong>Grandparent part</strong> — autostruts to the part two levels up the part tree from this
+          one. Good general-purpose choice for parts partway up a stack, since it distributes rigidity along
+          the tree without everything anchoring to one single point.</li>
+        <li><strong>Heaviest part</strong> — autostruts to whichever part on the vessel currently has the most
+          mass, which is often a fuel tank low in the stack. Useful for stabilizing parts that need to stay
+          rigid relative to the craft's main mass, like landing legs or heavy radial boosters.</li>
+        <li><strong>Root part</strong> — autostruts directly to the vessel's root part. The most aggressive
+          option; great for keeping a whole tall rocket rigid, but can look physically odd (parts refusing to
+          flex at all) and won't survive if the root part itself is later decoupled away.</li>
+      </ul>
+      <div class="callout tip">
+        <div class="callout-title">Reducing part count also helps</div>
+        <p>Every joint is a potential wobble source. A rocket built from fewer, larger parts is inherently
+        stiffer than the same design built from many small parts chained together, independent of any
+        strutting you add.</p>
+      </div>
+
+      <h2 id="kraken">Everything exploded for no reason (the Kraken)</h2>
+      <div class="callout danger">
+        <div class="callout-title">Symptom</div>
+        <p>Your craft violently disassembles itself with no collision, no overheating, and no obvious player
+        error — parts fly off at absurd speeds, or the whole vessel is destroyed instantly.</p>
+      </div>
+      <p>"The Kraken" is the community's nickname for physics-engine glitches that cause this kind of
+      uncommanded, physically nonsensical destruction. It isn't a single bug — it's a family of edge cases in
+      how KSP's physics simulation handles extreme situations. Common triggers:</p>
+      <ul>
+        <li><strong>Excessive part clipping</strong> — parts overlapping heavily in the editor can suddenly
+          "resolve" that overlap violently once physics loads in.</li>
+        <li><strong>Extreme timewarp while under thrust</strong>, or while docked to something under load —
+          physics warp keeps the simulation running at a multiplier it wasn't designed to handle smoothly,
+          and joints or colliders can snap.</li>
+        <li><strong>Very high part counts</strong> feeding a wobble back on itself — see the section above;
+          enough unstable joints compounding each other can spiral into a full Kraken event rather than just a
+          visible wiggle.</li>
+      </ul>
+      <div class="callout tip">
+        <div class="callout-title">Mitigation</div>
+        <ul>
+          <li>Avoid timewarping while your engines are firing — throttle down to zero before warping, and only
+            warp under thrust in short, cautious increments if you must.</li>
+          <li>Save on-rails (non-physics) warp for coasting between burns; it's perfectly stable at any
+            multiplier since physics isn't being simulated during it.</li>
+          <li>Keep an eye on part count and clipping on very large stations or ships — if a design is
+            borderline wobbly at low part count, doubling it up rarely goes well.</li>
+        </ul>
+      </div>
+
+      <h2 id="lost-probe">I lost control of my probe</h2>
+      <div class="callout warn">
+        <div class="callout-title">Symptom</div>
+        <p>The probe stops responding to input — SAS won't engage, staging doesn't fire, or the control
+        indicator shows the craft as uncontrolled.</p>
+      </div>
+      <table>
+        <thead><tr><th>Likely cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Dead battery / no electric charge</td><td>Check the electric charge readout — an unpowered probe core can't process commands. Add solar panels, RTGs, or fuel cells, and manage power draw during eclipses.</td></tr>
+          <tr><td>Lost CommNet signal</td><td>Check your CommNet connection in map view — a probe with no relay path back to Kerbin (or no direct antenna range) loses most command capability. Add a stronger antenna or route through a relay satellite.</td></tr>
+        </tbody>
+      </table>
+      <p>A probe with a pilot-equivalent onboard (some advanced probe cores) can retain partial autonomous
+      control even without signal, but most basic probe cores need an active connection for anything beyond
+      holding SAS.</p>
+
+      <h2 id="reentry-failure">My spacecraft overheated or a part exploded on reentry</h2>
+      <div class="callout danger">
+        <div class="callout-title">Symptom</div>
+        <p>Parts start flashing orange/white on the way down through atmosphere, then explode, sometimes
+        taking the whole craft with them.</p>
+      </div>
+      <table>
+        <thead><tr><th>Likely cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Reentry angle too steep or too fast</td><td>Aim for a shallower entry — a lower, more grazing periapsis bleeds speed over a longer path instead of dumping all the heat at once.</td></tr>
+          <tr><td>Missing or undersized heat shield</td><td>Add a heat shield with enough ablator for the reentry speed involved (interplanetary returns need much more ablator than a simple Kerbin orbital reentry).</td></tr>
+          <tr><td>Wrong orientation during entry</td><td>Present a blunt, heat-shielded end first rather than a pointy or unshielded side — the shield is only protecting whatever it's actually facing into the airflow.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="flameout">Engines flamed out unexpectedly</h2>
+      <div class="callout warn">
+        <div class="callout-title">Symptom</div>
+        <p>An engine cuts out mid-burn even though the stage should still have fuel left, or fuel gauges show
+        remaining propellant that the engine isn't drawing on.</p>
+      </div>
+      <table>
+        <thead><tr><th>Likely cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Genuinely out of fuel or oxidizer in that stage's tanks</td><td>Check the VAB Δv readout before launch so you know how much margin the stage actually has.</td></tr>
+          <tr><td>Fuel flow/priority issues between tanks</td><td>Check tank fuel-flow priority in the right-click menu — fuel can be trapped in a tank that isn't feeding the active engine if priorities or crossfeed are misconfigured.</td></tr>
+          <tr><td>Asparagus staging fuel duct misconfiguration</td><td>Confirm fuel ducts/lines are pointed the right direction (feeding inward toward the core) and that the outer tanks are set to drain before the core empties.</td></tr>
+        </tbody>
+      </table>
+
+      <h2 id="docking-wont-behave">My docking approach won't behave</h2>
+      <div class="callout warn">
+        <div class="callout-title">Symptom</div>
+        <p>The craft won't hold still, drifts unpredictably, or SAS seems to be actively fighting your
+        attempts to line up with the target port.</p>
+      </div>
+      <table>
+        <thead><tr><th>Likely cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>SAS in the wrong mode</td><td>Make sure you're using a target-relative SAS hold (target prograde/retrograde, or point-at-target) rather than a plain orbital hold, which won't track a moving target.</td></tr>
+          <tr><td>RCS not enabled</td><td>Toggle RCS on (<kbd>R</kbd>) — without it, fine translation is impossible and you'll be fighting the main engine or reaction wheels alone.</td></tr>
+          <tr><td>Navball in the wrong reference mode</td><td>Switch the navball to Target mode so velocity readouts reflect your motion relative to the target, not relative to the body you're orbiting.</td></tr>
+        </tbody>
+      </table>
+      <p>For the full step-by-step approach procedure, see the <a href="docking-rendezvous.html">Rendezvous
+      &amp; Docking</a> page.</p>
+
+      <h2 id="scene-glitch">The game glitched on scene load / craft is stuck in the ground</h2>
+      <div class="callout info">
+        <div class="callout-title">Symptom</div>
+        <p>A vessel loads partially clipped into terrain or the launchpad, jitters violently, or is destroyed
+        the instant a scene finishes loading — before you've done anything at all.</p>
+      </div>
+      <p>This one is a known engine quirk rather than a design mistake on your part — physics colliders
+      sometimes haven't fully settled the instant a scene loads, especially on complex craft or busy scenes
+      like a crowded launchpad. It's usually not worth debugging further. The fast fix is simply:</p>
+      <ol class="steps">
+        <li><strong>Revert to launch</strong> from the pause menu if you're still early in the flight.</li>
+        <li><strong>Reload a recent quicksave</strong> with <kbd>F9</kbd> if reverting isn't available.</li>
+        <li><strong>Use the recovery option</strong> on a badly stuck vessel if neither of the above applies,
+          then relaunch.</li>
+      </ol>
+
+      <div class="callout tip">
+        <div class="callout-title">The best general-purpose defense: quicksave aggressively</div>
+        <p>Every single failure mode on this page is far less costly if you were quicksaving along the way.
+        Get in the habit of hitting <kbd>F5</kbd> before every risky maneuver, staging event, or atmospheric
+        entry, and <kbd>F9</kbd> the instant something goes wrong — see the full key reference on the
+        <a href="keyboard-shortcuts.html">Keyboard Shortcuts</a> page.</p>
+      </div>
+
+      <div class="pager">
+        <a class="prev" href="keyboard-shortcuts.html"><span class="dir">← Back</span>Keyboard Shortcuts</a>
+        <a class="next" href="tips-mods.html"><span class="dir">Next</span>Tips &amp; Mods →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

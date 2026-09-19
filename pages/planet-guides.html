@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planet-by-Planet Guide — KSP Mission Manual</title>
+<meta name="description" content="Specific tactics, hazards, and recommended landing/ascent approaches for every body in the Kerbol system.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="planet-guides">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 18 · Reference</div>
+      <h1>Planet-by-Planet Guide</h1>
+      <p class="page-sub">Specific tactics, hazards, and recommended approaches for every body in the Kerbol
+      system, in the order you'll typically reach them.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#moho">Moho</a></li>
+          <li><a href="#eve">Eve</a></li>
+          <li><a href="#gilly">Gilly</a></li>
+          <li><a href="#mun">Mun</a></li>
+          <li><a href="#minmus">Minmus</a></li>
+          <li><a href="#duna">Duna</a></li>
+          <li><a href="#ike">Ike</a></li>
+          <li><a href="#dres">Dres</a></li>
+          <li><a href="#jool">Jool</a></li>
+          <li><a href="#laythe">Laythe</a></li>
+          <li><a href="#vall">Vall</a></li>
+          <li><a href="#tylo">Tylo</a></li>
+          <li><a href="#bop">Bop</a></li>
+          <li><a href="#pol">Pol</a></li>
+          <li><a href="#eeloo">Eeloo</a></li>
+          <li><a href="#visiting-order">Suggested visiting order</a></li>
+        </ul>
+      </div>
+
+      <div class="body-card">
+        <h2 id="moho">Moho</h2>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Radius</span><span class="stat-value">250 km</span></div>
+          <div class="stat-tile"><span class="stat-label">Gravity</span><span class="stat-value">~2.7 m/s²</span></div>
+          <div class="stat-tile"><span class="stat-label">Atmosphere</span><span class="stat-value">None</span></div>
+          <div class="stat-tile"><span class="stat-label">Moons</span><span class="stat-value">None</span></div>
+        </div>
+        <p>Moho is the innermost planet and, despite being small and low-gravity, is one of the hardest bodies
+        in the game to actually reach efficiently. Its orbit is both highly inclined (~7°) and highly
+        eccentric relative to Kerbin's, so a cheap transfer window is rare and a poorly-timed one can cost
+        far more Δv in plane-change alone than the transfer itself.</p>
+        <p>Once you arrive, landing is easy: low gravity, no atmosphere, and (once captured) you can take your
+        time picking a flat spot. The real budget goes into getting there and matching planes, not the final
+        descent.</p>
+        <div class="callout warn">
+          <div class="callout-title">Common mistake</div>
+          <p>Burning for a Moho transfer at a random point in your orbit instead of correcting Moho's orbital
+          inclination near one of the two nodes where your orbit and Moho's orbit cross. Doing the plane
+          change separately (and cheaply, near a node, ideally combined with your ejection burn) instead of
+          fighting it during capture saves an enormous amount of Δv.</p>
+        </div>
+        <p>Expect extreme day/night temperature swings on the surface — panels and radiators matter more here
+        than almost anywhere else in the system.</p>
+      </div>
+
+      <div class="body-card">
+        <h2 id="eve">Eve</h2>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Radius</span><span class="stat-value">700 km</span></div>
+          <div class="stat-tile"><span class="stat-label">Gravity</span><span class="stat-value">~16.7 m/s²</span></div>
+          <div class="stat-tile"><span class="stat-label">Atmosphere</span><span class="stat-value">~90 km (thick)</span></div>
+          <div class="stat-tile"><span class="stat-label">Moons</span><span class="stat-value">Gilly</span></div>
+        </div>
+        <p>Eve is the purple-tinted trap of the Kerbol system. Its thick atmosphere and high gravity make
+        <em>landing</em> comparatively forgiving — parachutes work well low down, and the dense air slows you
+        dramatically before you're anywhere near the surface. Getting back off is the problem.</p>
+        <p>An Eve ascent vehicle needs a Δv budget that rivals or exceeds a full Kerbin launch, delivered by an
+        engine that still performs at high atmospheric pressure and low altitude — meaning you want
+        high-thrust, high-ISP-at-sea-level engines and a low, wide craft rather than a tall thin one, since
+        Eve's ascent profile fights heavy drag the entire way up. Many players land the entire ascent rocket
+        fueled and ready, then simply light it from the surface rather than trying to build anything on-site.</p>
+        <div class="callout danger">
+          <div class="callout-title">This is the hardest single ascent in stock KSP</div>
+          <p>Getting off Eve's surface back to orbit can cost 8,000 m/s of Δv or more depending on your ascent
+          profile and starting altitude — by far the most expensive maneuver in the stock game. Budget for it
+          specifically; don't assume "a bit more than Kerbin" is enough.</p>
+        </div>
+        <p>Landing at higher elevation (lower atmospheric pressure at the biome you land in) meaningfully
+        reduces the ascent cost, which is why many Eve-return attempts specifically target high ground.</p>
+      </div>
+
+      <div class="body-card">
+        <h2 id="gilly">Gilly</h2>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Radius</span><span class="stat-value">~13 km</span></div>
+          <div class="stat-tile"><span class="stat-label">Gravity</span><span class="stat-value">~0.049 m/s²</span></div>
+          <div class="stat-tile"><span class="stat-label">Atmosphere</span><span class="stat-value">None</span></div>
+          <div class="stat-tile"><span class="stat-label">Moons of</span><span class="stat-value">Eve</span></div>
+        </div>
+        <p>Gilly's gravity is so low it barely qualifies as a landing at all — it's closer to docking with an
+        irregularly-shaped rock. Both landing and takeoff are individually easy in terms of Δv, but the low
+        gravity makes precision hard: a slightly-too-fast approach or a firm RCS tap can send you drifting
+        back off the surface entirely.</p>
+        <div class="callout tip">
+          <div class="callout-title">Practical tip</div>
+          <p>Kill your relative velocity almost completely before touching down, and consider anchoring with
+          landing legs' brakes rather than relying on gravity to keep you put. Overshooting your intended
+          landing spot due to residual velocity is the single most common Gilly mistake.</p>
+        </div>
+      </div>
+
+      <div class="body-card">
+        <h2 id="mun">Mun</h2>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Radius</span><span class="stat-value">200 km</span></div>
+          <div class="stat-tile"><span class="stat-label">Gravity</span><span class="stat-value">~1.63 m/s²</span></div>
+          <div class="stat-tile"><span class="stat-label">Atmosphere</span><span class="stat-value">None</span></div>
+          <div class="stat-tile"><span class="stat-label">Moons of</span><span class="stat-value">Kerbin</span></div>
+        </div>
+        <p>The classic first landing target, and for good reason — it's close, airless (so no aerodynamics to
+        worry about), and has a good mix of flat maria-like plains for easy landings plus cratered, mountainous
+        highlands for players wanting more of a challenge or specific science biomes.</p>
+        <p>Approach: get into low Mun orbit, pick a landing site with a low-angle descent so you have time to
+        react, and kill horizontal velocity well before you kill vertical velocity — the Mun's terrain is
+        rougher than it looks from orbit, and a fast final descent over broken ground is the most common
+        source of tipped-over landers.</p>
+      </div>
+
+      <div class="body-card">
+        <h2 id="minmus">Minmus</h2>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Radius</span><span class="stat-value">60 km</span></div>
+          <div class="stat-tile"><span class="stat-label">Gravity</span><span class="stat-value">~0.491 m/s²</span></div>
+          <div class="stat-tile"><span class="stat-label">Atmosphere</span><span class="stat-value">None</span></div>
+          <div class="stat-tile"><span class="stat-label">Moons of</span><span class="stat-value">Kerbin</span></div>
+        </div>
+        <p>Minmus is the easiest body in the game to land on and return from, despite orbiting farther out
+        than the Mun. Its low gravity keeps every maneuver cheap, and its large flat "flats" biomes give you
+        an enormous margin for error on your final approach — you can come in shallow, take your time, and
+        still land comfortably within a small patch of level ground.</p>
+        <div class="callout tip">
+          <div class="callout-title">Recommended as your actual first landing</div>
+          <p>Even though the Mun is visually closer and more commonly attempted first, Minmus is genuinely
+          cheaper Δv round-trip and far more forgiving on touchdown. If your first lander is underpowered,
+          try Minmus before the Mun.</p>
+        </div>
+      </div>
+
+      <div class="body-card">
+        <h2 id="duna">Duna</h2>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Radius</span><span class="stat-value">320 km</span></div>
+          <div class="stat-tile"><span class="stat-label">Gravity</span><span class="stat-value">~2.94 m/s²</span></div>
+          <div class="stat-tile"><span class="stat-label">Atmosphere</span><span class="stat-value">~50 km (thin)</span></div>
+          <div class="stat-tile"><span class="stat-label">Moons</span><span class="stat-value">Ike</span></div>
+        </div>
+        <p>Duna is the classic first interplanetary target, and the Mars comparison is deliberate — a thin
+        atmosphere that's too weak to land on parachutes alone from orbital speed, but plenty useful for
+        aerobraking into capture and for slowing a lander in its final descent phase alongside a modest
+        amount of powered braking.</p>
+        <p>Approach: aerobrake on arrival to cut capture Δv to almost nothing, then use a combination of
+        parachutes and a short retro-burn for the actual landing. Ascent back to orbit costs meaningfully
+        less than descent-from-transfer because you're only fighting Duna's own gravity, not shedding
+        interplanetary arrival speed.</p>
+        <div class="callout warn">
+          <div class="callout-title">Common mistake</div>
+          <p>Relying on parachutes alone the way you would on Kerbin. Duna's atmosphere is thin enough that
+          chutes need to be sized generously and deployed with a powered assist for a safe touchdown,
+          especially at higher-elevation landing sites.</p>
+        </div>
+      </div>
+
+      <div class="body-card">
+        <h2 id="ike">Ike</h2>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Radius</span><span class="stat-value">130 km</span></div>
+          <div class="stat-tile"><span class="stat-label">Gravity</span><span class="stat-value">~1.1 m/s²</span></div>
+          <div class="stat-tile"><span class="stat-label">Atmosphere</span><span class="stat-value">None</span></div>
+          <div class="stat-tile"><span class="stat-label">Moon of</span><span class="stat-value">Duna</span></div>
+        </div>
+        <p>Ike is tidally locked to Duna and airless, making it a straightforward Mun-style landing once
+        you're in the Duna system. It's a convenient refueling or staging point for a Duna mission since it
+        shares Duna's sphere of influence and is cheap to reach from Duna orbit.</p>
+        <p>One practical tip: Ike's low gravity and lack of atmosphere mean an ascent stage sized for Duna
+        landings is comfortably overpowered here — if you're running a combined Duna/Ike mission, don't
+        over-build a separate Ike-specific lander.</p>
+      </div>
+
+      <div class="body-card">
+        <h2 id="dres">Dres</h2>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Radius</span><span class="stat-value">138 km</span></div>
+          <div class="stat-tile"><span class="stat-label">Gravity</span><span class="stat-value">~1.13 m/s²</span></div>
+          <div class="stat-tile"><span class="stat-label">Atmosphere</span><span class="stat-value">None</span></div>
+          <div class="stat-tile"><span class="stat-label">Moons</span><span class="stat-value">None</span></div>
+        </div>
+        <p>Dres sits in a lonely, asteroid-belt-like gap between Duna and Jool, and the community has more or
+        less made a running joke of how often it gets skipped ("the forgotten planet"). Its orbit is
+        noticeably inclined relative to the ecliptic, which makes finding a cheap transfer window slightly
+        more annoying than the modest Δv numbers alone would suggest.</p>
+        <p>Once you're there, though, it's an easy landing — low gravity, no atmosphere, no real hazards.
+        The entire difficulty of Dres is the trip out, not the arrival.</p>
+        <div class="callout tip">
+          <div class="callout-title">Don't actually forget it</div>
+          <p>If you're doing a Grand Tour, plan Dres in on the way past rather than as a dedicated special
+          trip — the inclination penalty is smaller if you correct it early, combined with your ejection burn.</p>
+        </div>
+      </div>
+
+      <div class="body-card">
+        <h2 id="jool">Jool</h2>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Radius</span><span class="stat-value">6,000 km</span></div>
+          <div class="stat-tile"><span class="stat-label">Gravity</span><span class="stat-value">N/A (gas giant)</span></div>
+          <div class="stat-tile"><span class="stat-label">Atmosphere</span><span class="stat-value">Extremely thick</span></div>
+          <div class="stat-tile"><span class="stat-label">Moons</span><span class="stat-value">5 (Laythe, Vall, Tylo, Bop, Pol)</span></div>
+        </div>
+        <p>Jool cannot be landed on — any craft descending into its atmosphere is crushed or destroyed well
+        above where a solid surface would even be, if one exists at all. Treat it purely as a gravity well
+        with five very different moons around it.</p>
+        <p>Jool's atmosphere is however extremely useful for aerocapture: a well-shielded craft can shed a
+        huge amount of interplanetary arrival speed on a single pass through the upper layers before settling
+        into a Jool-orbiting trajectory, saving a large propulsive capture burn. Just don't go deep enough to
+        get destroyed — margins for error shrink fast here.</p>
+      </div>
+
+      <div class="body-card">
+        <h2 id="laythe">Laythe</h2>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Radius</span><span class="stat-value">500 km</span></div>
+          <div class="stat-tile"><span class="stat-label">Gravity</span><span class="stat-value">~7.85 m/s²</span></div>
+          <div class="stat-tile"><span class="stat-label">Atmosphere</span><span class="stat-value">~50 km + oceans</span></div>
+          <div class="stat-tile"><span class="stat-label">Moon of</span><span class="stat-value">Jool</span></div>
+        </div>
+        <p>Laythe is the only other stock body with a breathable-<em>pressure</em> atmosphere (not
+        breathable composition) and liquid oceans, making it the go-to "second Kerbin" for spaceplane and
+        parachute landings alike. It's a very popular colonization and challenge target for exactly that
+        reason.</p>
+        <p>Approach: you can fly it much like Kerbin — wings work, parachutes work, and a runway-style
+        spaceplane landing is entirely viable if you brought one this far. Just remember Laythe's gravity is
+        noticeably lower than Kerbin's, so your approach speeds and stall behavior will differ.</p>
+        <div class="callout tip">
+          <div class="callout-title">Land near a coastline</div>
+          <p>Laythe's mix of ocean and land biomes means a coastal landing site gives you easy access to both
+          science biome types without a long overland or oversea trip afterward.</p>
+        </div>
+      </div>
+
+      <div class="body-card">
+        <h2 id="vall">Vall</h2>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Radius</span><span class="stat-value">300 km</span></div>
+          <div class="stat-tile"><span class="stat-label">Gravity</span><span class="stat-value">~2.31 m/s²</span></div>
+          <div class="stat-tile"><span class="stat-label">Atmosphere</span><span class="stat-value">None</span></div>
+          <div class="stat-tile"><span class="stat-label">Moon of</span><span class="stat-value">Jool</span></div>
+        </div>
+        <p>Vall is icy, airless, and moderate in difficulty — its gravity is high enough that you can't just
+        float down like Pol or Bop, but nowhere near Tylo's brutal numbers. Terrain can be deceptively steep
+        in places, so pick landing sites with the same care you'd use on the Mun.</p>
+        <p>A standard powered descent with a wide, low lander works fine. Budget a bit more Δv margin here
+        than an airless-body landing might otherwise suggest, purely because of local terrain unpredictability.</p>
+      </div>
+
+      <div class="body-card">
+        <h2 id="tylo">Tylo</h2>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Radius</span><span class="stat-value">600 km</span></div>
+          <div class="stat-tile"><span class="stat-label">Gravity</span><span class="stat-value">~7.85 m/s²</span></div>
+          <div class="stat-tile"><span class="stat-label">Atmosphere</span><span class="stat-value">None</span></div>
+          <div class="stat-tile"><span class="stat-label">Moon of</span><span class="stat-value">Jool</span></div>
+        </div>
+        <p>Tylo is the trap of the Jool system: it's the same size as Kerbin and has Kerbin-comparable surface
+        gravity, but zero atmosphere. That means no aerobraking on the way in and no parachutes on the way
+        down — every m/s of your descent and every m/s of your ascent has to come from your engines.</p>
+        <div class="callout danger">
+          <div class="callout-title">Plan for a Kerbin-liftoff-grade lander</div>
+          <p>A Tylo lander needs a Δv budget and TWR comparable to a full Kerbin launch, both for landing and
+          for getting back to orbit — roughly 2,800+ m/s each way. Underestimating Tylo because "it's just
+          another moon" is one of the most common reasons a Jool-5 attempt fails.</p>
+        </div>
+        <p>Because of this, most successful Tylo landers are purpose-built and separate from whatever handles
+        the system's other, much cheaper moons.</p>
+      </div>
+
+      <div class="body-card">
+        <h2 id="bop">Bop</h2>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Gravity</span><span class="stat-value">~0.589 m/s²</span></div>
+          <div class="stat-tile"><span class="stat-label">Atmosphere</span><span class="stat-value">None</span></div>
+          <div class="stat-tile"><span class="stat-label">Moon of</span><span class="stat-value">Jool</span></div>
+          <div class="stat-tile"><span class="stat-label">Shape</span><span class="stat-value">Irregular</span></div>
+        </div>
+        <p>Bop is small, irregularly shaped (it reads like a captured asteroid), and sits on a tumbling,
+        eccentric orbit around Jool. Its low gravity makes landing and ascent cheap, but the irregular terrain
+        and orbit mean your approach planning benefits from extra patience — don't rush the rendezvous.</p>
+      </div>
+
+      <div class="body-card">
+        <h2 id="pol">Pol</h2>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Gravity</span><span class="stat-value">~0.373 m/s²</span></div>
+          <div class="stat-tile"><span class="stat-label">Atmosphere</span><span class="stat-value">None</span></div>
+          <div class="stat-tile"><span class="stat-label">Moon of</span><span class="stat-value">Jool</span></div>
+          <div class="stat-tile"><span class="stat-label">Terrain</span><span class="stat-value">Cratered, small</span></div>
+        </div>
+        <p>Pol is generally considered the easiest of Jool's five moons to land on — very low gravity, no
+        atmosphere, and gently cratered terrain with few surprises. If you're sequencing a Jool-5 attempt,
+        many players tackle Pol first to bank an easy win before moving on to Tylo.</p>
+      </div>
+
+      <div class="body-card">
+        <h2 id="eeloo">Eeloo</h2>
+        <div class="stat-row">
+          <div class="stat-tile"><span class="stat-label">Radius</span><span class="stat-value">210 km</span></div>
+          <div class="stat-tile"><span class="stat-label">Gravity</span><span class="stat-value">~1.69 m/s²</span></div>
+          <div class="stat-tile"><span class="stat-label">Atmosphere</span><span class="stat-value">None</span></div>
+          <div class="stat-tile"><span class="stat-label">Moons</span><span class="stat-value">None</span></div>
+        </div>
+        <p>Eeloo is the farthest stock celestial body from Kerbol — an icy, dwarf-planet-like world with an
+        eccentric, inclined orbit that makes for a long transfer time and a somewhat fiddly window to find.
+        It's commonly treated as the last stop on a Grand Tour, both symbolically and because its awkward
+        orbit is easiest to plan for once you already have a mission clock full of time-warp experience.</p>
+        <p>Once you arrive, the landing itself is easy — low gravity, no atmosphere, no unusual hazards. All
+        the difficulty is in the trip, not the touchdown.</p>
+      </div>
+
+      <div class="callout info">
+        <div class="callout-title">Suggested first "grand tour" order</div>
+        <p id="visiting-order">If this is your first time stringing multiple destinations together, a
+        sensible order is: <strong>Mun and Minmus</strong> first to build core landing/return skills, then
+        <strong>Duna</strong> as your first interplanetary trip, then <strong>Dres</strong> or <strong>Eve</strong>
+        depending on whether you want an easy inclined-orbit trip or a serious ascent challenge, then the
+        <strong>Jool system</strong> (Pol and Bop first, Laythe and Vall next, Tylo last), and finally
+        <strong>Moho</strong> and <strong>Eeloo</strong>, since both have the trickiest orbital geometry in
+        the game and benefit most from experience you'll have built up by then. See
+        <a href="challenges.html">Challenges &amp; Achievements</a> for the full write-ups on the Grand Tour
+        and Jool-5 community challenges.</p>
+      </div>
+
+      <div class="pager">
+        <a class="prev" href="dlc-overview.html"><span class="dir">← Back</span>DLC Overview</a>
+        <a class="next" href="delta-v-map.html"><span class="dir">Next</span>Delta-v Map →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building Rockets — KSP Mission Manual</title>
+<meta name="description" content="Staging, thrust-to-weight ratio, delta-v budgeting, engine selection, and the gravity turn — the core skills for building a rocket that actually reaches orbit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="building-rockets">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 02 · Foundations</div>
+      <h1>Building Rockets</h1>
+      <p class="page-sub">Staging, thrust-to-weight ratio, and delta-v — and how to stop your rocket from
+      flipping over or shaking itself apart.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#anatomy">Anatomy of a basic rocket</a></li>
+          <li><a href="#staging">Staging in depth</a></li>
+          <li><a href="#twr">Thrust-to-weight ratio (TWR)</a></li>
+          <li><a href="#deltav">Delta-v budgeting</a></li>
+          <li><a href="#engines">Choosing the right engine</a></li>
+          <li><a href="#stability">Aerodynamics and stability basics</a></li>
+          <li><a href="#gravity-turn">The gravity turn, step by step</a></li>
+          <li><a href="#mistakes">Common beginner mistakes</a></li>
+        </ul>
+      </div>
+
+      <h2 id="anatomy">Anatomy of a basic rocket</h2>
+      <p>A simple orbital rocket, built bottom to top in the VAB, usually looks like this:</p>
+      <ol class="steps">
+        <li><strong>Engine</strong><p>Converts propellant into thrust. Bigger isn't automatically better —
+          see thrust-to-weight ratio below.</p></li>
+        <li><strong>Fuel tank(s)</strong><p>Liquid fuel + oxidizer for most engines. Sized to give the stage
+          enough delta-v for its job, not just "as much as fits."</p></li>
+        <li><strong>Decoupler</strong><p>Separates a spent stage from the rest of the rocket once its fuel is
+          gone, so you stop hauling dead mass.</p></li>
+        <li><strong>(Repeat engine / tank / decoupler for each additional stage)</strong><p>Most orbital
+          rockets to Kerbin orbit use two to three stages.</p></li>
+        <li><strong>Command pod</strong><p>Houses your Kerbal(s) and provides the "brain" needed to control
+          the vessel. This is typically your root part.</p></li>
+        <li><strong>Parachute</strong><p>Mounted on or just above the pod for a safe return to Kerbin's
+          surface.</p></li>
+        <li><strong>Fairing (optional but common)</strong><p>Protects a payload — a satellite, a lander, an
+          antenna — from air resistance and heat during ascent. Covered fully in
+          <a href="vab-advanced-techniques.html">VAB Advanced Techniques</a>.</p></li>
+      </ol>
+
+      <h2 id="staging">Staging in depth</h2>
+      <p>The staging list running down the right edge of the VAB screen controls exactly what happens, and
+      in what order, every time you press <kbd>Space</kbd> in flight. KSP auto-groups parts into stages as
+      you build, but the auto-grouping is not always what you want — always review it before you fly.</p>
+      <div class="callout tip">
+        <div class="callout-title">Staging rules of thumb</div>
+        <ul>
+          <li>An engine and the decoupler directly below it are usually placed in the <em>same</em> stage so
+            they fire together — ignition and separation happen in one keypress. You can also split them
+            across two stages (ignite, wait, then decouple) for a controlled "ignite before drop" sequence
+            with liquid engines, which avoids a brief thrust gap.</li>
+          <li>Group all parachutes into their own stage, positioned late enough that you won't accidentally
+            trigger them while still under thrust or at high speed — deploying a chute above roughly 250-300
+            m/s tends to rip it off.</li>
+          <li><strong>Solid rocket boosters (SRBs) cannot be throttled or shut off once lit.</strong> Plan
+            their burn time into your staging order and don't stage past them before they've finished.</li>
+          <li>Use the small padlock/link icons between staging icons to merge multiple actions (e.g. four
+            radial SRBs decoupling together) into a single stage that fires simultaneously.</li>
+          <li>Drag icons up or down the list to reorder stages if the auto-grouping put something in the
+            wrong place — this is common with radially-attached boosters and fairings.</li>
+        </ul>
+      </div>
+      <div class="callout info">
+        <div class="callout-title">A note on asparagus staging</div>
+        <p>Advanced players often use <strong>asparagus staging</strong> — cross-feeding fuel from outer
+        tanks into inner ones via fuel ducts so outer boosters drop away empty while inner engines keep
+        running on full tanks. It's a big efficiency win on large rockets, but it needs fuel ducts and
+        careful symmetry work, so full coverage lives in <a href="vab-advanced-techniques.html">VAB Advanced
+        Techniques</a>. For now, just know the term exists.</p>
+      </div>
+
+      <h2 id="twr">Thrust-to-weight ratio (TWR)</h2>
+      <p>TWR compares the thrust your engines produce to how much your rocket weighs under local gravity.
+      Conceptually it's just:</p>
+      <div class="body-card">
+        <h3>TWR = Total thrust ÷ (Total mass × local gravity)</h3>
+        <p>If TWR is below 1, your engines physically cannot lift the rocket off the ground — gravity wins.
+        Above 1, the rocket accelerates upward; the higher above 1, the more aggressively it climbs. "Local
+        gravity" matters because the same rocket that struggles off Kerbin (9.81 m/s²) might leap off the
+        Mun (1.63 m/s²) with the same engines.</p>
+      </div>
+      <table class="dv-table">
+        <thead><tr><th>Situation</th><th class="num">Target TWR</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Liftoff from Kerbin</td><td class="num">1.2 – 1.6</td><td>Enough to climb without wasting fuel fighting drag from going too fast too low</td></tr>
+          <tr><td>Upper/vacuum stages</td><td class="num">0.5 – 1.0+</td><td>No air resistance to fight and no gravity losses to rush past, so lower TWR is fine and saves mass</td></tr>
+          <tr><td>Landing on any body</td><td class="num">&gt; 1.0 (local g)</td><td>You must be able to fully cancel your descent velocity — anything less and you can only slow down, not hover or ascend</td></tr>
+          <tr><td>Eve ascent specifically</td><td class="num">2.0+</td><td>Eve's thick atmosphere and 1.7g surface gravity punish anything underpowered</td></tr>
+        </tbody>
+      </table>
+      <p>The VAB's stats panel shows TWR per stage — always check the <em>first</em> stage's TWR, since that
+      single number determines whether you leave the pad at all.</p>
+
+      <h2 id="deltav">Delta-v budgeting</h2>
+      <p>Every maneuver in KSP costs a fairly predictable amount of delta-v (Δv), and your rocket only has so
+      much to spend. You don't need to run the rocket equation by hand — the VAB stats panel and mods like
+      Kerbal Engineer Redux (see <a href="tips-mods.html">Tips &amp; Mods</a>) calculate it for you — but
+      understanding what's happening under the hood helps you design better rockets.</p>
+      <div class="callout info">
+        <div class="callout-title">What the rocket equation is actually doing</div>
+        <p>Delta-v depends on two things: how fast your engine throws propellant out the back (exhaust
+        velocity, directly tied to Isp — specific impulse) and your <strong>mass ratio</strong> — your full
+        liftoff mass divided by your mass once the tank is empty. A higher-Isp engine gets more Δv per unit
+        of propellant mass. A bigger mass ratio (a bigger tank relative to the dry rocket) also gives more
+        Δv — but that relationship is logarithmic, not linear.</p>
+      </div>
+      <div class="callout warn">
+        <div class="callout-title">The tyranny of the rocket equation</div>
+        <p>Because the mass-ratio term is logarithmic, each extra unit of fuel gives you less additional Δv
+        than the last, since the tank holding that fuel also has its own dry mass you now have to lift.
+        Doubling your fuel does not double your Δv. Past a certain point, adding more tank is a losing trade
+        — you get more value from a lighter craft, a better engine, or an extra stage than from just piling
+        on more fuel. This is why efficient rocket design favors staging (dropping dead tank mass) over one
+        giant single-stage fuel tank.</p>
+      </div>
+      <table class="dv-table">
+        <thead><tr><th>Maneuver from Kerbin</th><th class="num">Approx. Δv needed</th></tr></thead>
+        <tbody>
+          <tr><td>Launch to low Kerbin orbit (LKO)</td><td class="num">~3,400 m/s</td></tr>
+          <tr><td>LKO to Mun intercept</td><td class="num">~860 m/s</td></tr>
+          <tr><td>Mun orbit insertion</td><td class="num">~310 m/s</td></tr>
+          <tr><td>Mun landing (from low Mun orbit)</td><td class="num">~580 m/s</td></tr>
+          <tr><td>Mun ascent back to low orbit</td><td class="num">~580 m/s</td></tr>
+          <tr><td>Mun surface back to Kerbin reentry</td><td class="num">~860 m/s</td></tr>
+          <tr><td>LKO to Minmus intercept</td><td class="num">~930 m/s</td></tr>
+          <tr><td>Minmus landing (from low Minmus orbit)</td><td class="num">~180 m/s</td></tr>
+        </tbody>
+      </table>
+      <div class="body-card">
+        <h3>Worked example: budgeting a Mun round trip</h3>
+        <p>Add up each leg you'll actually fly, then build with margin:</p>
+        <ul>
+          <li>Kerbin surface to LKO: <strong>~3,400 m/s</strong></li>
+          <li>LKO to Mun intercept: <strong>~860 m/s</strong></li>
+          <li>Mun orbit insertion: <strong>~310 m/s</strong></li>
+          <li>Landing on the Mun: <strong>~580 m/s</strong></li>
+          <li>Ascent back to Mun orbit: <strong>~580 m/s</strong></li>
+          <li>Return transfer + Kerbin reentry: <strong>~860 m/s</strong></li>
+        </ul>
+        <p>Running total: roughly <strong>6,590 m/s</strong>. Add a 10–20% margin for gravity losses,
+        steering inefficiency, and correction burns, and you should design for something like
+        <strong>7,200–7,900 m/s</strong> of total Δv across all stages, budgeted so each stage covers its own
+        leg (or splits neatly across two).</p>
+      </div>
+
+      <h2 id="engines">Choosing the right engine</h2>
+      <p>Match the engine to the stage's job, not just to "biggest number." A few stock workhorses:</p>
+      <table class="dv-table">
+        <thead><tr><th>Engine</th><th class="num">Vacuum Isp</th><th class="num">Thrust</th><th>Best role</th></tr></thead>
+        <tbody>
+          <tr><td>LV-T30 "Reliant"</td><td class="num">~300s</td><td class="num">215 kN</td><td>Simple first/launch stage; no gimbal, so pair with fins</td></tr>
+          <tr><td>LV-T45 "Swivel"</td><td class="num">~320s</td><td class="num">200 kN</td><td>Launch stage needing gimbal control for steering</td></tr>
+          <tr><td>RE-I5 "Skipper"</td><td class="num">~320s</td><td class="num">650 kN</td><td>Mid-size launch stage for heavier rockets</td></tr>
+          <tr><td>RE-M3 "Mainsail"</td><td class="num">~310s</td><td class="num">1,400 kN</td><td>Heavy-lift launch stage / booster core</td></tr>
+          <tr><td>"Vector"</td><td class="num">~315s</td><td class="num">1,000 kN</td><td>Heavy-lift with full gimbal range — great control authority</td></tr>
+          <tr><td>LV-909 "Terrier"</td><td class="num">~350s</td><td class="num">60 kN</td><td>Efficient vacuum/upper stage, small landers</td></tr>
+          <tr><td>RE-L10 "Poodle"</td><td class="num">~350s</td><td class="num">250 kN</td><td>Vacuum stage for heavier payloads and transfer stages</td></tr>
+          <tr><td>T-1 "Dart"</td><td class="num">~340s</td><td class="num">180 kN</td><td>Toroidal shape suits asparagus-staged cores</td></tr>
+          <tr><td>LV-N "Nerv"</td><td class="num">~800s</td><td class="num">60 kN</td><td>Nuclear interplanetary cruise stages — huge Isp, needs heat management, poor at sea level</td></tr>
+          <tr><td>IX-6315 "Dawn"</td><td class="num">~4,200s</td><td class="num">2 kN</td><td>Ion propulsion for very light, long-duration probes only</td></tr>
+        </tbody>
+      </table>
+      <ul>
+        <li><strong>Launch stages</strong> want high thrust and decent Isp — Reliant, Swivel, Skipper, or
+          Mainsail depending on rocket size. Use gimballing engines (Swivel, Mainsail, Vector) unless your
+          fins alone provide enough control.</li>
+        <li><strong>Vacuum/transfer stages</strong> want high Isp over raw thrust — Terrier or Poodle are the
+          standard picks for interplanetary and orbital-insertion stages.</li>
+        <li><strong>Landers</strong> need TWR above 1 for the target body specifically — a Terrier is
+          overkill-efficient for the Mun or Minmus but a Poodle or multiple engines may be needed for
+          heavier landers on Duna or Tylo.</li>
+        <li><strong>Nuclear cruise stages</strong> (Nerv) shine on long interplanetary burns where their
+          terrible thrust is offset by having plenty of coast time, and their huge Isp dramatically cuts fuel
+          mass for the trip.</li>
+      </ul>
+
+      <h2 id="stability">Aerodynamics and stability basics</h2>
+      <p>Full aerodynamics coverage — lift, control surfaces, reentry, spaceplanes — lives in
+      <a href="aerodynamics-flight.html">Aerodynamics &amp; Flight</a>. For a first rocket, four basics cover
+      almost every case:</p>
+      <ul>
+        <li><strong>Keep it pointy and smooth.</strong> A nose cone up front and a tapered profile
+          noticeably cuts drag.</li>
+        <li><strong>Put fins at the bottom, near the engines.</strong> Fins push the center of drag
+          <em>behind</em> the center of mass, which makes the rocket want to fly straight — the same reason
+          an arrow has feathers at the back, not the front.</li>
+        <li><strong>Avoid large flat surfaces sticking out sideways</strong> low on the rocket, and avoid
+          asymmetric designs unless you've deliberately compensated for them.</li>
+        <li><strong>Check the Center of Mass (CoM) and Center of Lift/Drag indicators</strong> — toggle
+          buttons near the bottom of the VAB screen — before flying anything unusual. Drag behind mass is
+          stable; drag ahead of mass is not.</li>
+      </ul>
+      <div class="callout danger">
+        <div class="callout-title">If your rocket flips during ascent</div>
+        <p>This is almost always one of: too much speed too low in the atmosphere (throttle back below
+        roughly 10km), not enough fin authority at the tail, or turning too sharply during the gravity turn.
+        Slow your turn rate and add tail fins before anything else.</p>
+      </div>
+
+      <h2 id="gravity-turn">The gravity turn, step by step</h2>
+      <p>You cannot fly straight up the whole way to orbit — reaching orbit means moving <em>sideways</em>
+      fast enough that you keep missing the ground, not just climbing. The gravity turn is the standard,
+      fuel-efficient technique for trading "straight up" for "sideways" gradually.</p>
+      <ol class="steps">
+        <li><strong>Launch straight up</strong> until roughly 50–100 m/s, or about 1km altitude.</li>
+        <li><strong>Pitch over 5–10° toward the east</strong> and let the rocket begin following that angled
+          path. Launching eastward gives you a free velocity boost from Kerbin's own rotation.</li>
+        <li><strong>Let the nose gradually fall toward the horizon</strong> as you climb, following the
+          prograde marker on the navball rather than fighting it back toward vertical.</li>
+        <li><strong>By around 45km altitude you should be flying nearly horizontal</strong>, with your
+          apoapsis (the highest point of your orbit) sitting around 70-80km, or your intended orbital
+          altitude.</li>
+        <li><strong>Coast to apoapsis, then burn prograde (level with the horizon)</strong> to raise your
+          periapsis above the atmosphere — that's what actually circularizes the orbit. See
+          <a href="orbital-mechanics.html">Orbital Mechanics</a> for exactly how maneuver nodes work.</li>
+      </ol>
+
+      <h2 id="mistakes">Common beginner mistakes</h2>
+      <div class="callout warn">
+        <div class="callout-title">Watch out for these</div>
+        <ul>
+          <li><strong>Forgetting a probe core or pod</strong> — a rocket needs one of these to be
+            controllable at all, and probe cores also need electric charge and (usually) line of sight to
+            the sun or a relay for full control.</li>
+          <li><strong>No parachute, or a parachute in the wrong stage</strong> — always check your staging
+            order before flying, not after you've fallen out of the sky.</li>
+          <li><strong>Turning too fast or too early</strong> during ascent, overloading your fins and causing
+            a flip.</li>
+          <li><strong>Not enough struts</strong> on wide payloads or side-mounted boosters, causing wobble
+            that can shake a rocket apart under thrust — see
+            <a href="vab-advanced-techniques.html">VAB Advanced Techniques</a> for struts and autostrut.</li>
+          <li><strong>Running out of electric charge</strong> on probes or unmanned stages — add batteries
+            and/or solar panels, especially on anything without a crewed pod's built-in reserves.</li>
+          <li><strong>Building "just enough" delta-v</strong> with no margin for correction burns, docking,
+            or an imperfect ascent — always pad your budget by 10-20%.</li>
+          <li><strong>Igniting SRBs without a plan to jettison them</strong> — a spent, unlit SRB is just
+            dead weight you're now dragging to orbit.</li>
+          <li><strong>Mixing engine types on one fuel line</strong> in ways that starve one engine — check
+            fuel flow priority if you're combining SRBs and liquid engines or asymmetric tanks.</li>
+        </ul>
+      </div>
+
+      <div class="pager">
+        <a class="prev" href="getting-started.html"><span class="dir">← Back</span>Getting Started</a>
+        <a class="next" href="aerodynamics-flight.html"><span class="dir">Next</span>Aerodynamics &amp; Flight →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

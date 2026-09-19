@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Satellites &amp; Probes — KSP Mission Manual</title>
+<meta name="description" content="A complete guide to building uncrewed satellites and probes in KSP — power budgeting, CommNet antennas and relays, orbit selection, geostationary constellations, and satellite contracts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="satellites">
+
+<div class="app-shell">
+  <div id="sidebar-root"></div>
+  <div class="content-col">
+    <main>
+      <div class="page-kicker">Chapter 09 · Uncrewed &amp; Science</div>
+      <h1>Satellites &amp; Probes</h1>
+      <p class="page-sub">Power, antennas, and orbits for communication relays, science probes, and contract satellites.</p>
+
+      <div class="toc">
+        <div class="toc-title">On this page</div>
+        <ul>
+          <li><a href="#core">Probe cores vs. crewed pods</a></li>
+          <li><a href="#power">Power budgeting: batteries, solar, and RTGs</a></li>
+          <li><a href="#commnet">Antennas and CommNet</a></li>
+          <li><a href="#orbit-types">Choosing an orbit for the job</a></li>
+          <li><a href="#geostationary">Building a geostationary relay</a></li>
+          <li><a href="#constellation">The 3-relay, 120° constellation</a></li>
+          <li><a href="#contracts">Satellite contracts in Career mode</a></li>
+          <li><a href="#instruments">Science instruments: a quick preview</a></li>
+        </ul>
+      </div>
+
+      <h2 id="core">Probe cores vs. crewed pods</h2>
+      <p>Every controllable vessel needs a "brain" — something that lets the game's control inputs (SAS,
+      throttle, staging, maneuver execution) actually steer the craft. For a crewed vessel that's a
+      command pod with a Kerbal inside. For a satellite it's a <strong>probe core</strong>: an unmanned part
+      like the Stayputnik, RC-001S Remote Guidance Unit, or OKTO2 that does the same job without a seat.</p>
+      <p>Probe cores are lighter and usually cheaper than pods, which matters a lot when every kilogram costs
+      Δv. The trade-off is that a probe core is entirely dependent on two things a crewed pod can partially do
+      without: electric charge, and (if CommNet is enabled, which it is by default in Career and can be toggled
+      in Sandbox) a signal path home. A crewed pod with a pilot on board can still fly on internal SAS with no
+      signal at all; most probe cores cannot act on new commands without a connection, though they can hold
+      a pre-set attitude and continue an already-started burn.</p>
+      <div class="stat-row">
+        <div class="stat-tile"><span class="stat-label">Stayputnik</span><span class="stat-value">0.05 t, no SAS</span></div>
+        <div class="stat-tile"><span class="stat-label">OKTO2</span><span class="stat-value">0.04 t, has SAS</span></div>
+        <div class="stat-tile"><span class="stat-label">RC-001S</span><span class="stat-value">Hibernation mode</span></div>
+        <div class="stat-tile"><span class="stat-label">HECS2</span><span class="stat-value">Built-in reaction wheel</span></div>
+      </div>
+      <div class="callout info">
+        <div class="callout-title">Why a Kerbal still matters, even on a "probe" mission</div>
+        <p>Some science experiments — crew reports and EVA surface samples — can only be produced by a Kerbal
+        physically present. A pure probe can carry every instrument in the game and still never generate those
+        two categories. See <a href="science-research.html">Science &amp; Research</a> for the full breakdown.</p>
+      </div>
+
+      <h2 id="power">Power budgeting: batteries, solar, and RTGs</h2>
+      <p>Almost every active part on a satellite draws a small trickle of electric charge (EC) just to stay
+      on — the probe core itself, reaction wheels, transmitting antennas (a large one-time cost while actually
+      sending data), and any running science instruments. If EC hits zero, you lose control: no SAS, no
+      reaction wheel authority, no engine gimbal, and transmissions stall until charge recovers. Power design
+      is really a simple inequality you need to satisfy over an entire orbit, including the dark part.</p>
+      <ol class="steps">
+        <li><strong>Add up your steady draw.</strong> Check each part's EC/s consumption in the VAB part
+          tooltip — probe core, reaction wheels, and any "always on" instruments (a running gravioli detector
+          draws continuously; most others only draw briefly when you trigger them).</li>
+        <li><strong>Estimate your eclipse time.</strong> A low circular orbit around Kerbin spends a
+          meaningful fraction of every lap in Kerbin's shadow, where solar panels produce nothing. Higher and
+          more inclined orbits generally spend less time eclipsed, but never assume zero.</li>
+        <li><strong>Size your battery bank to survive the eclipse alone</strong> — battery capacity should
+          comfortably exceed (steady draw × eclipse duration), not just match it exactly.</li>
+        <li><strong>Size your solar panels to more than replace what you used</strong> in the sunlit part of
+          the orbit, so the battery actually recovers to full before the next eclipse rather than slowly
+          draining lap after lap.</li>
+      </ol>
+      <table>
+        <thead><tr><th>Power source</th><th>Behavior</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td>Fixed solar panels (e.g. OX-STAT)</td><td>No deployment, small area, survives launch/atmosphere</td><td>Small probes, backup power</td></tr>
+          <tr><td>Deployable solar panels (e.g. Gigantor XL)</td><td>Must be extended manually or via action group; huge area but fragile</td><td>Main power for stations and large sats</td></tr>
+          <tr><td>RTG (radioisotope generator)</td><td>Constant small output, no sunlight needed, never runs out, heavy for its output</td><td>Deep-space or shadow-heavy probes</td></tr>
+        </tbody>
+      </table>
+      <div class="callout danger">
+        <div class="callout-title">Deployment timing kills panels</div>
+        <p>Deployable solar panels snap off if extended into an airstream or slammed by a decoupler event,
+        stage separation debris, or a docking collision. Never deploy panels before you're clear of the
+        atmosphere, and retract or shield them (with a fairing, or simply by not deploying yet) around any
+        docking or staging event where something could clip them.</p>
+      </div>
+      <div class="callout warn">
+        <div class="callout-title">Dead battery, dead satellite</div>
+        <p>A satellite that runs flat in eclipse doesn't just pause — it can drift off its intended attitude,
+        miss a scheduled transmission, or fail to hold a targeted orbit correction. Always over-provision
+        battery capacity beyond your worst-case eclipse estimate, especially for anything going somewhere
+        with long orbital periods or extended shadow time, like a high Kerbin orbit or an outer-system probe.</p>
+      </div>
+
+      <h2 id="commnet">Antennas and CommNet</h2>
+      <p>With CommNet active, a probe core needs an unbroken signal path back to a tracking station (or, on
+      an upgraded Space Center, out to increasingly distant ranges) to accept new commands. Losing connection
+      doesn't destroy the craft, but it does freeze it to automated behavior only — it'll keep executing an
+      in-progress maneuver node burn, but you can't queue a new one, switch SAS modes, or trigger most actions
+      until signal is restored.</p>
+      <ul>
+        <li><strong>Direct antennas</strong> (Communotron 16, Communotron 16-S, HG-5) talk straight back to
+          Kerbin or another tracking point. They have limited range and are fine for craft that stay
+          relatively close to Kerbin or that can wait for a relay to swing into view.</li>
+        <li><strong>Relay antennas</strong> (Communotron 88-88, HG-55, RA-2, RA-15) do everything a direct
+          antenna does <em>and</em> can pass other craft's signals along toward home. A network of relays is
+          what lets a probe on the far side of the Mun, or out at Jool, stay in constant contact even when
+          Kerbin itself isn't in view.</li>
+        <li><strong>Line of sight is everything.</strong> A signal is blocked by any sufficiently large body
+          physically between the transmitting craft and the receiver — your own Mun, for instance, blocks a
+          lander on its far side from reaching Kerbin directly. A relay positioned to see both the lander and
+          Kerbin (or another relay) bridges that gap.</li>
+        <li><strong>Signal strength affects data rate</strong> and, at the margins, can affect the science
+          value returned by transmission — a weak, long-range link isn't just slower, it can be flakier.</li>
+      </ul>
+      <div class="callout tip">
+        <div class="callout-title">Build the relay network before you need it</div>
+        <p>It's much easier to launch 2-3 dedicated relay satellites into a stable constellation early than to
+        retrofit coverage after your science probes are already stranded out of contact. Treat a relay network
+        around any body you'll visit repeatedly (Mun, Minmus, Duna) as its own small project.</p>
+      </div>
+
+      <h2 id="orbit-types">Choosing an orbit for the job</h2>
+      <p>There's no single "correct" satellite orbit — the right choice depends entirely on what the satellite
+      is for. Match the orbit shape to the mission before you ever hit launch.</p>
+      <table class="dv-table">
+        <thead><tr><th>Orbit type</th><th>Shape</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td>Low circular</td><td>Near-equatorial, low altitude</td><td>Cheap deployment, quick low/high-space science passes, short-range comm</td></tr>
+          <tr><td>Polar / sun-synchronous-style</td><td>Near-90° inclination</td><td>Surface mapping and scanning — passes over every latitude band as the body rotates underneath</td></tr>
+          <tr><td>High circular / geostationary</td><td>Equatorial, altitude matched to rotation period</td><td>Constant single-region coverage, long-lived relay anchor</td></tr>
+          <tr><td>Highly elliptical</td><td>Low periapsis, very high apoapsis</td><td>Cheap way to linger far out for long comm range or a Molniya-style high-latitude relay</td></tr>
+        </tbody>
+      </table>
+      <div class="body-card">
+        <strong>Rule of thumb:</strong> if the mission is "cover one fixed spot forever," go geostationary.
+        If it's "eventually see every point on the surface," go polar. If it's "just needs to exist cheaply
+        and relay occasionally," a low or moderate circular orbit is often good enough and far cheaper in Δv.
+      </div>
+
+      <h2 id="geostationary">Building a geostationary relay</h2>
+      <p>A geostationary satellite sits above the same point on Kerbin's equator permanently, because its
+      orbital period exactly matches Kerbin's rotation period (roughly 6 hours). A geosynchronous-but-inclined
+      orbit matches the period but not the equatorial plane, tracing a north-south figure-eight over one
+      longitude instead of holding perfectly still — still useful, just not "stationary."</p>
+      <ol class="steps">
+        <li><strong>Launch to a low circular parking orbit</strong> first, as normal, ideally already close to
+          equatorial to save a later plane change.</li>
+        <li><strong>Zero out inclination.</strong> Burn at the ascending or descending node to flatten your
+          orbit to the equator (0° inclination) — do this while still low, since plane changes get more
+          expensive the faster you're moving, and you're moving fastest close to Kerbin... except right at
+          the node itself, where it's unavoidable. The point is to do it once, early, rather than fight it
+          again later at a different altitude.</li>
+        <li><strong>Raise apoapsis</strong> with a prograde burn until the orbit info panel shows an orbital
+          period matching Kerbin's rotation period (~6 hours, check the exact value shown in-game since it can
+          vary slightly with game settings).</li>
+        <li><strong>Circularize at that apoapsis</strong> so the whole orbit — not just one point — matches
+          the target period.</li>
+        <li><strong>Fine-tune with small prograde/retrograde nudges.</strong> Matching the period exactly is
+          finicky; small burns at apoapsis correct small period mismatches without disturbing the orbit shape
+          much.</li>
+      </ol>
+      <div class="callout warn">
+        <div class="callout-title">Small period errors compound over time</div>
+        <p>A satellite whose period is even slightly off from Kerbin's rotation will slowly drift east or west
+        relative to the ground, taking days or weeks of game time to become noticeable. Check back after a few
+        in-game days and nudge again if it's crept off station.</p>
+      </div>
+
+      <h2 id="constellation">The 3-relay, 120° constellation</h2>
+      <p>Three geostationary relays spaced evenly around the equator — 120° apart from each other — give full,
+      constant line-of-sight coverage of the entire equatorial band and most of the globe besides, since each
+      relay can see roughly a third of the planet at once from that altitude. This is the classic first "real"
+      network project in a CommNet-enabled career, and it permanently solves signal coverage for anything you
+      later send to low Kerbin orbit or beyond.</p>
+      <div class="callout tip">
+        <div class="callout-title">Launching all three efficiently</div>
+        <p>Launch all three relays on a shared parking orbit, then use maneuver nodes to raise each one to the
+        geostationary shell at a different point in the orbit — since they started spread out along the same
+        low orbit, raising each one at a different location naturally spaces them out near 120° once
+        circularized. Alternatively, launch one at a time and use the phase angle between it and the previous
+        relay (visible in map view) to time each subsequent launch.</p>
+      </div>
+
+      <h2 id="contracts">Satellite contracts in Career mode</h2>
+      <p>Career mode frequently offers contracts asking you to place a satellite (sometimes contract-supplied,
+      sometimes "any craft with a probe core") into a specific orbit, defined as ranges for altitude,
+      inclination, and eccentricity rather than one exact number.</p>
+      <ol class="steps">
+        <li><strong>Read the required ranges carefully</strong> in the contract details — they're given as
+          minimum/maximum bands, not single values, so you have room to aim for the middle rather than an
+          exact figure.</li>
+        <li><strong>Plan the orbit with a maneuver node</strong> the same way you would any other target
+          orbit — set apoapsis/periapsis for the altitude band, and handle inclination with a plane-change
+          burn at a node crossing.</li>
+        <li><strong>Watch the live contract parameter indicators</strong> in the contract app or the
+          in-flight contract tracker — each requirement (altitude, inclination, eccentricity) usually shows a
+          green check or red cross that updates in real time as your orbit changes, so you can nudge burns
+          until everything goes green before finalizing.</li>
+        <li><strong>Hold the orbit briefly if required</strong> — some contracts require the orbit to be
+          stable for a short duration before they register as complete, so don't immediately switch vessels
+          away the instant the indicators turn green.</li>
+      </ol>
+
+      <h2 id="instruments">Science instruments: a quick preview</h2>
+      <p>Beyond communication duty, probes are also the backbone of the science game — most instruments don't
+      need a Kerbal at all. A quick preview of what you'll find in the tech tree:</p>
+      <ul>
+        <li><strong>Thermometer</strong> — reads ambient temperature, resettable, cheap and light.</li>
+        <li><strong>Barometer</strong> — reads atmospheric pressure, only useful on bodies with an atmosphere.</li>
+        <li><strong>Gravioli detector</strong> — measures local gravity, draws EC continuously while active.</li>
+        <li><strong>Seismometer</strong> — best used landed, benefits from time spent recording after being deployed.</li>
+        <li><strong>Materials bay</strong> and <strong>Mystery Goo canister</strong> — one-use-per-refresh
+          experiments that need to be reset (by a Kerbal on EVA, or automatically with certain tech) before
+          they can be run again in a new biome.</li>
+      </ul>
+      <p>Every one of these interacts with the "situation × biome" system, transmission-vs-return value, and
+      the tech tree in ways that deserve their own deep dive — head to
+      <a href="science-research.html">Science &amp; Research</a> for the full picture on getting the most out
+      of every instrument you fly.</p>
+
+      <div class="pager">
+        <a class="prev" href="rovers-surface-ops.html"><span class="dir">← Back</span>Rovers &amp; Surface Ops</a>
+        <a class="next" href="science-research.html"><span class="dir">Next</span>Science &amp; Research →</a>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      Built for new Kerbonauts. Kerbal Space Program is a trademark of its respective owners — this is an
+      unofficial, fan-made study guide.
+    </footer>
+  </div>
+</div>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
